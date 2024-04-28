@@ -36,11 +36,10 @@ space + tw = twilight mode on/off
 shift + ( = quick up  
 shift + ) = quick down  
 shift + v = select text 
-{ 
-	finish with c = cut selected text  
-	finish with d = delete selected text  
-	finish with y = yank selected text  
-	finish with p = paste selected text  
-}
+ - finish with c = cut selected text  
+ - finish with d = delete selected text  
+ - finish with y = yank selected text  
+ - finish with p = paste selected text  
+
 
 
