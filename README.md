@@ -2,7 +2,7 @@
 
 
 
-![terminal-preview](./terminal-preview.png)
+![terminal-preview](https://raw.githubusercontent.com/assafdori/dotfiles/main/preview.png)
 
 
 
