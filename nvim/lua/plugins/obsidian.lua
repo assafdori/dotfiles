@@ -6,7 +6,7 @@ require("obsidian").setup({
     -- },
     {
       name = "Notes",
-      path = "/Users/omerxx/Obsidian/Notes",
+      path = "/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs/Documents/The Garden",
     },
   },
   completion = {
