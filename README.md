@@ -21,4 +21,4 @@ brew leaves > leaves.txt
 
 ```
 
-##### created by [https://github.com/omrexx/dotfiles](omerxx), edited by me.
+##### created by [omrexx](https://github.com/omrexx/dotfiles), edited by me.
