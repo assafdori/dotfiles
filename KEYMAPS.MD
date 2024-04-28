@@ -3,6 +3,7 @@
 
 ### NOTE: These are custom keymaps for Nvim and Tmux.
 -------------------------------------------------
+
 ``` Prefix = ^a ```
 
 #### buffer management
