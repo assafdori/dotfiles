@@ -3,14 +3,12 @@
 NOTE: These are custom keymaps for Nvim and Tmux.
 -------------------------------------------------
 Prefix = ^a
-n = space(?)
-
 
 #### buffer management
-n + tl = next buffer
-n + th = previous buffer
-n + td = delete buffer
-n + QQ = close buffer
+space + tl = next buffer
+space + th = previous buffer
+space + td = delete buffer
+space + QQ = close buffer
 
 
 #### tmux management (sessions/windows/panes)
@@ -32,7 +30,7 @@ space + E = line end
 space + WW = write file
 space + qq = quit file, save buffer
 space + st = telescope :notes
-space + tw = twilight mode
+space + tw = twilight mode on/off
 
 shift + ( = quick up
 shift + ) = quick down
