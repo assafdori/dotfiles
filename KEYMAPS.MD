@@ -1,6 +1,7 @@
 # Tmux + Nvim keymaps that I learn as I go.
 
-NOTE: These are custom keymaps for Nvim and Tmux.
+
+###NOTE: These are custom keymaps for Nvim and Tmux.
 -------------------------------------------------
 Prefix = ^a
 
