@@ -12,7 +12,7 @@ n + th = previous buffer
 n + td = delete buffer
 
 
-#### tmux management
+#### tmux management (sessions/windows/panes)
 ^a + ^C = new tmux window
 ^a + 1-9 = select tmux window
 ^a + s = split tmux pane
