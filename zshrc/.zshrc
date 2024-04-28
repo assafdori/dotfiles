@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/omerhamerman/.oh-my-zsh
+export ZSH=/Users/assafdori/.oh-my-zsh
 # Reevaluate the prompt string each time it's displaying a prompt
 setopt prompt_subst
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -60,7 +60,7 @@ alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 
 # GO
-export GOPATH='/Users/omerhamerman/go'
+export GOPATH='/Users/assafdori/go'
 
 # VIM
 alias v="/opt/homebrew/bin/nvim"
@@ -68,7 +68,7 @@ alias v="/opt/homebrew/bin/nvim"
 # Nmap
 alias nm="nmap -sC -sV -oN nmap"
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/omer/.vimpkg/bin:${GOPATH}/bin:/Users/omerhamerman/.cargo/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/assafdori/.vimpkg/bin:${GOPATH}/bin:/Users/assafdori/.cargo/bin
 
 alias cl='clear'
 
