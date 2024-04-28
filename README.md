@@ -1,5 +1,11 @@
 # Tmux, Neovim, Wezterm, ZSH = 🚀
 
+
+
+![terminal-preview](./terminal-preview.png)
+
+
+
 ### Install with stow:
 ```bash
 stow --target ~/.config .
