@@ -313,8 +313,8 @@ theme "catppuccin-mocha"
 
 // The folder in which Zellij will look for layouts
 //
-// layout_dir "/Users/omerhamerman/dotfiles/zellij/layouts"
+// layout_dir "/Users/assafdori/dotfiles/zellij/layouts"
 
 // The folder in which Zellij will look for themes
 //
-theme_dir "/Users/omerhamerman/dotfiles/zellij/themes"
+theme_dir "/Users/assafdori/dotfiles/zellij/themes"
