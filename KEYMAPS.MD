@@ -29,6 +29,7 @@ space + ng = neogit
 space + B = line beginning
 space + E = line end
 space + WW = write file
+space + qq = quit file, save buffer
 space + st = telescope :notes
 space + tw = twilight mode
 
