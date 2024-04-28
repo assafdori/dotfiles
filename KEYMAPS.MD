@@ -6,16 +6,16 @@
 ``` Prefix = ^a ```
 
 #### buffer management
-space + tl = next buffer
-space + th = previous buffer
-space + td = delete buffer
-space + QQ = close buffer
+space + tl = next buffer  
+space + th = previous buffer  
+space + td = delete buffer  
+space + QQ = close buffer  
 
 
 #### tmux management (sessions/windows/panes)
-^a + ^C = new tmux window
-^a + 1-9 = select tmux window
-^a + s = split tmux pane
+^a + ^C = new tmux window  
+^a + 1-9 = select tmux window  
+^a + s = split tmux pane  
 ^a + v = vsplit tmux pane
 ^a + c = close tmux pane
 ^a + S = open tmux sessions
