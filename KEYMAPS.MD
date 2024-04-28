@@ -10,6 +10,7 @@ n = space(?)
 n + tl = next buffer
 n + th = previous buffer
 n + td = delete buffer
+n + QQ = close buffer
 
 
 #### tmux management (sessions/windows/panes)
