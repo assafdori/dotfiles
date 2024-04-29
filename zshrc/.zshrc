@@ -65,9 +65,6 @@ export GOPATH='/Users/assafdori/go'
 # VIM
 alias v="/opt/homebrew/bin/nvim"
 
-# Nmap
-alias nm="nmap -sC -sV -oN nmap"
-
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/assafdori/.vimpkg/bin:${GOPATH}/bin:/Users/assafdori/.cargo/bin
 
 alias cl='clear'
@@ -98,15 +95,6 @@ bindkey jj vi-cmd-mode
 # Eza
 alias l="eza -l --icons --git -a"
 alias lt="eza --tree --level=2 --long --icons --git"
-
-# SEC STUFF
-alias gobust='gobuster dir --wordlist ~/security/wordlists/diccnoext.txt --wildcard --url'
-alias dirsearch='python dirsearch.py -w db/dicc.txt -b -u'
-alias massdns='~/hacking/tools/massdns/bin/massdns -r ~/hacking/tools/massdns/lists/resolvers.txt -t A -o S bf-targets.txt -w livehosts.txt -s 4000'
-alias server='python -m http.server 4445'
-alias tunnel='ngrok http 4445'
-alias fuzz='ffuf -w ~/hacking/SecLists/content_discovery_all.txt -mc all -u'
-alias gr='~/go/src/github.com/tomnomnom/gf/gf'
 
 # FZF
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
