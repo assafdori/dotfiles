@@ -6,12 +6,12 @@
 
 
 
-### Install with stow:
+### Stow Installation:
 ```bash
 stow --target ~/.config .
 ```
 
-### Homebrew installation:
+### Homebrew Installation:
 ```bash
 # Fresh installation
 xargs brew install < leaves.txt
@@ -21,4 +21,4 @@ brew leaves > leaves.txt
 
 ```
 
-##### created by [omrexx](https://github.com/omrexx/dotfiles), edited by me.
+##### created by [omrexx](https://github.com/omrexx/dotfiles), modified by me.
