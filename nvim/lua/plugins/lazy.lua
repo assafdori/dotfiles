@@ -14,6 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Fixes Notify opacity issues
 vim.o.termguicolors = true
+-- Enable autochdir
+vim.opt.autochdir = true
 
 require('lazy').setup({
   { 
