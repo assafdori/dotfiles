@@ -5,7 +5,6 @@
 ![terminal-preview](https://raw.githubusercontent.com/assafdori/dotfiles/main/preview.png)
 
 
-
 ### Stow Installation 📦
 ```bash
 stow --target ~/.config .
