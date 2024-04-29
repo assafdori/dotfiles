@@ -6,12 +6,12 @@
 
 
 
-### Stow Installation:
+### Stow Installation 📦
 ```bash
 stow --target ~/.config .
 ```
 
-### Homebrew Installation:
+### Homebrew Installation 🍺
 ```bash
 # Fresh installation
 xargs brew install < leaves.txt
