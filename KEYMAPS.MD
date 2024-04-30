@@ -23,7 +23,7 @@ space + QQ = close buffer
 ^a + r = rename window  
 ^a + d = detach tmux  
 ^a + $ = rename session  
-
+^a + I = install tpm plugins
 
 #### nvim commands
 space + ng = neogit  
