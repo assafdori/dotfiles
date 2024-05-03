@@ -32,7 +32,9 @@ space + E = line end
 space + WW = write file  
 space + qq = quit file, save buffer  
 space + st = telescope search :notes  
+space + sf = telescope search files
 space + tw = twilight mode on/off  
+
 
 shift + ( = quick up  
 shift + ) = quick down  
