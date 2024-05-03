@@ -24,6 +24,7 @@ space + QQ = close buffer
 ^a + d = detach tmux  
 ^a + $ = rename session  
 ^a + I = install tpm plugins
+^a + [ = enter copy mode
 
 #### nvim commands
 space + ng = neogit  
