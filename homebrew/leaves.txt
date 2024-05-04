@@ -72,3 +72,4 @@ zoxide
 zsh-autosuggestions
 zsh-syntax-highlighting
 monitorcontrol
+neofetch
