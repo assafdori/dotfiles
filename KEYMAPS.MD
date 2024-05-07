@@ -36,7 +36,7 @@ space + st = telescope search :notes
 space + sf = telescope search files
 space + tw = twilight mode on/off
 none  + / = fuzzily search current buffer
-
+space + tt = toggle fterm
 
 shift + ( = quick up  
 shift + ) = quick down  
@@ -47,5 +47,7 @@ shift + v = select text
  - finish with y = yank selected text  
  - finish with p = paste selected text  
 
-
+random cool stuff =
+space + tt & cmd btop = terminal with btop
+space + tt & cmd htop = terminal with htop
 
