@@ -71,5 +71,5 @@ zellij
 zoxide
 zsh-autosuggestions
 zsh-syntax-highlighting
-monitorcontrol
 neofetch
+betterdisplay
