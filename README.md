@@ -3,6 +3,8 @@
 
 
 ![terminal-preview](https://raw.githubusercontent.com/assafdori/dotfiles/main/preview.png)
+![terminal-preview](https://raw.githubusercontent.com/assafdori/dotfiles/main/preview2.png)
+
 
 
 ### Stow Installation 📦
