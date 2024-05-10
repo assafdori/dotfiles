@@ -50,4 +50,5 @@ shift + v = select text
 random cool stuff =
 space + tt & cmd btop = terminal with btop
 space + tt & cmd htop = terminal with htop
-
+z= = toggle auto-correction menu
+1z= = select first auto correction suggestion
