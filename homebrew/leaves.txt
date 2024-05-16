@@ -71,6 +71,6 @@ zellij
 zoxide
 zsh-autosuggestions
 zsh-syntax-highlighting
-neofetch
 betterdisplay
 pwgen
+fastfetch
