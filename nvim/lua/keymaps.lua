@@ -19,7 +19,8 @@ vim.api.nvim_set_keymap("n", "ss", ":noh<CR>", {noremap=true})
 vim.api.nvim_set_keymap("n", "<C-W>,", ":vertical resize -10<CR>", {noremap=true})
 vim.api.nvim_set_keymap("n", "<C-W>.", ":vertical resize +10<CR>", {noremap=true})
 vim.keymap.set('n', '<space><space>', "<cmd>set nohlsearch<CR>")
-
+-- nvimtree
+vim.api.nvim_set_keymap("n", "tr", ":NvimTreeToggle<CR>", {noremap=true})
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
