@@ -74,3 +74,4 @@ zsh-syntax-highlighting
 betterdisplay
 pwgen
 fastfetch
+yazi
