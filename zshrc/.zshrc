@@ -28,6 +28,21 @@ export EDITOR=/opt/homebrew/bin/nvim
 alias la=tree
 alias cat=bat
 
+# Define paths for second brain and iCloud (storing as arrays because of spaces in the path)
+export SECOND_BRAIN=("/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs/Documents/The Garden")
+export ICLOUD=("/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs")
+
+# Create symbolic links
+ln -sf "$SECOND_BRAIN" ~/garden
+ln -sf "$ICLOUD" ~/icloud
+
+# Define paths for repositories
+export REPOS="$HOME/Repositories"
+export GITUSER="assafdori"
+export GHREPOS="$REPOS/github.com/$GITUSER"
+export XDG_CONFIG_HOME="$HOME"/.config
+
+
 # Git
 alias gc="git commit -m"
 alias gca="git commit -a -m"
@@ -47,6 +62,8 @@ alias gre='git reset'
 
 # Docker
 alias dco="docker compose"
+alias dcu="docker compose up -d"
+alias dcd="docker compose down"
 alias dps="docker ps"
 alias dpa="docker ps -a"
 alias dl="docker ps -l -q"
@@ -58,12 +75,17 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
+alias sb="cd \$SECOND_BRAIN"
+alias icloud="cd \$ICLOUD"
 
 # GO
 export GOPATH='/Users/assafdori/go'
 
 # VIM
 alias v="/opt/homebrew/bin/nvim"
+
+# Nmap
+alias nm="nmap -sC -sV -oN nmap"
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/assafdori/.vimpkg/bin:${GOPATH}/bin:/Users/assafdori/.cargo/bin
 
@@ -85,6 +107,7 @@ alias kl="kubectl logs -f"
 alias ke="kubectl exec -it"
 alias kcns='kubectl config set-context --current --namespace'
 alias podname=''
+alias m="minikube"
 
 # HTTP requests with xh!
 alias http="xh"
@@ -126,5 +149,9 @@ cx() { cd "$@" && l; }
 fcd() { cd "$(find . -type d -not -path '*/.*' | fzf)" && l; }
 f() { echo "$(find . -type f -not -path '*/.*' | fzf)" | pbcopy }
 fv() { nvim "$(find . -type f -not -path '*/.*' | fzf)" }
+
+# misc
+alias ff="fastfetch"
+
 
 eval "$(zoxide init zsh)"
