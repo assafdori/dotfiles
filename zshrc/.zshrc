@@ -1,5 +1,9 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/assafdori/.oh-my-zsh
+
+# Load Homebrew into the shell
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Reevaluate the prompt string each time it's displaying a prompt
 setopt prompt_subst
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -10,6 +14,7 @@ source <(kubectl completion zsh)
 complete -C '/usr/local/bin/aws_completer' aws
 
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 bindkey '^w' autosuggest-execute
 bindkey '^e' autosuggest-accept
 bindkey '^u' autosuggest-toggle
