@@ -75,3 +75,4 @@ betterdisplay
 pwgen
 fastfetch
 yazi
+lazydocker
