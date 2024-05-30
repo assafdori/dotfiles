@@ -22,4 +22,9 @@ brew leaves > leaves.txt
 
 ```
 
+
+
 ##### created by [omerxx](https://github.com/omerxx/dotfiles), modified by me.
+
+
+###### note to self - don't forget to setup directories using the setup.sh file
