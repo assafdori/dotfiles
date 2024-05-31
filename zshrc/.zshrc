@@ -27,7 +27,6 @@ export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
-
 export EDITOR=/opt/homebrew/bin/nvim
 
 alias la=tree
@@ -129,6 +128,8 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 alias of="fzf | xargs nvim"
 
+# Security
+alias pg="pwgen -sy -1 15 | pbcopy"
 
 export PATH=/opt/homebrew/bin:$PATH
 
