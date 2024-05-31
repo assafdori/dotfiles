@@ -54,6 +54,6 @@ z= = toggle auto-correction menu
 1z= = select first auto correction suggestion
 
 
-# NOTE: for writing notes inside code blocks and be able to telescope search them
-# BUG: for writing bugs inside code blocks and be able to telescope search them
-# TODO: for writing todos inside code blocks and be able to telescope search them
+#### NOTE: for writing notes inside code blocks and be able to telescope search them
+#### BUG: for writing bugs inside code blocks and be able to telescope search them
+#### TODO: for writing todos inside code blocks and be able to telescope search them
