@@ -126,7 +126,7 @@ alias lt="eza --tree --level=2 --long --icons --git"
 # FZF
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-alias of="fzf | xargs nvim"
+alias of="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}' | xargs nvim"
 
 # Security
 alias pg="pwgen -sy -1 15 | pbcopy"
