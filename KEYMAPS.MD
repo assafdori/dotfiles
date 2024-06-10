@@ -11,7 +11,7 @@ space + tl = next buffer
 space + th = previous buffer  
 space + td = delete buffer  
 space + QQ = close buffer  
-
+ctrl  + ww = toggle tree/buffer
 
 #### tmux management (sessions/windows/panes)
 ^a + ^C = new tmux window  
