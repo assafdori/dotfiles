@@ -9,6 +9,8 @@ command_timeout = 1000
 [directory.substitutions]
 '~/tests/starship-custom' = 'work-project'
 
+[directory]
+style = "bold mauve"
 
 [aws]
 format = 'on [$symbol($profile )(\($region\) )]($style)'
@@ -17,6 +19,9 @@ symbol = "  "
 
 [golang]
 format = '[ ](bold cyan)'
+
+[terraform]
+symbol = " "
 
 [kubernetes]
 symbol = '☸ '
@@ -28,6 +33,9 @@ format = '[$context(\[$namespace\])]($style) '
 
 [docker_context]
 disabled = true
+
+[git_branch]
+symbol = " "
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
