@@ -14,28 +14,46 @@ style = "bold mauve"
 
 [aws]
 format = 'on [$symbol($profile )(\($region\) )]($style)'
-style = 'bold blue'
-symbol = "  "
+style = 'bold green'
+symbol = " "
+
+[python]
+
+[terraform]
+symbol = "  "
+
+[git_branch]
+format = 'on [$symbol$branch]($style) '
+symbol = " "
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+conflicted = "✖"
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
+staged = "✚"
+untracked = "?"
+deleted = "✖"
+renamed = "➜"
+modified = "✱"
+style = "bold red"
 
 [golang]
 format = '[ ](bold cyan)'
-
-[terraform]
-symbol = " "
 
 [kubernetes]
 symbol = '☸ '
 disabled = false
 detect_files = ['Dockerfile']
-format = '[$context(\[$namespace\])]($style) '
+format = '[$symbol$context( \($namespace\))]($style) in ' 
+style = 'bold sapphire'
+
 [kubernetes.context_aliases]
-'arn:aws:eks:us-west-2:577926974532:cluster/gal-kub-demo-cluster' = 'gal'
+# 'arn:aws:eks:us-west-2:577926974532:cluster/gal-kub-demo-cluster' = 'gal'
 
 [docker_context]
 disabled = true
-
-[git_branch]
-symbol = " "
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
