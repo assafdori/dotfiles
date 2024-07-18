@@ -76,3 +76,5 @@ pwgen
 fastfetch
 yazi
 lazydocker
+wezterm
+alttab
