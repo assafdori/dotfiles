@@ -31,6 +31,7 @@ kubebuilder
 kubectx
 kustomize
 lazygit
+lazydocker
 lolcat
 mitmproxy
 mongocli
@@ -75,7 +76,6 @@ betterdisplay
 pwgen
 fastfetch
 yazi
-lazydocker
 wezterm
 alttab
 gcc
