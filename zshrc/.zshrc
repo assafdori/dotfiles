@@ -27,6 +27,7 @@ export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
+
 export EDITOR=/opt/homebrew/bin/nvim
 
 alias la=tree
@@ -81,6 +82,9 @@ alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 alias sb="cd \$SECOND_BRAIN"
 alias icloud="cd \$ICLOUD"
+alias xdg="cd \"$XDG_CONFIG_HOME/\""
+alias repos="cd $REPOS"
+alias ghrepos="cd $GHREPOS"
 
 # GO
 export GOPATH='/Users/assafdori/go'
@@ -113,6 +117,14 @@ alias kcns='kubectl config set-context --current --namespace'
 alias podname=''
 alias m="minikube"
 
+# Terraform
+alias tf="terraform"
+
+
+# Tmux
+alias ta="tmux attach"
+alias td="tmux detach"
+
 # HTTP requests with xh!
 alias http="xh"
 
@@ -126,10 +138,12 @@ alias lt="eza --tree --level=2 --long --icons --git"
 # FZF
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 alias of="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}' | xargs nvim"
 
 # Security
 alias pg="pwgen -sy -1 15 | pbcopy"
+
 
 export PATH=/opt/homebrew/bin:$PATH
 
@@ -163,3 +177,7 @@ alias ff="fastfetch"
 
 
 eval "$(zoxide init zsh)"
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
