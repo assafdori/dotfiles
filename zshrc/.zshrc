@@ -1,9 +1,5 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/assafdori/.oh-my-zsh
-
-# Load Homebrew into the shell
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
 # Reevaluate the prompt string each time it's displaying a prompt
 setopt prompt_subst
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -14,7 +10,6 @@ source <(kubectl completion zsh)
 complete -C '/usr/local/bin/aws_completer' aws
 
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 bindkey '^w' autosuggest-execute
 bindkey '^e' autosuggest-accept
 bindkey '^u' autosuggest-toggle
@@ -33,21 +28,6 @@ export EDITOR=/opt/homebrew/bin/nvim
 alias la=tree
 alias cat=bat
 
-# Define paths for second brain and iCloud (storing as arrays because of spaces in the path)
-export SECOND_BRAIN=("/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs/Documents/The Garden")
-export ICLOUD=("/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs")
-
-# Create symbolic links
-ln -sf "$SECOND_BRAIN" ~/garden
-ln -sf "$ICLOUD" ~/icloud
-
-# Define paths for repositories
-export REPOS="$HOME/Repositories"
-export GITUSER="assafdori"
-export GHREPOS="$REPOS/github.com/$GITUSER"
-export XDG_CONFIG_HOME="$HOME"/.config
-
-
 # Git
 alias gc="git commit -m"
 alias gca="git commit -a -m"
@@ -64,6 +44,20 @@ alias ga='git add -p'
 alias gcoall='git checkout -- .'
 alias gr='git remote'
 alias gre='git reset'
+
+# Define paths for second brain and iCloud (storing as arrays because of spaces in the path)
+export SECOND_BRAIN=("/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs/Documents/The Garden")
+export ICLOUD=("/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs")
+
+# Create symbolic links
+ln -sf "$SECOND_BRAIN" ~/garden
+ln -sf "$ICLOUD" ~/icloud
+
+# Define paths for repositories
+export REPOS="$HOME/Repositories"
+export GITUSER="assafdori"
+export GHREPOS="$REPOS/github.com/$GITUSER"
+export XDG_CONFIG_HOME="$HOME"/.config
 
 # Docker
 alias dco="docker compose"
@@ -120,7 +114,6 @@ alias m="minikube"
 # Terraform
 alias tf="terraform"
 
-
 # Tmux
 alias ta="tmux attach"
 alias td="tmux detach"
@@ -135,19 +128,23 @@ bindkey jj vi-cmd-mode
 alias l="eza -l --icons --git -a"
 alias lt="eza --tree --level=2 --long --icons --git"
 
+alias of="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}' | xargs nvim"
+
+
+
+# SEC STUFF
+alias pg="pwgen -sy -1 15 | pbcopy"
+
 # FZF
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-alias of="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}' | xargs nvim"
-
-# Security
-alias pg="pwgen -sy -1 15 | pbcopy"
-
-
 export PATH=/opt/homebrew/bin:$PATH
 
 alias mat='osascript -e "tell application \"System Events\" to key code 126 using {command down}" && tmux neww "cmatrix"'
+
+# Nix!
+export NIX_CONF_DIR=$HOME/.config/nix
 
 function ranger {
 	local IFS=$'\t\n'
@@ -175,9 +172,4 @@ fv() { nvim "$(find . -type f -not -path '*/.*' | fzf)" }
 # misc
 alias ff="fastfetch"
 
-
 eval "$(zoxide init zsh)"
-
-. "$HOME/.atuin/bin/env"
-
-eval "$(atuin init zsh)"

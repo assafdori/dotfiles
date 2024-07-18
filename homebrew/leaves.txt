@@ -14,7 +14,7 @@ dog
 duf
 dust
 eksctl
-exa
+eza
 fd
 flyctl
 fzf
@@ -77,5 +77,4 @@ pwgen
 fastfetch
 yazi
 wezterm
-alttab
 gcc

@@ -14,16 +14,20 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Fixes Notify opacity issues
 vim.o.termguicolors = true
--- Enable autochdir
-vim.opt.autochdir = true
 
 require('lazy').setup({
-  { 
-    "mistricky/codesnap.nvim", 
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" }
+  },
+  {
+    "mistricky/codesnap.nvim",
     build = "make",
   },
   {
     "NeogitOrg/neogit",
+    lazy = false,
     dependencies = {
       "nvim-lua/plenary.nvim",         -- required
       "sindrets/diffview.nvim",        -- optional - Diff integration
@@ -31,9 +35,9 @@ require('lazy').setup({
     },
     config = true
   },
-  'jackMort/ChatGPT.nvim',
   {
     'Exafunction/codeium.vim',
+    event = "InsertEnter",
     config = function ()
       -- Change '<C-g>' here to any keycode you like.
       vim.keymap.set('i', '<C-e>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
@@ -51,85 +55,38 @@ require('lazy').setup({
   },
   "preservim/vim-pencil",
   {
-    "sourcegraph/sg.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
-  {
     "epwalsh/obsidian.nvim",
     version = "*",  -- recommended, use latest release instead of latest commit
     lazy = true,
     ft = "markdown",
-
-    keys = {
-      { "<leader>on", "<cmd>ObsidianNew<cr>", desc = "New Obsidian note", mode = "n" },
-      { "<leader>oo", "<cmd>ObsidianSearch<cr>", desc = "Search Obsidian notes", mode = "n" },
-      { "<leader>os", "<cmd>ObsidianQuickSwitch<cr>", desc = "Quick Switch", mode = "n" },
-      { "<leader>ob", "<cmd>ObsidianBacklinks<cr>", desc = "Show location list of backlinks", mode = "n" },
-      { "<leader>ot", "<cmd>ObsidianTemplate<cr>", desc = "Follow link under cursor", mode = "n" },
-    },
-    -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-    -- event = {
-    --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-    --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
-    --   "BufReadPre path/to/my-vault/**.md",
-    --   "BufNewFile path/to/my-vault/**.md",
-    -- },
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
   },
   'folke/zen-mode.nvim',
-  'David-Kunz/gen.nvim',
-  'tpope/vim-dadbod',
   'tpope/vim-obsession',
-  'kristijanhusak/vim-dadbod-ui',
-  'kristijanhusak/vim-dadbod-completion',
-
   -- Tree
   {
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
-    lazy = false,
-    requires = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("nvim-tree").setup {}
-    end,
-  },
-  -- Database
-  {
-    "tpope/vim-dadbod",
-    opt = true,
-    requires = {
-      "kristijanhusak/vim-dadbod-ui",
-      "kristijanhusak/vim-dadbod-completion",
-    },
-    config = function()
-      require("config.dadbod").setup()
-    end,
-  },
+
+     "nvim-tree/nvim-tree.lua",
+     version = "*",
+     lazy = true,
+     requires = {
+       "nvim-tree/nvim-web-devicons",
+     },
+     config = function()
+       require("nvim-tree").setup({
+         vim.api.nvim_set_keymap("n", "ff", ":NvimTreeToggle<enter>", { noremap=false }),
+         -- vim.keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" }) 
+         -- vim.keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) 
+         -- vim.keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })
+       })
+     end,
+   },
 
   'ThePrimeagen/git-worktree.nvim',
-  'tpope/vim-surround',
+  "tpope/vim-surround",
   'xiyaowong/nvim-transparent',
-  { 
-    'numToStr/FTerm.nvim',
-    config = function()
-    local map = vim.api.nvim_set_keymap
-    local opts = { noremap = true, silent = true }
-    require 'FTerm'.setup({
-      blend = 5,
-      dimensions = {
-        height = 0.90,
-        width = 0.90,
-        x = 0.5,
-        y = 0.5
-      }
-    })
-    end
-  },
-
   {
     'rmagatti/goto-preview',
     config = function()
@@ -158,6 +115,7 @@ require('lazy').setup({
 
   {
     "folke/trouble.nvim",
+    lazy = false,
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       require("trouble").setup {
@@ -171,13 +129,8 @@ require('lazy').setup({
   {
     "folke/todo-comments.nvim",
     dependencies = "nvim-lua/plenary.nvim",
-    lazy = false,
     config = function()
-      require("todo-comments").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
+      require("todo-comments").setup {}
     end
   },
 
@@ -189,7 +142,7 @@ require('lazy').setup({
         enabled = false,
       })
     end
-  },   
+  },
 
   {
     "folke/noice.nvim",
@@ -216,9 +169,6 @@ require('lazy').setup({
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
       "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
       "rcarriga/nvim-notify",
     }
   },
@@ -228,9 +178,9 @@ require('lazy').setup({
   { "catppuccin/nvim", as = "catppuccin" },
   {
     "windwp/nvim-autopairs",
-      config = function() require("nvim-autopairs").setup {} end
+    event = "InsertEnter",
+    config = function() require("nvim-autopairs").setup {} end
   },
-
 
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -243,9 +193,63 @@ require('lazy').setup({
       'j-hui/fidget.nvim',
     }
   },
+
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+    event = "InsertEnter",
+    dependencies = {
+      'hrsh7th/cmp-nvim-lsp',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip'
+    },
+    config = function()
+      -- nvim-cmp setup
+      local cmp = require 'cmp'
+      local luasnip = require 'luasnip'
+
+      cmp.setup({
+        view = {
+          entries = "native"
+        },
+        snippet = {
+          expand = function(args)
+            luasnip.lsp_expand(args.body)
+          end,
+        },
+        mapping = cmp.mapping.preset.insert {
+          ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<CR>'] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+          },
+          ['<Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+              luasnip.expand_or_jump()
+            else
+              fallback()
+            end
+          end, { 'i', 's' }),
+          ['<S-Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+              luasnip.jump(-1)
+            else
+              fallback()
+            end
+          end, { 'i', 's' }),
+        },
+        sources = {
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+          { name = "neorg" },
+        },
+      })
+    end
   },
 
   { -- Highlight, edit, and navigate code
@@ -258,41 +262,38 @@ require('lazy').setup({
     }
   },
 
-  { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} },
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"}
+  },
   'theHamsta/nvim-dap-virtual-text',
   'leoluz/nvim-dap-go',
-
 
   -- Git related plugins
   'tpope/vim-fugitive',
   'lewis6991/gitsigns.nvim',
 
-  'navarasu/onedark.nvim', -- Theme inspired by Atom
   'nvim-lualine/lualine.nvim', -- Fancier statusline
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
-  'numToStr/Comment.nvim', -- "gc" to comment visual regions/lines 
+  {
+    'numToStr/Comment.nvim', -- "gc" to comment visual regions/lines 
+    event = { "BufRead", "BufNewFile" },
+    config = true
+  },
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+
   -- Fuzzy Finder (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
   'nvim-telescope/telescope-symbols.nvim',
-  -- 'ThePrimeagen/harpoon',
-
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make', cond = vim.fn.executable 'make' == 1 },
   {
     "folke/twilight.nvim",
+    ft = "markdown",
     opts = {
       -- your configuration comes here
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
     }
   },
-}
--- {
---   defaults = {
---     lazy = true,
---   }
--- }
-)
-
-
+})

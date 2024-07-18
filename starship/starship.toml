@@ -49,8 +49,14 @@ detect_files = ['Dockerfile']
 format = '[$symbol$context( \($namespace\))]($style) in ' 
 style = 'bold sapphire'
 
-[kubernetes.context_aliases]
-# 'arn:aws:eks:us-west-2:577926974532:cluster/gal-kub-demo-cluster' = 'gal'
+
+[[kubernetes.contexts]]
+context_pattern = "arn:aws:eks:.*:cluster/(?P<cluster>[\\w-]+)"
+context_alias = "eks-$cluster"
+
+[[kubernetes.contexts]]
+context_pattern = "gke_[^_]+_[^_]+_(?P<cluster>[\\w-]+)"
+context_alias = "gke-$cluster"
 
 [docker_context]
 disabled = true
