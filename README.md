@@ -22,6 +22,3 @@ brew leaves > leaves.txt
 
 ```
 ##### created by [omerxx](https://github.com/omerxx/dotfiles), modified by me.
-
-
-
