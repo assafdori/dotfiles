@@ -37,7 +37,7 @@ require('lazy').setup({
   },
   {
     'Exafunction/codeium.vim',
-    event = "InsertEnter",
+    lazy = false,
     config = function ()
       -- Change '<C-g>' here to any keycode you like.
       vim.keymap.set('i', '<C-e>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
