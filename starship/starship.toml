@@ -45,7 +45,7 @@ format = '[ ](bold cyan)'
 [kubernetes]
 symbol = '☸ '
 disabled = false
-detect_files = ['Dockerfile']
+#detect_files = ['Dockerfile']
 format = '[$symbol$context( \($namespace\))]($style) in ' 
 style = 'bold sapphire'
 
@@ -59,7 +59,7 @@ context_pattern = "gke_[^_]+_[^_]+_(?P<cluster>[\\w-]+)"
 context_alias = "gke-$cluster"
 
 [docker_context]
-disabled = true
+disabled = false
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
