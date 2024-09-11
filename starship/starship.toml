@@ -17,6 +17,9 @@ format = 'on [$symbol($profile )(\($region\) )]($style)'
 style = 'bold green'
 symbol = " "
 
+[pulumi]
+symbol = " "
+
 [python]
 
 [terraform]
@@ -46,7 +49,7 @@ format = '[ ](bold cyan)'
 symbol = '☸ '
 disabled = false
 #detect_files = ['Dockerfile']
-format = '[$symbol$context( \($namespace\))]($style) in ' 
+format = '[$symbol$context( \($namespace\))]($style) ' 
 style = 'bold sapphire'
 
 
