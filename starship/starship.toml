@@ -10,7 +10,7 @@ command_timeout = 1000
 '~/tests/starship-custom' = 'work-project'
 
 [directory]
-style = "bold mauve"
+style = "green"
 
 [aws]
 format = 'on [$symbol($profile )(\($region\) )]($style)'
