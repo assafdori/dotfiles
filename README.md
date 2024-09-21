@@ -1,3 +1,5 @@
+git clone -b slim --single-branch git@github.com:assafdori/dotfiles.git
+
 # Tmux, Neovim, Wezterm, ZSH = 🚀
 
 
