@@ -1,10 +1,10 @@
 add_newline = false
 # A minimal left prompt
 format = """$directory$character"""
-palette = 'gruvbox_dark'
 # move the rest of the prompt to the right
 right_format = """$all"""
 command_timeout = 1000
+palette = 'gruvbox_dark'
 
 [directory.substitutions]
 '~/tests/starship-custom' = 'work-project'
@@ -14,7 +14,7 @@ style = "bold yellow"
 
 [aws]
 format = 'on [$symbol($profile )(\($region\) )]($style)'
-style = 'bold blue'
+style = 'bold color_orange'
 symbol = " "
 
 [pulumi]
@@ -51,7 +51,7 @@ symbol = '☸ '
 disabled = false
 #detect_files = ['Dockerfile']
 format = '[$symbol$context( \($namespace\))]($style) ' 
-style = 'bold sapphire'
+style = 'bold color_aqua'
 
 
 [[kubernetes.contexts]]
@@ -104,3 +104,4 @@ color_orange = '#d65d0e'
 color_purple = '#b16286'
 color_red = '#cc241d'
 color_yellow = '#d79921'
+color_teal = "#94e2d5"
