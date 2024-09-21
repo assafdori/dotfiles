@@ -24,6 +24,7 @@ symbol = " "
 
 [terraform]
 symbol = "  "
+style = "bold purple"
 
 [git_branch]
 format = 'on [$symbol$branch]($style) '
