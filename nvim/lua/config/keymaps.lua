@@ -11,8 +11,8 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
 
 -- Fast saving
--- vim.keymap.set("n", "<leader>w", ":write!<CR>", { silent = true, desc = "Save file" })
--- vim.keymap.set("n", "<leader>q", ":q!<CR>", opts)
+vim.keymap.set("n", "WW", ":write!<CR>", { silent = true, desc = "Save file" })
+-- vim.keymap.set("n", "QQ", ":q!<CR>", opts)
 
 -- Remap for dealing with visual line wraps
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
