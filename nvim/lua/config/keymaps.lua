@@ -44,8 +44,8 @@ vim.keymap.set({ "n", "x", "o" }, "H", "^", opts)
 vim.keymap.set({ "n", "x", "o" }, "L", "g_", opts)
 
 -- Navigate buffers
-vim.keymap.set("n", "<Right>", ":bnext<CR>", opts)
-vim.keymap.set("n", "<Left>", ":bprevious<CR>", opts)
+vim.keymap.set("n", "tl", ":bnext<CR>", opts)
+vim.keymap.set("n", "th", ":bprevious<CR>", opts)
 
 -- Panes resizing
 vim.keymap.set("n", "+", ":vertical resize +5<CR>")
