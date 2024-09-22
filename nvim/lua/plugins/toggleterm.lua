@@ -4,7 +4,7 @@ return {
   config = function()
     require("toggleterm").setup {
       size = 20,
-      open_mapping = [[<c-t>]],
+      open_mapping = [[TT]],
       shade_filetypes = {},
       shade_terminals = true,
       shading_factor = 2,

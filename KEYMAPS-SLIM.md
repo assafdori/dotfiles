@@ -74,4 +74,6 @@ Here's a summary of the keymaps in easy-to-understand instructions:
 
 37. CTRL + x - Cut entire line
 
+39. TT - Toggle Terminal
+
 Note: Some keymaps are commented out in the original code, so I've excluded them from this summary. The "Leader" key is typically the spacebar or backslash, depending on your Vim configuration.
