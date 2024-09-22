@@ -115,6 +115,7 @@ alias m="minikube"
 
 # Terraform
 alias tf="terraform"
+alias tfsl="terraform state list"
 
 # Tmux
 alias ta="tmux attach"
