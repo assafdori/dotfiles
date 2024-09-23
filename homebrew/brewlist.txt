@@ -74,3 +74,4 @@ fastfetch
 yazi
 gcc
 markdownlint-cli2
+thefuck
