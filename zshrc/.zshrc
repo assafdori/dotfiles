@@ -11,7 +11,6 @@ complete -C '/usr/local/bin/aws_completer' aws
 
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 bindkey '^w' autosuggest-execute
 bindkey '^e' autosuggest-accept
 bindkey '^u' autosuggest-toggle
@@ -88,9 +87,6 @@ export GOPATH='/Users/assafdori/go'
 # VIM
 alias v="/opt/homebrew/bin/nvim"
 
-# Nmap
-alias nm="nmap -sC -sV -oN nmap"
-
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/assafdori/.vimpkg/bin:${GOPATH}/bin:/Users/assafdori/.cargo/bin
 
 alias cl='clear'
@@ -130,10 +126,7 @@ bindkey jj vi-cmd-mode
 # Eza
 alias l="eza -l --icons --git -a"
 alias lt="eza --tree --level=2 --long --icons --git"
-
 alias of="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}' | xargs nvim"
-
-
 
 # SEC STUFF
 alias pg="pwgen -sy -1 15 | pbcopy"
@@ -146,25 +139,52 @@ export PATH=/opt/homebrew/bin:$PATH
 
 alias mat='osascript -e "tell application \"System Events\" to key code 126 using {command down}" && tmux neww "cmatrix"'
 
-# Nix!
-export NIX_CONF_DIR=$HOME/.config/nix
-
-function ranger {
-	local IFS=$'\t\n'
-	local tempfile="$(mktemp -t tmp.XXXXXX)"
-	local ranger_cmd=(
-		command
-		ranger
-		--cmd="map Q chain shell echo %d > "$tempfile"; quitall"
-	)
-
-	${ranger_cmd[@]} "$@"
-	if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
-		cd -- "$(cat "$tempfile")" || return
-	fi
-	command rm -f -- "$tempfile" 2>/dev/null
-}
 alias rr='ranger'
+
+# Function to create a tmux session for DevOps
+devops() {
+    local session_name="ops"
+
+    # Check if the session already exists
+    if tmux has-session -t $session_name 2>/dev/null; then
+        echo "Session '$session_name' already exists. Attaching..."
+        tmux attach-session -t $session_name
+        return
+    fi
+
+    # Create a new tmux session starting with the Code (nvim) window
+    tmux new-session -d -s $session_name -n neovim
+    tmux send-keys "nvim" C-m
+
+    # 2. General terminal window
+    tmux new-window -t $session_name -n zsh
+    tmux send-keys "clear" C-m
+
+    # 3. Git window for version control management (lazygit)
+    tmux new-window -t $session_name -n git
+    tmux send-keys "lazygit" C-m
+
+    # 4. K9s window for Kubernetes management
+    tmux new-window -t $session_name -n k9s
+    tmux send-keys "k9s" C-m
+
+    # 5. htop window for system monitoring
+    tmux new-window -t $session_name -n htop
+    tmux send-keys "htop" C-m
+
+    # 6. Logs window - Split horizontally with two log monitoring panes
+    tmux new-window -t $session_name -n logs
+    tmux split-window -h
+    tmux send-keys "tail -f /var/log/syslog" C-m   # Left pane
+    tmux select-pane -t 1
+    tmux send-keys "tail -f /var/log/auth.log" C-m  # Right pane
+
+    # Optional: Start in the Code window
+    tmux select-window -t $session_name:1
+
+    # Attach to the session
+    tmux attach-session -t $session_name
+}
 
 # navigation
 cx() { cd "$@" && l; }
@@ -176,3 +196,7 @@ fv() { nvim "$(find . -type f -not -path '*/.*' | fzf)" }
 alias ff="fastfetch"
 
 eval "$(zoxide init zsh)"
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
