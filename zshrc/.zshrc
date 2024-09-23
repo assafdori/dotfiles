@@ -27,7 +27,7 @@ export LANG=en_US.UTF-8
 export EDITOR=/opt/homebrew/bin/nvim
 
 alias la=tree
-alias cat=bat
+alias cat="bat --theme gruvbox-dark"
 
 # Git
 alias gc="git commit -m"
@@ -157,7 +157,7 @@ devops() {
     tmux send-keys "nvim" C-m
 
     # 2. General terminal window
-    tmux new-window -t $session_name -n zsh
+    tmux new-window -t $session_name -n terminal
     tmux send-keys "clear" C-m
 
     # 3. Git window for version control management (lazygit)
@@ -169,8 +169,8 @@ devops() {
     tmux send-keys "k9s" C-m
 
     # 5. htop window for system monitoring
-    tmux new-window -t $session_name -n htop
-    tmux send-keys "htop" C-m
+    tmux new-window -t $session_name -n top
+    tmux send-keys "btop" C-m
 
     # 6. Logs window - Split horizontally with two log monitoring panes
     tmux new-window -t $session_name -n logs
