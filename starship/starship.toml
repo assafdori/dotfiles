@@ -14,7 +14,7 @@ style = "bold yellow"
 
 [aws]
 format = 'on [$symbol($profile )(\($region\) )]($style)'
-style = 'bold blue'
+style = 'bold flamingo'
 symbol = " "
 
 [pulumi]
@@ -107,4 +107,4 @@ color_red = '#cc241d'
 color_yellow = '#d79921'
 color_teal = "#94e2d5"
 color_white = "#ebdbb2"
-
+flamingo = "#f2cdcd"
