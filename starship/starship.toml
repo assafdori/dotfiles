@@ -14,7 +14,7 @@ style = "bold light_brown"
 
 [aws]
 format = 'on [$symbol($profile )(\($region\) )]($style)'
-style = 'bold blue'
+style = 'bold color_aqua'
 symbol = " "
 
 [pulumi]
@@ -52,7 +52,7 @@ symbol = '☸ '
 disabled = false
 #detect_files = ['Dockerfile']
 format = '[$symbol$context( \($namespace\))]($style) ' 
-style = 'bold color_aqua'
+style = 'bold'
 
 
 [[kubernetes.contexts]]
