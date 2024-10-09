@@ -10,7 +10,7 @@ palette = 'gruvbox_dark'
 '~/tests/starship-custom' = 'work-project'
 
 [directory]
-style = "bold blue"
+style = "bold light_brown"
 
 [aws]
 format = 'on [$symbol($profile )(\($region\) )]($style)'
@@ -108,3 +108,4 @@ color_yellow = '#d79921'
 color_teal = "#94e2d5"
 color_white = "#ebdbb2"
 flamingo = "#f2cdcd"
+light_brown = "#967969"
