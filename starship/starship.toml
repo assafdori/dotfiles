@@ -24,7 +24,7 @@ symbol = " "
 
 [terraform]
 symbol = " "
-style = "bold purple"
+style = "bold lavender"
 
 [git_branch]
 format = 'on [$symbol$branch]($style) '
@@ -52,7 +52,7 @@ symbol = '☸ '
 disabled = false
 #detect_files = ['Dockerfile']
 format = '[$symbol$context( \($namespace\))]($style) ' 
-style = 'bold'
+style = 'bold cyan'
 
 
 [[kubernetes.contexts]]
@@ -109,3 +109,4 @@ color_teal = "#94e2d5"
 color_white = "#ebdbb2"
 flamingo = "#f2cdcd"
 light_brown = "#967969"
+lavender = "#b4befe"
