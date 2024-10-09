@@ -10,11 +10,11 @@ palette = 'gruvbox_dark'
 '~/tests/starship-custom' = 'work-project'
 
 [directory]
-style = "bold yellow"
+style = "bold blue"
 
 [aws]
 format = 'on [$symbol($profile )(\($region\) )]($style)'
-style = 'bold flamingo'
+style = 'bold yellow'
 symbol = " "
 
 [pulumi]
