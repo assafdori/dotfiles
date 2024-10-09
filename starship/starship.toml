@@ -14,7 +14,7 @@ style = "bold light_brown"
 
 [aws]
 format = 'on [$symbol($profile )(\($region\) )]($style)'
-style = 'bold yellow'
+style = 'bold blue'
 symbol = " "
 
 [pulumi]
@@ -23,7 +23,7 @@ symbol = " "
 [python]
 
 [terraform]
-symbol = "  "
+symbol = " "
 style = "bold purple"
 
 [git_branch]
