@@ -143,7 +143,7 @@ alias rr='ranger'
 
 # Function to create a tmux session for DevOps
 devops() {
-    local session_name="ops"
+    local session_name="$GITUSER"
 
     # Check if the session already exists
     if tmux has-session -t $session_name 2>/dev/null; then
