@@ -35,5 +35,6 @@ return {
             --     view = "cmdline",
             -- },
         })
+         vim.cmd([[highlight link NoiceCmdlinePopupBorder FloatBorder]])
     end,
 }
