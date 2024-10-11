@@ -13,12 +13,12 @@ palette = 'gruvbox_dark'
 style = "bold light_brown"
 
 [aws]
-format = 'on [$symbol($profile )(\($region\) )]($style)'
+format = 'on [$symbol ($profile$region)]($style)'
 style = 'bold color_aqua'
-symbol = " "
+symbol = ""
 
 [pulumi]
-symbol = " "
+symbol = "🅟 "
 
 [python]
 
