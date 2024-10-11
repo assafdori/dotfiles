@@ -9,6 +9,11 @@ palette = 'gruvbox_dark'
 [directory.substitutions]
 '~/tests/starship-custom' = 'work-project'
 
+[hostname]
+ssh_only = true
+disabled = false
+format   = "[$hostname](bold dimmed green) "
+
 [directory]
 style = "bold light_brown"
 
