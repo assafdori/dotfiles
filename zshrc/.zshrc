@@ -27,7 +27,7 @@ export LANG=en_US.UTF-8
 export EDITOR=/opt/homebrew/bin/nvim
 
 alias la=tree
-alias cat="bat --theme gruvbox-dark"
+alias cat="bat --theme zenburn"
 
 # Git
 alias gc="git commit -m"
