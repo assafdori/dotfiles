@@ -1,4 +1,4 @@
-# Tmux, Neovim, Wezterm, ZSH = 🚀
+# ~/dotfiles/
 
 ![terminal-preview](https://raw.githubusercontent.com/assafdori/dotfiles/slim/preview.png)
 ![terminal-preview](https://raw.githubusercontent.com/assafdori/dotfiles/slim/preview2.png)
