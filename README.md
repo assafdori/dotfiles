@@ -4,8 +4,8 @@ git clone -b slim --single-branch git@github.com:assafdori/dotfiles.git
 
 
 
-![terminal-preview](https://raw.githubusercontent.com/assafdori/dotfiles/main/preview.png)
-![terminal-preview](https://raw.githubusercontent.com/assafdori/dotfiles/main/preview2.png)
+![terminal-preview](https://raw.githubusercontent.com/assafdori/dotfiles/slim/preview.png)
+![terminal-preview](https://raw.githubusercontent.com/assafdori/dotfiles/slim/preview2.png)
 
 <a href="https://dotfyle.com/assafdori/dotfiles-nvim"><img src="https://dotfyle.com/assafdori/dotfiles-nvim/badges/plugins?style=flat" /></a>
 <a href="https://dotfyle.com/assafdori/dotfiles-nvim"><img src="https://dotfyle.com/assafdori/dotfiles-nvim/badges/leaderkey?style=flat" /></a>
