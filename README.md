@@ -1,8 +1,4 @@
-git clone -b slim --single-branch git@github.com:assafdori/dotfiles.git
-
 # Tmux, Neovim, Wezterm, ZSH = 🚀
-
-
 
 ![terminal-preview](https://raw.githubusercontent.com/assafdori/dotfiles/slim/preview.png)
 ![terminal-preview](https://raw.githubusercontent.com/assafdori/dotfiles/slim/preview2.png)
