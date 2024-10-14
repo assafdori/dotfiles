@@ -71,6 +71,11 @@ context_alias = "gke-$cluster"
 [docker_context]
 disabled = false
 
+# Fun with smilies
+#[character]
+#success_symbol = '[:\)](green)' # The 'success_symbol' segment is being set to ':)' with the color 'green'
+#error_symbol = '[:\(](red)' # The 'error_symbol' segment is being set to ':(' with the color 'red'
+
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
 flamingo = "#f2cdcd"
