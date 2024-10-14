@@ -75,3 +75,4 @@ yazi
 gcc
 markdownlint-cli2
 thefuck
+pearcleaner
