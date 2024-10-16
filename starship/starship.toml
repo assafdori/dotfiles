@@ -6,9 +6,6 @@ right_format = """$all"""
 command_timeout = 1000
 palette = 'gruvbox_dark'
 
-[directory.substitutions]
-'~/tests/starship-custom' = 'work-project'
-
 [hostname]
 ssh_only = true
 disabled = false
@@ -73,9 +70,9 @@ context_alias = "gke-$cluster"
 disabled = false
 
 # Fun with smilies
-#[character]
-#success_symbol = '[:\)](green)' # The 'success_symbol' segment is being set to ':)' with the color 'green'
-#error_symbol = '[:\(](red)' # The 'error_symbol' segment is being set to ':(' with the color 'red'
+# [character]
+# success_symbol = '[:\)](green)' # The 'success_symbol' segment is being set to ':)' with the color 'green'
+# error_symbol = '[:\(](red)' # The 'error_symbol' segment is being set to ':(' with the color 'red'
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
