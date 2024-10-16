@@ -12,29 +12,30 @@ palette = 'gruvbox_dark'
 [hostname]
 ssh_only = true
 disabled = false
-format   = "[$hostname](bold dimmed green) "
+format   = "[$hostname](dimmed green) "
 
 [directory]
-style = "bold light_brown"
+style = "light_brown"
 
 [aws]
 format = 'on [$symbol ($profile$region)]($style)'
-style = 'bold color_aqua'
+style = 'color_aqua'
 symbol = ""
 
 [pulumi]
 symbol = "🅟 "
 
 [python]
+style = "yellow"
 
 [terraform]
 symbol = " "
-style = "bold lavender"
+style = "lavender"
 
 [git_branch]
 format = 'on [$symbol$branch]($style) '
 symbol = " "
-style  = "bold red"
+style  = "red"
 
 [git_status]
 format = '([\[$all_status$ahead_behind\]]($style) )'
@@ -47,17 +48,17 @@ untracked = "?"
 deleted = "✖"
 renamed = "➜"
 modified = "✱"
-style = "bold red"
+style = "red"
 
 [golang]
-format = '[ ](bold cyan)'
+format = '[ ](cyan)'
 
 [kubernetes]
 symbol = '☸ '
 disabled = false
 #detect_files = ['Dockerfile']
 format = '[$symbol$context( \($namespace\))]($style) ' 
-style = 'bold cyan'
+style = 'cyan'
 
 
 [[kubernetes.contexts]]
