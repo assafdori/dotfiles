@@ -48,7 +48,6 @@ modified = "✱"
 style = "red"
 
 [golang]
-format = '[ ](cyan)'
 
 [kubernetes]
 symbol = '☸ '
@@ -67,7 +66,7 @@ context_pattern = "gke_[^_]+_[^_]+_(?P<cluster>[\\w-]+)"
 context_alias = "gke-$cluster"
 
 [docker_context]
-disabled = false
+disabled = true
 
 # Fun with smilies
 # [character]
