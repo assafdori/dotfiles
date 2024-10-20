@@ -1,6 +1,7 @@
 local opts = { noremap = true, silent = true }
 -- local map = vim.keymap.set
 
+vim.g.mapleader = " "  -- Ensure the leader key is defined
 
 -- Keep cursor centered when scrolling
 vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)
@@ -71,7 +72,7 @@ vim.keymap.set("n", "g#", "g#zz", opts)
 vim.keymap.set("n", "<C-s>", ":Telescope current_buffer_fuzzy_find<CR>", opts)
 
 -- search modified files
-vim.keymap.set("n", "<Leader>m", ":Telescope git_status<CR>", opts)
+vim.keymap.set("n", "<Leader>m", ":Telescope git_status<CR>", { desc = "Telescope modified files" })
 
 -- Split line with X
 vim.keymap.set("n", "X", ":keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>", { silent = true })
@@ -94,3 +95,6 @@ vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", opts)
 
 -- ctrl + x to cut full line
 vim.keymap.set("n", "<C-x>", "dd", opts)
+
+-- Noice Dismiss 
+vim.keymap.set("n", "<Leader>n", ":Noice dismiss<CR>", { desc = "Dismiss Noice" })
