@@ -34,6 +34,9 @@ return {
                         dismiss = "<C-e>",
                     },
                 },
+                filetypes = {
+                    yaml = true,
+                }
             })
         end,
     },
