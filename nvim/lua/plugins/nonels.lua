@@ -64,7 +64,7 @@ return {
           diagnostics.golangci_lint,
           diagnostics.terraform_validate,
           -- diagnostics.shellcheck,
-          diagnostics.yamllint,
+          -- diagnostics.yamllint,
           diagnostics.markdownlint_cli2,
 
           code_actions.gitsigns,
