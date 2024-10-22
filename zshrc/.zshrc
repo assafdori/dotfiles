@@ -108,6 +108,7 @@ alias ke="kubectl exec -it"
 alias kcns='kubectl config set-context --current --namespace'
 alias podname=''
 alias m="minikube"
+alias k8s='nvim +"lua require(\"kubectl\").open()"'
 
 # Terraform
 alias tf="terraform"

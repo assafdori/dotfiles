@@ -91,6 +91,8 @@ vim.keymap.set("n", "<C-n>", ":w %:h/", opts)
 
 vim.keymap.set("n", "<C-P>", ':lua require("config.utils").toggle_go_test()<CR>', opts)
 
+vim.keymap.set("n", "<leader>k", '<cmd>lua require("kubectl").toggle()<cr>', { noremap = true, silent = true })
+
 vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", opts)
 
 -- ctrl + x to cut full line
