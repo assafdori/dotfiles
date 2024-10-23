@@ -1,35 +1,83 @@
-# Path to your oh-my-zsh installation.
+# Path configuration - defined early to ensure proper precedence
+# Define PATH before loading other configurations to avoid conflicts
+typeset -U path  # Ensure unique entries in PATH
+path=(
+    /opt/homebrew/bin
+    /usr/local/bin
+    /usr/bin
+    /bin
+    /usr/sbin
+    /sbin
+    ${GOPATH}/bin
+    ${HOME}/.cargo/bin
+    ${HOME}/.vimpkg/bin
+    $path
+)
+export PATH
+
+# Path to oh-my-zsh installation
 export ZSH=/Users/assafdori/.oh-my-zsh
-# Reevaluate the prompt string each time it's displaying a prompt
+
+# Environment variables
+export LANG=en_US.UTF-8
+export EDITOR=/opt/homebrew/bin/nvim
+export GOPATH='/Users/assafdori/go'
+export KUBECONFIG=~/.kube/config
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
+
+# Directory paths
+export SECOND_BRAIN=("/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs/Documents/The Garden")
+export ICLOUD=("/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs")
+export REPOS="$HOME/Repositories"
+export GITUSER="assafdori"
+export GHREPOS="$REPOS/github.com/$GITUSER"
+export XDG_CONFIG_HOME="$HOME"/.config
+
+# Symbolic links
+ln -sf "$SECOND_BRAIN" ~/garden
+ln -sf "$ICLOUD" ~/icloud
+
+# ZSH configuration
 setopt prompt_subst
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-autoload bashcompinit && bashcompinit
-autoload -Uz compinit
+autoload -Uz compinit bashcompinit
 compinit
-source <(kubectl completion zsh)
-complete -C '/usr/local/bin/aws_completer' aws
+bashcompinit
 
+# Shell completions
+source <(kubectl completion zsh)
+complete -C '/opt/homebrew/bin/aws_completer' aws
+
+# Plugin sourcing
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Key bindings
 bindkey '^w' autosuggest-execute
 bindkey '^e' autosuggest-accept
 bindkey '^u' autosuggest-toggle
 bindkey '^L' vi-forward-word
 bindkey '^k' up-line-or-search
 bindkey '^j' down-line-or-search
+bindkey 'jj' vi-cmd-mode
 
+# Initialize starship prompt
 eval "$(starship init zsh)"
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
-
-export EDITOR=/opt/homebrew/bin/nvim
-
+# Base aliases
 alias la=tree
 alias cat="bat --theme zenburn"
+alias cl='clear'
+alias l="eza -l --icons --git -a"
+alias lt="eza --tree --level=2 --long --icons --git"
+alias of="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}' | xargs nvim"
+alias http="xh"
+alias rr='ranger'
+alias ff="fastfetch"
+alias v="/opt/homebrew/bin/nvim"
 
-# Git
+# Git aliases
 alias gc="git commit -m"
 alias gca="git commit -a -m"
 alias gp="git push origin HEAD"
@@ -46,21 +94,7 @@ alias gcoall='git checkout -- .'
 alias gr='git remote'
 alias gre='git reset'
 
-# Define paths for second brain and iCloud (storing as arrays because of spaces in the path)
-export SECOND_BRAIN=("/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs/Documents/The Garden")
-export ICLOUD=("/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs")
-
-# Create symbolic links
-ln -sf "$SECOND_BRAIN" ~/garden
-ln -sf "$ICLOUD" ~/icloud
-
-# Define paths for repositories
-export REPOS="$HOME/Repositories"
-export GITUSER="assafdori"
-export GHREPOS="$REPOS/github.com/$GITUSER"
-export XDG_CONFIG_HOME="$HOME"/.config
-
-# Docker
+# Docker aliases
 alias dco="docker compose"
 alias dcu="docker compose up -d"
 alias dcd="docker compose down"
@@ -69,7 +103,7 @@ alias dpa="docker ps -a"
 alias dl="docker ps -l -q"
 alias dx="docker exec -it"
 
-# Dirs
+# Directory navigation aliases
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -81,18 +115,7 @@ alias xdg="cd \"$XDG_CONFIG_HOME/\""
 alias repos="cd $REPOS"
 alias ghrepos="cd $GHREPOS"
 
-# GO
-export GOPATH='/Users/assafdori/go'
-
-# VIM
-alias v="/opt/homebrew/bin/nvim"
-
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/assafdori/.vimpkg/bin:${GOPATH}/bin:/Users/assafdori/.cargo/bin
-
-alias cl='clear'
-
-# K8S
-export KUBECONFIG=~/.kube/config
+# Kubernetes aliases
 alias k="kubectl"
 alias ka="kubectl apply -f"
 alias kg="kubectl get"
@@ -106,98 +129,66 @@ alias kns="kubens"
 alias kl="kubectl logs -f"
 alias ke="kubectl exec -it"
 alias kcns='kubectl config set-context --current --namespace'
-alias podname=''
-alias m="minikube"
 alias k8s='nvim +"lua require(\"kubectl\").open()"'
 
-# Terraform
+# Terraform aliases
 alias tf="terraform"
 alias tfsl="terraform state list"
 
-# Tmux
+# Tmux aliases
 alias ta="tmux attach"
 alias td="tmux detach"
-
-# HTTP requests with xh!
-alias http="xh"
-
-# VI Mode!!!
-bindkey jj vi-cmd-mode
-
-# Eza
-alias l="eza -l --icons --git -a"
-alias lt="eza --tree --level=2 --long --icons --git"
-alias of="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}' | xargs nvim"
-
-# SEC STUFF
-alias pg="pwgen -sy -1 15 | pbcopy"
-
-# FZF
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export PATH=/opt/homebrew/bin:$PATH
-
 alias mat='osascript -e "tell application \"System Events\" to key code 126 using {command down}" && tmux neww "cmatrix"'
 
-alias rr='ranger'
+# Security aliases
+alias pg="pwgen -sy -1 15 | pbcopy"
 
-# Function to create a tmux session for DevOps
+# Functions
+# DevOps tmux session setup
 devops() {
     local session_name="$GITUSER"
 
-    # Check if the session already exists
     if tmux has-session -t $session_name 2>/dev/null; then
         echo "Session '$session_name' already exists. Attaching..."
         tmux attach-session -t $session_name
         return
     fi
 
-    # Create a new tmux session starting with the Code (nvim) window
     tmux new-session -d -s $session_name -n neovim
     tmux send-keys "nvim" C-m
 
-    # 2. General terminal window
     tmux new-window -t $session_name -n terminal
     tmux send-keys "clear" C-m
 
-    # 3. Git window for version control management (lazygit)
     tmux new-window -t $session_name -n git
     tmux send-keys "lazygit" C-m
 
-    # 4. K9s window for Kubernetes management
     tmux new-window -t $session_name -n k9s
     tmux send-keys "k9s" C-m
 
-    # 5. htop window for system monitoring
     tmux new-window -t $session_name -n top
     tmux send-keys "btop" C-m
 
-    # 6. Logs window - Split horizontally with two log monitoring panes
     tmux new-window -t $session_name -n logs
     tmux split-window -h
-    tmux send-keys "tail -f /var/log/syslog" C-m   # Left pane
+    tmux send-keys "tail -f /var/log/syslog" C-m
     tmux select-pane -t 1
-    tmux send-keys "tail -f /var/log/auth.log" C-m  # Right pane
+    tmux send-keys "tail -f /var/log/auth.log" C-m
 
-    # Optional: Start in the Code window
     tmux select-window -t $session_name:1
-
-    # Attach to the session
     tmux attach-session -t $session_name
 }
 
-# navigation
+# Navigation functions
 cx() { cd "$@" && l; }
 fcd() { cd "$(find . -type d -not -path '*/.*' | fzf)" && l; }
 f() { echo "$(find . -type f -not -path '*/.*' | fzf)" | pbcopy }
 fv() { nvim "$(find . -type f -not -path '*/.*' | fzf)" }
 
-# misc
-alias ff="fastfetch"
-
+# Load additional tools
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval $(thefuck --alias)
 eval "$(zoxide init zsh)"
 
 . "$HOME/.atuin/bin/env"
-
 eval "$(atuin init zsh)"
