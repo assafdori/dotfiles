@@ -14,6 +14,10 @@ format   = "[$hostname](dimmed green) "
 [directory]
 style = "light_brown"
 
+[package]
+symbol = "📦 "
+style  = "color_orange" 
+
 [aws]
 format = 'on [$symbol ($profile$region)]($style)'
 style = 'color_aqua'
