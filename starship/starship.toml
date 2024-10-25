@@ -1,10 +1,16 @@
 add_newline = false
 # A minimal left prompt
-format = """$directory$character"""
+format = """$username$directory$character"""
 # move the rest of the prompt to the right
 right_format = """$all"""
 command_timeout = 1000
 palette = 'gruvbox_dark'
+
+[username]
+disabled = true
+show_always = true
+format = '[$user @]($style) '
+aliases = { "assafdori" = "assaf" }
 
 [hostname]
 ssh_only = true
