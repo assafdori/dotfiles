@@ -10,6 +10,7 @@ palette = 'gruvbox_dark'
 disabled = true
 show_always = true
 format = '[$user @]($style) '
+style_user = 'color_fg0'
 aliases = { "assafdori" = "assaf" }
 
 [hostname]
