@@ -58,7 +58,16 @@ return {
                   enable = true, -- Use built-in schema store for convenience
                 },
                 schemas = {
-                  kubernetes = { "/*.yaml", "/*.yml" }, -- Apply Kubernetes schemas to all YAML files
+                  kubernetes = { "k8s*.yaml", "k8s*.yml" }, -- Apply Kubernetes schemas to all YAML files
+                  ["http://json.schemastore.org/kustomization"] = "kustomization.yaml", -- Apply Kustomization schema to Kustomization files
+                  ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+                  ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+                  ["http://json.schemastore.org/ansible"] = "ansible*.yaml",
+                  ["http://json.schemastore.org/ansible-role"] = "ansible-role*.yaml",
+                  ["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
+                  ["http://json.schemastore.org/stylelintrc"] = ".stylelintrc.{yml,yaml}",
+                  ["http://json.schemastore.org/commitlint"] = ".commitlintrc.{yml,yaml}",
+
                 },
               },
             },
