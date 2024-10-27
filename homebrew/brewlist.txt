@@ -77,3 +77,4 @@ markdownlint-cli2
 thefuck
 pearcleaner
 alt-tab
+kitty
