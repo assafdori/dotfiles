@@ -1,0 +1,5 @@
+[includeIf "gitdir:~/Repositories/github.com/assafdori/"]
+    path = "~/.config/git/personal.config"
+
+[includeIf "gitdir:~/Repositories/github.com/work/"]
+    path = "~/.config/git/work.config"
