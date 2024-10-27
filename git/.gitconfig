@@ -1,3 +1,5 @@
+# This is Git's per-user configuration file. Place this file in your home directory (~) and name it .gitconfig
+
 [includeIf "gitdir:~/Repositories/github.com/assafdori/"]
     path = "~/.config/git/personal.config"
 
