@@ -3,3 +3,6 @@
 
 [includeIf "gitdir:~/Repositories/github.com/work/"]
     path = "~/.config/git/work.config"
+
+[includeIf "gitdir:~/dotfiles/"]
+    path = "~/.config/git/personal.config" 
