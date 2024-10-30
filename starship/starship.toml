@@ -21,6 +21,9 @@ format   = "[$hostname](dimmed green) "
 [directory]
 style = "light_brown"
 
+[battery]
+disabled = true 
+
 [package]
 symbol = "📦 "
 style  = "color_orange" 
