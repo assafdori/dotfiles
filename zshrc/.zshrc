@@ -193,6 +193,7 @@ function ddg() {
 # Load additional tools
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval $(thefuck --alias)
+source <(stern --completion=zsh)
 eval "$(zoxide init zsh)"
 
 . "$HOME/.atuin/bin/env"
