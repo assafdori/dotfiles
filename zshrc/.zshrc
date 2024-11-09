@@ -194,6 +194,7 @@ function ddg() {
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval $(thefuck --alias)
 source <(stern --completion=zsh)
+source <(helm completion zsh)
 eval "$(zoxide init zsh)"
 
 . "$HOME/.atuin/bin/env"
