@@ -67,7 +67,7 @@ eval "$(starship init zsh)"
 
 # Base aliases
 alias la=tree
-alias cat="bat --theme zenburn"
+alias cat="bat --theme 1337"
 alias cl='clear'
 alias l="eza -l --icons --git -a"
 alias lt="eza --tree --level=2 --long --icons --git"
