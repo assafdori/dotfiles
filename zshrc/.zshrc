@@ -66,6 +66,7 @@ bindkey 'jj' vi-cmd-mode
 eval "$(starship init zsh)"
 
 # Base aliases
+alias ssh="kitty +kitten ssh" # fix for $TERM issues
 alias la=tree
 alias cat="bat --theme 1337"
 alias cl='clear'
