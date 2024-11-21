@@ -144,6 +144,9 @@ alias mat='osascript -e "tell application \"System Events\" to key code 126 usin
 # Security aliases
 alias pg="pwgen -sy -1 15 | pbcopy"
 
+# Cloud aliases
+alias aws-profile='export AWS_PROFILE=$(aws configure list-profiles | fzf --prompt "Select AWS profile:")'
+
 # Functions
 # DevOps tmux session setup
 devops() {
