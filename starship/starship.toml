@@ -29,7 +29,7 @@ symbol = "📦 "
 style  = "color_orange" 
 
 [aws]
-format = 'on [$symbol ($profile$region)]($style)'
+format = 'on [$symbol ($profile-$region)]($style)'
 style = 'color_aqua'
 symbol = ""
 
