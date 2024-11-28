@@ -2,8 +2,9 @@
 # Define PATH before loading other configurations to avoid conflicts
 typeset -U path  # Ensure unique entries in PATH
 path=(
-    /opt/homebrew/bin
+    /home/linuxbrew/.linuxbrew/bin        # Update for Homebrew on Linux
     /usr/local/bin
+    /.local/bin
     /usr/bin
     /bin
     /usr/sbin
@@ -16,25 +17,27 @@ path=(
 export PATH
 
 # Path to oh-my-zsh installation
-export ZSH=/Users/assafdori/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Environment variables
 export LANG=en_US.UTF-8
-export EDITOR=/opt/homebrew/bin/nvim
-export GOPATH='/Users/assafdori/go'
-export KUBECONFIG=~/.kube/config
+export EDITOR=/home/linuxbrew/.linuxbrew/bin/nvim  # Update for Homebrew nvim location
+export GOPATH="$HOME/go"
+export KUBECONFIG=$HOME/.kube/config
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
+export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 
 # Directory paths
-export SECOND_BRAIN=("/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs/Documents/The Garden")
-export ICLOUD=("/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs")
+# Replace or remove macOS-specific paths (e.g., iCloud, Mobile Documents)
+# If you need specific Linux directories, update them accordingly.
+# Export any new directories specific to your Linux setup.
 export REPOS="$HOME/Repositories"
 export GITUSER="assafdori"
 export GHREPOS="$REPOS/github.com/$GITUSER"
-export XDG_CONFIG_HOME="$HOME"/.config
+export XDG_CONFIG_HOME="$HOME/.config"
 
-# Symbolic links
+# Symbolic links (if needed)
+# Modify or remove links that don't apply to Linux (e.g., iCloud)
 ln -sf "$SECOND_BRAIN" ~/garden
 ln -sf "$ICLOUD" ~/icloud
 
@@ -47,7 +50,7 @@ bashcompinit
 
 # Shell completions
 source <(kubectl completion zsh)
-complete -C '/opt/homebrew/bin/aws_completer' aws
+complete -C '/home/linuxbrew/.linuxbrew/bin/aws_completer' aws  # Adjust for Homebrew location
 
 # Plugin sourcing
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -76,7 +79,7 @@ alias of="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}
 alias http="xh"
 alias rr='ranger'
 alias ff="fastfetch"
-alias v="/opt/homebrew/bin/nvim"
+alias v="/home/linuxbrew/.linuxbrew/bin/nvim"  # Update for Homebrew nvim location
 
 # Git aliases
 alias gc="git commit -m"
