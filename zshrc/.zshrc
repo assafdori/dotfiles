@@ -4,7 +4,7 @@ typeset -U path  # Ensure unique entries in PATH
 path=(
     /home/linuxbrew/.linuxbrew/bin        # Update for Homebrew on Linux
     /usr/local/bin
-    /.local/bin
+    $HOME/.local/bin
     /usr/bin
     /bin
     /usr/sbin
@@ -38,8 +38,8 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 # Symbolic links (if needed)
 # Modify or remove links that don't apply to Linux (e.g., iCloud)
-ln -sf "$SECOND_BRAIN" ~/garden
-ln -sf "$ICLOUD" ~/icloud
+# ln -sf "$SECOND_BRAIN" ~/garden
+# ln -sf "$ICLOUD" ~/icloud
 
 # ZSH configuration
 setopt prompt_subst
