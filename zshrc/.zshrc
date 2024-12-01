@@ -145,6 +145,7 @@ alias td="tmux detach"
 alias mat='osascript -e "tell application \"System Events\" to key code 126 using {command down}" && tmux neww "cmatrix"'
 
 # Security aliases
+alias pbcopy='xclip -selection clipboard'
 alias pg="pwgen -sy -1 15 | pbcopy"
 
 # Cloud aliases
