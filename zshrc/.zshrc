@@ -66,7 +66,6 @@ bindkey 'jj' vi-cmd-mode
 eval "$(starship init zsh)"
 
 # Base aliases
-alias ssh="kitty +kitten ssh" # fix for $TERM issues
 alias la=tree
 alias cat="bat --theme 1337"
 alias cl='clear'
@@ -77,6 +76,9 @@ alias http="xh"
 alias rr='ranger'
 alias ff="fastfetch"
 alias v="/opt/homebrew/bin/nvim"
+
+# Misc aliases
+alias ssh="kitty +kitten ssh"
 
 # Git aliases
 alias gc="git commit -m"
@@ -148,41 +150,111 @@ alias pg="pwgen -sy -1 15 | pbcopy"
 alias aws-profile='export AWS_PROFILE=$(aws configure list-profiles | fzf --prompt "Select AWS profile:")'
 
 # Functions
-# DevOps tmux session setup
+# # DevOps tmux session setup
+# devops() {
+#     local session_name="$GITUSER"
+# 
+#     if tmux has-session -t $session_name 2>/dev/null; then
+#         echo "Session '$session_name' already exists. Attaching..."
+#         tmux attach-session -t $session_name
+#         return
+#     fi
+# 
+#     tmux new-session -d -s $session_name -n neovim
+#     tmux send-keys "nvim" C-m
+# 
+#     tmux new-window -t $session_name -n terminal
+#     tmux send-keys "clear" C-m
+# 
+#     tmux new-window -t $session_name -n git
+#     tmux send-keys "lazygit" C-m
+# 
+#     tmux new-window -t $session_name -n k9s
+#     tmux send-keys "k9s" C-m
+# 
+#     tmux new-window -t $session_name -n top
+#     tmux send-keys "btop" C-m
+# 
+#     tmux new-window -t $session_name -n logs
+#     tmux split-window -h
+#     tmux send-keys "tail -f /var/log/syslog" C-m
+#     tmux select-pane -t 1
+#     tmux send-keys "tail -f /var/log/auth.log" C-m
+# 
+#     tmux select-window -t $session_name:1
+#     tmux attach-session -t $session_name
+# }
+
 devops() {
-    local session_name="$GITUSER"
+    local session_name="${1:-$GITUSER}" # Default session name is $GITUSER
 
-    if tmux has-session -t $session_name 2>/dev/null; then
-        echo "Session '$session_name' already exists. Attaching..."
+    # Check if tmux is available
+    command -v tmux >/dev/null 2>&1 || { echo "tmux is not installed."; return 1; }
+
+    # Check if already inside a tmux session
+    if [ -n "$TMUX" ]; then
+        echo "Already inside a tmux session. Setting up 'devops' environment in the current session..."
+        
+        # Clear existing windows (optional: prevent clutter)
+        tmux kill-window -a 2>/dev/null
+
+        # Create windows and panes for the current session
+        tmux new-window -n neovim
+        tmux send-keys "nvim" C-m
+
+        tmux new-window -n terminal
+        tmux send-keys "clear" C-m
+
+        tmux new-window -n git
+        tmux send-keys "lazygit" C-m
+
+        tmux new-window -n k9s
+        tmux send-keys "k9s" C-m
+
+        tmux new-window -n top
+        tmux send-keys "btop" C-m
+
+        tmux new-window -n logs
+        tmux split-window -h
+        tmux send-keys "tail -f /var/log/syslog" C-m
+        tmux select-pane -t 1
+        tmux send-keys "tail -f /var/log/auth.log" C-m
+
+        tmux select-window -t neovim # Focus on the first window
+    else
+        # If not inside tmux, create a new session
+        if tmux has-session -t $session_name 2>/dev/null; then
+            echo "Session '$session_name' already exists. Attaching..."
+            tmux attach-session -t $session_name
+            return
+        fi
+
+        echo "Creating new tmux session '$session_name'..."
+        tmux new-session -d -s $session_name -n neovim
+        tmux send-keys "nvim" C-m
+
+        tmux new-window -t $session_name -n terminal
+        tmux send-keys "clear" C-m
+
+        tmux new-window -t $session_name -n git
+        tmux send-keys "lazygit" C-m
+
+        tmux new-window -t $session_name -n k9s
+        tmux send-keys "k9s" C-m
+
+        tmux new-window -t $session_name -n top
+        tmux send-keys "btop" C-m
+
+        tmux new-window -t $session_name -n logs
+        tmux split-window -h
+        tmux send-keys "tail -f /var/log/syslog" C-m
+        tmux select-pane -t 1
+        tmux send-keys "tail -f /var/log/auth.log" C-m
+
+        tmux select-window -t $session_name:1
         tmux attach-session -t $session_name
-        return
     fi
-
-    tmux new-session -d -s $session_name -n neovim
-    tmux send-keys "nvim" C-m
-
-    tmux new-window -t $session_name -n terminal
-    tmux send-keys "clear" C-m
-
-    tmux new-window -t $session_name -n git
-    tmux send-keys "lazygit" C-m
-
-    tmux new-window -t $session_name -n k9s
-    tmux send-keys "k9s" C-m
-
-    tmux new-window -t $session_name -n top
-    tmux send-keys "btop" C-m
-
-    tmux new-window -t $session_name -n logs
-    tmux split-window -h
-    tmux send-keys "tail -f /var/log/syslog" C-m
-    tmux select-pane -t 1
-    tmux send-keys "tail -f /var/log/auth.log" C-m
-
-    tmux select-window -t $session_name:1
-    tmux attach-session -t $session_name
 }
-
 # Navigation functions
 cx() { cd "$@" && l; }
 fcd() { cd "$(find . -type d -not -path '*/.*' | fzf)" && l; }
@@ -203,3 +275,6 @@ eval "$(zoxide init zsh)"
 
 . "$HOME/.atuin/bin/env"
 eval "$(atuin init zsh)"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
