@@ -149,41 +149,6 @@ alias pg="pwgen -sy -1 15 | pbcopy"
 # Cloud aliases
 alias aws-profile='export AWS_PROFILE=$(aws configure list-profiles | fzf --prompt "Select AWS profile:")'
 
-# Functions
-# # DevOps tmux session setup
-# devops() {
-#     local session_name="$GITUSER"
-# 
-#     if tmux has-session -t $session_name 2>/dev/null; then
-#         echo "Session '$session_name' already exists. Attaching..."
-#         tmux attach-session -t $session_name
-#         return
-#     fi
-# 
-#     tmux new-session -d -s $session_name -n neovim
-#     tmux send-keys "nvim" C-m
-# 
-#     tmux new-window -t $session_name -n terminal
-#     tmux send-keys "clear" C-m
-# 
-#     tmux new-window -t $session_name -n git
-#     tmux send-keys "lazygit" C-m
-# 
-#     tmux new-window -t $session_name -n k9s
-#     tmux send-keys "k9s" C-m
-# 
-#     tmux new-window -t $session_name -n top
-#     tmux send-keys "btop" C-m
-# 
-#     tmux new-window -t $session_name -n logs
-#     tmux split-window -h
-#     tmux send-keys "tail -f /var/log/syslog" C-m
-#     tmux select-pane -t 1
-#     tmux send-keys "tail -f /var/log/auth.log" C-m
-# 
-#     tmux select-window -t $session_name:1
-#     tmux attach-session -t $session_name
-# }
 
 devops() {
     local session_name="${1:-$GITUSER}" # Default session name is $GITUSER
