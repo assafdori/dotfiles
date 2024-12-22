@@ -177,11 +177,8 @@ devops() {
     tmux new-window -t $session_name -n top
     tmux send-keys "btop" C-m
 
-    tmux new-window -t $session_name -n logs
-    tmux split-window -h
-    tmux send-keys "tail -f /var/log/syslog" C-m
-    tmux select-pane -t 1
-    tmux send-keys "tail -f /var/log/auth.log" C-m
+    tmux new-window -t $session_name -n helm
+    tmux send-keys "helm tui" C-m
 
     tmux select-window -t $session_name:1
     tmux attach-session -t $session_name
