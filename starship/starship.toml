@@ -68,7 +68,7 @@ symbol = '☸ '
 disabled = false
 #detect_files = ['Dockerfile']
 format = '[$symbol$context( \($namespace\))]($style) ' 
-style = 'cyan'
+style = 'color_teal'
 
 
 [[kubernetes.contexts]]
