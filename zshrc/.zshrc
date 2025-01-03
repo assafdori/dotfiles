@@ -75,7 +75,7 @@ alias of="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}
 alias http="xh"
 alias rr='ranger'
 alias ff="fastfetch"
-alias v="/opt/homebrew/bin/nvim"
+alias v="nvim"
 
 # Misc aliases
 alias ssh="kitty +kitten ssh"
