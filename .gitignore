@@ -3,3 +3,4 @@ tmux/plugins/
 raycast
 fzf
 debug.log
+*.log
