@@ -1,5 +1,3 @@
-require("config.keymaps")
-require("config.options")
-require("config.autocmds")
-require("config.abbreviations")
-require("config.lazy")
+vim.g.mapleader = " "
+vim.g.maplocalleader = ","
+require("vnext.config")
