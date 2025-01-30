@@ -1,4 +1,4 @@
-# ~/dotfiles
+# ahh shit here we go again
 
 ![terminal-preview](https://raw.githubusercontent.com/assafdori/dotfiles/slim/preview.png)
 ![terminal-preview](https://raw.githubusercontent.com/assafdori/dotfiles/slim/preview2.png)
@@ -23,7 +23,7 @@ Open Neovim with this config:
 NVIM_APPNAME=assafdori/dotfiles/nvim nvim
 ```
 
-### Stow Installation 📦
+### Stow to ~/.config 📦
 
 ```bash
 stow .
