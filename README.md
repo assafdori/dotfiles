@@ -1,8 +1,5 @@
 # ahh shit here we go again
 
-![terminal-preview](https://raw.githubusercontent.com/assafdori/dotfiles/slim/preview.png)
-![terminal-preview](https://raw.githubusercontent.com/assafdori/dotfiles/slim/preview2.png)
-
 <a href="https://dotfyle.com/assafdori/dotfiles-nvim"><img src="https://dotfyle.com/assafdori/dotfiles-nvim/badges/plugins?style=flat" /></a>
 <a href="https://dotfyle.com/assafdori/dotfiles-nvim"><img src="https://dotfyle.com/assafdori/dotfiles-nvim/badges/leaderkey?style=flat" /></a>
 <a href="https://dotfyle.com/assafdori/dotfiles-nvim"><img src="https://dotfyle.com/assafdori/dotfiles-nvim/badges/plugin-manager?style=flat" /></a>
