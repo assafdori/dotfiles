@@ -137,8 +137,8 @@ alias k8s='nvim +"lua require(\"kubectl\").open()"'
 # Terraform aliases
 alias tf="terraform"
 alias tfsl="terraform state list"
-alias tfdev="terraform plan -var-file=dev.tfvars"
-alias tfprod="terraform plan -var-file=prod.tfvars"
+alias tfdev="terraform apply -var-file=dev.tfvars"
+alias tfprod="terraform apply -var-file=prod.tfvars"
 
 # Tmux aliases
 alias ta="tmux attach"
