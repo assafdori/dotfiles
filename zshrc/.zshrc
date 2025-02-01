@@ -213,7 +213,7 @@ devops() {
         tmux send-keys "btop" C-m
 
         tmux new-window -t $session_name -n helm
-        tmux send-keys "helmtui" C-m
+        tmux send-keys "helm tui" C-m
 
         tmux select-window -t $session_name:1
         tmux attach-session -t $session_name
