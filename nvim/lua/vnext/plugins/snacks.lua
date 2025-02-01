@@ -58,11 +58,14 @@ return {
       timeout = 2000,
     },
     picker = {
+      sources = {
+        explorer = { hidden = true },
+      },
       win = {
         input = {
           keys = {
-            -- TODO: not sure if I want this as before
-            -- ["<Esc>"] = { "close", mode = { "n", "i" } },
+            -- NOTE: quick close picker/fuzzy finder
+            ["<Esc>"] = { "close", mode = { "n", "i" } },
             ["<C-h>"] = { "toggle_hidden", mode = { "i", "n" } },
           },
         },
