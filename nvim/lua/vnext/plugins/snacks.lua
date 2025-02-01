@@ -29,6 +29,19 @@ return {
         { section = "keys", gap = 1 },
         { title = "\nRecent Files", section = "recent_files", indent = 1, padding = { 2, 1 } },
         { title = "Projects", section = "projects", indent = 1, padding = { 2, 1 } },
+        {
+          icon = " ",
+          title = "Git Status",
+          section = "terminal",
+          enabled = function()
+            return Snacks.git.get_root() ~= nil
+          end,
+          cmd = "git status --short --branch --renames",
+          height = 5,
+          padding = 1,
+          ttl = 5 * 60,
+          indent = 3,
+        },
         { section = "startup" },
       },
     },
