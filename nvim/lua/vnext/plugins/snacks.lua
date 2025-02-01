@@ -96,6 +96,7 @@ return {
     { "<leader>ss", function() Snacks.picker.grep():set_layout("ivy") end, desc = "Strings" },
     { "<leader>sh", function() Snacks.picker.help():set_layout("ivy") end, desc = "Help" },
     { "<leader>ff", function() Snacks.picker.smart({filter = {cwd = true}}):set_layout("ivy") end, desc = "Smart find" },
+    { "<leader>sf", function() Snacks.picker.files() end, desc = "Files" },
     { "<leader>sl", function() Snacks.picker.lines():set_layout("ivy") end, desc = "Buffer Fuzzy" },
     { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
     { "<leader>ls", function() Snacks.picker.lsp_symbols() end, desc = "Documents Symbols" },
@@ -110,6 +111,7 @@ return {
     { "<leader>lr", function() Snacks.picker.lsp_references():set_layout("ivy") end, nowait = true, desc = "References" },
     { "<leader>lI", function() Snacks.picker.lsp_implementations():set_layout("ivy") end, desc = "Implementation" },
     { "<leader>lt", function() Snacks.picker.lsp_type_definitions():set_layout("ivy") end, desc = "Type Definition" },
+    { "<leader>te", function() Snacks.picker.explorer() end, desc = "Explorer" },
   },
   -- stylua: ignore end
   init = function()
