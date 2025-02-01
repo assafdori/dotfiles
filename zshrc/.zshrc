@@ -200,8 +200,8 @@ devops() {
         tmux new-session -d -s $session_name -n neovim
         tmux send-keys "nvim" C-m
 
-        tmux new-window -t $session_name -n terminal
-        tmux send-keys "clear" C-m
+        tmux new-window -t $session_name -n yazi
+        tmux send-keys "yazi" C-m
 
         tmux new-window -t $session_name -n git
         tmux send-keys "lazygit" C-m
