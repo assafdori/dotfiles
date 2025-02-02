@@ -25,7 +25,7 @@ require("lazy").setup({
     notify = true, -- get a notification when changes are found
   },
   dev = {
-    path = "~/workspace/github.com/allaman/",
+    path = "~/workspace/github.com/assafdori/",
   },
   lockfile = "~/.lazy-lock.json",
   performance = {
