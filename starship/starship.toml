@@ -31,7 +31,7 @@ style = "orange"
 [aws]
 format = 'on [$symbol ($profile $region)]($style)'
 style = 'green'
-symbol = ""
+symbol = ""
 
 [pulumi]
 symbol = "🅟 "
