@@ -11,39 +11,39 @@ return {
     bigfile = { enabled = true },
     dashboard = {
       enabled = true,
-      preset = {
-        ---@type snacks.dashboard.Item[]
-        -- stylua: ignore start
-        keys = {
-          { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.smart({filter = {cwd = true}})" },
-          { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-          { icon = " ", key = "s", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
-          { icon = " ", key = "b", desc = "File browser", action = function()  require("yazi").yazi(nil, vim.fn.getcwd()) end,},
-          { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy check", enabled = package.loaded.lazy },
-          { icon = " ", key = "q", desc = "Quit", action = ":qa" },
-          -- stylua: ignore end
-        },
-      },
-      sections = {
-        { section = "header" },
-        { section = "keys", gap = 1 },
-        { title = "\nRecent Files", section = "recent_files", indent = 1, padding = { 2, 1 } },
-        { title = "Projects", section = "projects", indent = 1, padding = { 2, 1 } },
-        {
-          icon = " ",
-          title = "Git Status",
-          section = "terminal",
-          enabled = function()
-            return Snacks.git.get_root() ~= nil
-          end,
-          cmd = "git status --short --branch --renames",
-          height = 5,
-          padding = 1,
-          ttl = 5 * 60,
-          indent = 3,
-        },
-        { section = "startup" },
-      },
+      -- preset = {
+      --   ---@type snacks.dashboard.Item[]
+      --   -- stylua: ignore start
+      --   keys = {
+      --     { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.smart({filter = {cwd = true}})" },
+      --     { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+      --     { icon = " ", key = "s", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+      --     { icon = " ", key = "b", desc = "File browser", action = function()  require("yazi").yazi(nil, vim.fn.getcwd()) end,},
+      --     { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy check", enabled = package.loaded.lazy },
+      --     { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+      --     -- stylua: ignore end
+      --   },
+      -- },
+      -- sections = {
+      --   { section = "header" },
+      --   { section = "keys", gap = 1 },
+      --   { title = "\nRecent Files", section = "recent_files", indent = 1, padding = { 2, 1 } },
+      --   { title = "Projects", section = "projects", indent = 1, padding = { 2, 1 } },
+      --   {
+      --     icon = " ",
+      --     title = "Git Status",
+      --     section = "terminal",
+      --     enabled = function()
+      --       return Snacks.git.get_root() ~= nil
+      --     end,
+      --     cmd = "git status --short --branch --renames",
+      --     height = 5,
+      --     padding = 1,
+      --     ttl = 5 * 60,
+      --     indent = 3,
+      --   },
+      --   { section = "startup" },
+      -- },
     },
     dim = { enabled = true },
     lazygit = { enabled = true },
