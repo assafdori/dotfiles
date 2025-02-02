@@ -29,6 +29,19 @@ return {
         { section = "keys", gap = 1 },
         { title = "\nRecent Files", section = "recent_files", indent = 1, padding = { 2, 1 } },
         { title = "Projects", section = "projects", indent = 1, padding = { 2, 1 } },
+        {
+          icon = " ",
+          title = "Git Status",
+          section = "terminal",
+          enabled = function()
+            return Snacks.git.get_root() ~= nil
+          end,
+          cmd = "git status --short --branch --renames",
+          height = 5,
+          padding = 1,
+          ttl = 5 * 60,
+          indent = 3,
+        },
         { section = "startup" },
       },
     },
@@ -45,11 +58,14 @@ return {
       timeout = 2000,
     },
     picker = {
+      sources = {
+        explorer = { hidden = true },
+      },
       win = {
         input = {
           keys = {
-            -- TODO: not sure if I want this as before
-            -- ["<Esc>"] = { "close", mode = { "n", "i" } },
+            -- NOTE: quick close picker/fuzzy finder
+            ["<Esc>"] = { "close", mode = { "n", "i" } },
             ["<C-h>"] = { "toggle_hidden", mode = { "i", "n" } },
           },
         },
@@ -68,29 +84,27 @@ return {
   },
   keys = {
     -- stylua: ignore start
+    { "<C-s>",      function() Snacks.picker.lines():set_layout("ivy") end, desc = "Search Current File", mode = { "n", "x" } },
     { "<leader>uZ", function() Snacks.zen() end, desc = "Toggle Zen Mode" },
     { "<leader>uz", function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
     { "<leader>nn", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
     { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
-    { "<leader>gB", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
     { "<leader>gx", function() Snacks.gitbrowse() end, desc = "Git Browse" },
     { "<leader>gm", function() Snacks.picker.git_status() end, desc = "Git Modified" },
     { "<leader>sb", function() Snacks.picker.buffers() end, desc = "Buffers" },
-    { "<leader>sB", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
+    { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
     { "<leader>fR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
     { "<leader>tt", function() Snacks.terminal() end, desc = "Toggle Terminal" },
     { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
-    { "*",          function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference" },
-    { "#",          function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference" },
     { "<leader>ss", function() Snacks.picker.grep():set_layout("ivy") end, desc = "Strings" },
     { "<leader>sh", function() Snacks.picker.help():set_layout("ivy") end, desc = "Help" },
     { "<leader>ff", function() Snacks.picker.smart({filter = {cwd = true}}):set_layout("ivy") end, desc = "Smart find" },
+    { "<leader>sf", function() Snacks.picker.files() end, desc = "Files" },
     { "<leader>sl", function() Snacks.picker.lines():set_layout("ivy") end, desc = "Buffer Fuzzy" },
     { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
     { "<leader>ls", function() Snacks.picker.lsp_symbols() end, desc = "Documents Symbols" },
     { "<leader>lS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "Workspace Symbols" },
     { "<leader>sz", function() Snacks.picker.zoxide():set_layout("ivy") end, desc = "Zoxide" },
-    { "<C-s>",      function() Snacks.picker.lines():set_layout("ivy") end, desc = "Search Current File", mode = { "n", "x" } },
     { "<leader>gl", function() Snacks.picker.git_log():set_layout("ivy") end, desc = "Git Log" },
     { "<leader>gf", function() Snacks.picker.git_log_file():set_layout("ivy") end, desc = "Git Log File" },
     { "<leader>gL", function() Snacks.picker.git_log_line():set_layout("ivy") end, desc = "Git Log Line" },
@@ -100,6 +114,7 @@ return {
     { "<leader>lr", function() Snacks.picker.lsp_references():set_layout("ivy") end, nowait = true, desc = "References" },
     { "<leader>lI", function() Snacks.picker.lsp_implementations():set_layout("ivy") end, desc = "Implementation" },
     { "<leader>lt", function() Snacks.picker.lsp_type_definitions():set_layout("ivy") end, desc = "Type Definition" },
+    { "<leader>te", function() Snacks.picker.explorer() end, desc = "Explorer" },
   },
   -- stylua: ignore end
   init = function()
