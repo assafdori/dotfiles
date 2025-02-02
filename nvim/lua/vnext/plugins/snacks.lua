@@ -65,7 +65,7 @@ return {
         input = {
           keys = {
             -- NOTE: quick close picker/fuzzy finder
-            ["<Esc>"] = { "close", mode = { "n", "i" } },
+            -- ["<Esc>"] = { "close", mode = { "n", "i" } },
             ["<C-h>"] = { "toggle_hidden", mode = { "i", "n" } },
           },
         },
