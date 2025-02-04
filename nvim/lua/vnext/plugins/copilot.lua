@@ -26,7 +26,7 @@ return {
           auto_trigger = true,
           debounce = 75,
           keymap = {
-            accept = "<c-y>",
+            accept = "<c-t>",
             accept_word = false,
             accept_line = false,
             next = "<c-j>",
@@ -41,11 +41,11 @@ return {
     end,
   },
 
-  -- {
-  --     "zbirenbaum/copilot-cmp",
-  --     -- after = { "copilot.lua" },
-  --     config = function()
-  --         require("copilot_cmp").setup()
-  --     end,
-  -- }
+  {
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua" },
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+  },
 }
