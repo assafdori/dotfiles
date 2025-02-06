@@ -33,6 +33,10 @@ format = 'on [$symbol ($profile $region)]($style)'
 style = 'green'
 symbol = ""
 
+[gcloud]
+symbol = " "
+style = 'blue'
+
 [pulumi]
 symbol = "🅟 "
 
