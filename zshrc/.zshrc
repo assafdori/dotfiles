@@ -150,6 +150,7 @@ alias pg="pwgen -sy -1 15 | pbcopy"
 
 # Cloud aliases
 alias aws-profile='export AWS_PROFILE=$(aws configure list-profiles | fzf --prompt "Select AWS profile:")'
+alias gcp-profile='export CLOUDSDK_ACTIVE_CONFIG_NAME=$(gcloud config configurations list --format="value(name)" | fzf --prompt "Select GCP configuration: ")'
 
 
 devops() {
