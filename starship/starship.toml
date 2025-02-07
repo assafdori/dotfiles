@@ -34,8 +34,9 @@ style = 'green'
 symbol = ""
 
 [gcloud]
+format = 'on [$symbol($project $region)]($style)'
 symbol = " "
-style = 'blue'
+style = 'green'
 
 [pulumi]
 symbol = "🅟 "
