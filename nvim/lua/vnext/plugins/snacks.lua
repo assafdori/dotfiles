@@ -105,7 +105,7 @@ return {
     { "<leader>sb", function() Snacks.picker.buffers() end, desc = "Buffers" },
     { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
     { "<leader>fR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
-    { "<leader>tt", function() Snacks.terminal.get() end, desc = "Toggle Terminal" },
+    { "<leader>tt", function() Snacks.terminal() end, desc = "Toggle Terminal" },
     { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
     { "<leader>ss", function() Snacks.picker.grep():set_layout("ivy") end, desc = "Strings" },
     { "<leader>sh", function() Snacks.picker.help():set_layout("ivy") end, desc = "Help" },
