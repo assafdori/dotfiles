@@ -1,3 +1,10 @@
-#font-family = Berkeley Mono
-theme = Kanagawa Wave
-#macos-titlebar-style = hidden
+font-family = JetBrains Mono
+theme = oldworld
+font-size = 14
+macos-titlebar-style = hidden
+window-decoration = false
+quit-after-last-window-closed = true
+copy-on-select = true
+window-padding-balance = true
+window-padding-y = 0
+window-padding-x = 0
