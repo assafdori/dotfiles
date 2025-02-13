@@ -1,4 +1,7 @@
 return {}
+
+-- REPLACED BY SNACKS EXPLORER FOR NOW
+
 -- return {
 --   "nvim-neo-tree/neo-tree.nvim",
 --   dependencies = {
