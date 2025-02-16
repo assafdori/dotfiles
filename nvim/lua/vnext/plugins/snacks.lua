@@ -8,6 +8,11 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
+    explorer = {
+      layout = {
+        cycle = false,
+      },
+    },
     bigfile = { enabled = true },
     dashboard = {
       enabled = true,
@@ -68,6 +73,9 @@ return {
       timeout = 2000,
     },
     picker = {
+      layout = {
+        cycle = false,
+      },
       sources = {
         explorer = { hidden = true },
       },
@@ -124,7 +132,7 @@ return {
     { "<leader>lr", function() Snacks.picker.lsp_references():set_layout("ivy") end, nowait = true, desc = "References" },
     { "<leader>lI", function() Snacks.picker.lsp_implementations():set_layout("ivy") end, desc = "Implementation" },
     { "<leader>lt", function() Snacks.picker.lsp_type_definitions():set_layout("ivy") end, desc = "Type Definition" },
-    { "<leader>te", function() Snacks.picker.explorer() end, desc = "Explorer" },
+    { "<leader>te", function() Snacks.picker.explorer() end, desc = "Toggle Explorer" },
   },
   -- stylua: ignore end
   init = function()
