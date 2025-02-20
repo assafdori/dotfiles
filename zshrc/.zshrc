@@ -184,6 +184,17 @@ devops() {
     tmux attach-session -t $session_name
 }
 
+# Copy-cat function: cap
+cap() {
+  # If no arguments and nothing on stdin, show usage
+  if [[ -t 0 && $# -eq 0 ]]; then
+    echo "Usage: ccat [file ...]"
+    return 1
+  fi
+
+  cat "$@" | pbcopy
+}
+
 # Navigation functions
 cx() { cd "$@" && l; }
 fcd() { cd "$(find . -type d -not -path '*/.*' | fzf)" && l; }
