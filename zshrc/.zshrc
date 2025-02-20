@@ -152,7 +152,7 @@ alias pg="pwgen -sy -1 15 | pbcopy"
 alias aws-profile='export AWS_PROFILE=$(aws configure list-profiles | fzf --prompt "Select AWS profile:")'
 alias gcp-profile='export CLOUDSDK_ACTIVE_CONFIG_NAME=$(gcloud config configurations list --format="value(name)" | fzf --prompt "Select GCP configuration: ")'
 
-
+# Tmux session management
 devops() {
     local session_name="${1:-$GITUSER}" # Default session name is $GITUSER
 
@@ -220,6 +220,18 @@ devops() {
         tmux attach-session -t $session_name
     fi
 }
+
+# Copy-cat function: cap
+cap() {
+  # If no arguments and nothing on stdin, show usage
+  if [[ -t 0 && $# -eq 0 ]]; then
+    echo "Usage: ccat [file ...]"
+    return 1
+  fi
+
+  cat "$@" | pbcopy
+}
+
 # Navigation functions
 cx() { cd "$@" && l; }
 fcd() { cd "$(find . -type d -not -path '*/.*' | fzf)" && l; }
