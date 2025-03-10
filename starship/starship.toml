@@ -40,7 +40,7 @@ symbol = " "
 style = 'green'
 
 [pulumi]
-symbol = "🅟 "
+format = 'on [$symbol$stack]($style) '
 
 [python]
 style = "yellow"
