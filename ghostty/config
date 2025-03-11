@@ -1,6 +1,6 @@
-# font-family = JetBrains Mono
+# font-family = Berkeley Mono
 theme = oldworld
-# font-size = 14
+font-size = 15
 macos-titlebar-style = hidden
 window-decoration = false
 quit-after-last-window-closed = true
