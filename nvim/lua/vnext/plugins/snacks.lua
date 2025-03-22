@@ -102,7 +102,7 @@ return {
   },
   keys = {
     -- stylua: ignore start
-    { "<C-s>",      function() Snacks.picker.lines():set_layout("ivy") end, desc = "Search Current File", mode = { "n", "x" } },
+    { "<C-s>",      function() Snacks.picker.lines() end, desc = "Search Current File", mode = { "n", "x" } },
     { "<leader>uZ", function() Snacks.zen() end, desc = "Toggle Zen Mode" },
     { "<leader>uz", function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
     { "<leader>nn", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
@@ -118,7 +118,7 @@ return {
     { "<leader>sh", function() Snacks.picker.help():set_layout("ivy") end, desc = "Help" },
     { "<leader>ff", function() Snacks.picker.smart({filter = {cwd = true}}):set_layout("ivy") end, desc = "Smart find" },
     { "<leader>sf", function() Snacks.picker.files() end, desc = "Files" },
-    { "<leader>sl", function() Snacks.picker.lines():set_layout("ivy") end, desc = "Buffer Fuzzy" },
+    { "<leader>sl", function() Snacks.picker.lines() end, desc = "Buffer Fuzzy" },
     { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
     { "<leader>ls", function() Snacks.picker.lsp_symbols() end, desc = "Documents Symbols" },
     { "<leader>lS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "Workspace Symbols" },
