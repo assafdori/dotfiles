@@ -2,3 +2,5 @@
 git:
   paging:
     pager: delta --paging=never
+  merging:
+    args: --no-ff
