@@ -18,6 +18,10 @@ map("v", ">", ">gv")
 -- Cancel search highlighting with ESC
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Clear hlsearch and ESC" })
 
+-- Press jj or jk to escape from insert mode
+map("i", "jj", "<esc>", { desc = "Escape from insert mode" })
+map("i", "jk", "<esc>", { desc = "Escape from insert mode" })
+
 -- window
 map("n", "<leader>ws", "<cmd>split<cr>", { desc = "Horizontal split" })
 map("n", "<leader>wv", "<cmd>vsplit<cr>", { desc = "Vertical split" })
