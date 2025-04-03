@@ -1,10 +1,20 @@
 font-family = "CommitMono"
 theme = oldworld
 font-size = 18
+
 macos-titlebar-style = hidden
-window-decoration = false
+
 quit-after-last-window-closed = true
+
 copy-on-select = true
+
 window-padding-balance = true
 window-padding-y = 0
 window-padding-x = 0
+
+cursor-style = block
+cursor-style-blink = true
+cursor-opacity=0.96
+
+background = #010101
+background-opacity = 0.93
