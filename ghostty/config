@@ -16,5 +16,5 @@ cursor-style = block
 cursor-style-blink = true
 cursor-opacity=0.96
 
-background = #010101
-background-opacity = 0.93
+#background = #010101
+#background-opacity = 0.93
