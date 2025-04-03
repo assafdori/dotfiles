@@ -78,6 +78,7 @@ return {
       },
       sources = {
         explorer = { hidden = true },
+        files = { hidden = true },
       },
       win = {
         input = {
