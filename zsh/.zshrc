@@ -25,6 +25,7 @@ export GOPATH='/Users/assafdori/go'
 export KUBECONFIG=~/.kube/config
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
+export TERM=xterm-256color
 
 # Directory paths
 export SECOND_BRAIN=("/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs/Documents/The Garden")
@@ -80,8 +81,6 @@ alias rr='ranger'
 alias ff="fastfetch"
 alias v="nvim"
 
-# Misc aliases
-alias ssh="kitty +kitten ssh"
 
 # Git aliases
 alias gc="git commit -m"
@@ -144,7 +143,8 @@ alias tfdev="terraform apply -var-file=dev.tfvars"
 alias tfprod="terraform apply -var-file=prod.tfvars"
 
 # Tmux aliases
-alias ta="tmux attach"
+alias ta="tmux attach || tmux new -A -s default"
+alias tn="tmux new-session -s \$(pwd | sed 's/.*\///g')"
 alias td="tmux detach"
 alias mat='osascript -e "tell application \"System Events\" to key code 126 using {command down}" && tmux neww "cmatrix"'
 
@@ -225,7 +225,7 @@ devops() {
 }
 
 
-function sesh-sessions() {
+function ss() {
   {
     exec </dev/tty
     exec <&1

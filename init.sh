@@ -10,6 +10,21 @@ set -o pipefail : # capture error code in piped commands
 DOTFILES_DIR="$GHREPOS/dotfiles"
 BREWFILE_PATH="$DOTFILES_DIR/homebrew/Brewfile"
 
+echo "Welcome to the Mac setup script!"
+
+sleep 2
+
+# Check internet connection
+echo "Checking internet connection..."
+if ! ping -c 3 google.com &>/dev/null; then
+  echo "No internet connection. Please connect to the internet and try again."
+  exit 1
+else
+  echo "Internet connection is good."
+fi
+
+sleep 2
+
 echo "Setting up your Mac..."
 
 # Detect architecture for Apple Silicon vs Intel
@@ -70,5 +85,17 @@ ln -s "$DOTFILES_DIR/zshrc/.zshrc" "$HOME/.zshrc"
 echo "Stowing dotfiles..."
 cd "$DOTFILES_DIR"
 stow .
+
+# 8. Source the zshrc
+echo "Sourcing .zshrc..."
+source "$HOME/.zshrc"
+
+# 9. Install tmux plugin manager
+echo "Installing tmux plugin manager..."
+git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+
+# 10. Install tmux plugins
+echo "Installing tmux plugins..."
+"$HOME/.tmux/plugins/tpm/scripts/install_plugins.sh"
 
 echo "Done! Your Mac is set up."

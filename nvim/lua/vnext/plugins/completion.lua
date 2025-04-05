@@ -75,7 +75,18 @@ return {
         menu = {
           border = "rounded",
           draw = {
-            columns = { { "label", "label_description", gap = 1 }, { "kind_icon" } },
+            columns = {
+              { "kind_icon", gap = 1 },
+              { "label", "label_description", gap = 1 },
+              { "source_name", gap = 1 },
+            },
+            components = {
+              source_name = {
+                text = function(ctx)
+                  return "[" .. ctx.source_name .. "]"
+                end,
+              },
+            },
           },
         },
       },

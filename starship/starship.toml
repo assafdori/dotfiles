@@ -1,10 +1,10 @@
-add_newline = false
+add_newline = true
 # A minimal left prompt
-format = """$username$directory$character"""
+format = """$username$directory$linebreak$character"""
 # move the rest of the prompt to the right
 right_format = """$all"""
 command_timeout = 1000
-palette = 'oldworld'
+#palette = 'oldworld'
 
 [username]
 disabled = true
@@ -13,13 +13,17 @@ format = '[$user @]($style) '
 style_user = 'color_fg0'
 aliases = { "assafdori" = "assaf" }
 
+[character]
+success_symbol = "[](green)"
+error_symbol = "[](red)"
+vimcmd_symbol = "[](yellow)"
+
 [hostname]
 ssh_only = true
 disabled = false
 format = "[$hostname](dimmed green) "
 
 [directory]
-style = "bright_red"
 
 [battery]
 disabled = true
@@ -52,6 +56,10 @@ symbol = " "
 format = 'on [$symbol$branch]($style) '
 symbol = " "
 style = "red"
+disabled = false
+
+[git_state]
+disabled = false
 
 [git_status]
 format = '([\[$all_status$ahead_behind\]]($style) )'
@@ -65,33 +73,57 @@ deleted = "✖"
 renamed = "➜"
 modified = "✱"
 style = "red"
+disabled = false
 
 [golang]
 
 [kubernetes]
 symbol = '☸ '
 disabled = false
-#detect_files = ['Dockerfile']
 format = '[$symbol$context( \($namespace\))]($style) '
 style = 'bright_cyan'
 
 
 [[kubernetes.contexts]]
+# Matches EKS contexts with "prod" in the cluster name
+context_pattern = "arn:aws:eks:.*:cluster/(?P<cluster>[\\w-]*prod[\\w-]*)"
+context_alias = "$cluster"
+style = "red"
+
+[[kubernetes.contexts]]
+# Matches EKS contexts with "stage" or "stg" in the cluster name
+context_pattern = "arn:aws:eks:.*:cluster/(?P<cluster>[\\w-]*stag[\\w-]*)"
+context_alias = "$cluster"
+style = "yellow"
+
+[[kubernetes.contexts]]
+# Matches EKS contexts with "dev" in the cluster name
+context_pattern = "arn:aws:eks:.*:cluster/(?P<cluster>[\\w-]*dev[\\w-]*)"
+context_alias = "$cluster"
+style = "blue"
+
+[[kubernetes.contexts]]
 context_pattern = "arn:aws:eks:.*:cluster/(?P<cluster>[\\w-]+)"
-context_alias = "eks-$cluster"
+context_alias = "$cluster"
 
 [[kubernetes.contexts]]
 context_pattern = "gke_[^_]+_[^_]+_(?P<cluster>[\\w-]+)"
 context_alias = "gke-$cluster"
 
+[[kubernetes.contexts]]
+context_pattern = "minikube"
+context_alias = "local-minikube"
+style = "cyan"
+
+[[kubernetes.contexts]]
+
 [docker_context]
 disabled = true
 
-# Fun with smilies
-# [character]
-# success_symbol = '[:\)](green)' # The 'success_symbol' segment is being set to ':)' with the color 'green'
-# error_symbol = '[:\(](red)' # The 'error_symbol' segment is being set to ':(' with the color 'red'
-
+[directory.substitutions]
+"~/Repositories/github.com/assafdori" = "@personal"
+"~/Repositories/github.com/work" = "@compie"
+"~" = "@home"
 
 [palettes.oldworld]
 bg = "#161617"

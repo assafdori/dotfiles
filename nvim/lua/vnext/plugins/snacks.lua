@@ -73,6 +73,7 @@ return {
       timeout = 2000,
     },
     picker = {
+      ui_select = true,
       layout = {
         cycle = false,
       },

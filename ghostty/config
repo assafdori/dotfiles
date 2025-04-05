@@ -1,20 +1,47 @@
+# -----------
+# Style
+# -----------
 font-family = "CommitMono"
-theme = oldworld
+theme = tokyonight_night
 font-size = 18
 
+# Custom background & opacity
+# background = #010101
+# background-opacity = 0.93
+
+# Adjust cell width slightly
+adjust-cell-width = -4%
+
+# -----------
+# Window
+# -----------
 macos-titlebar-style = hidden
-
+macos-window-shadow = true
 quit-after-last-window-closed = true
+confirm-close-surface = false
 
+# -----------
+# Clipboard
+# -----------
 copy-on-select = true
+clipboard-read = allow
+clipboard-write = allow
 
+# -----------
+# Padding
+# -----------
 window-padding-balance = true
-window-padding-y = 0
-window-padding-x = 0
+window-padding-y = 4
+window-padding-x = 3,0
 
+# -----------
+# Cursor
+# -----------
 cursor-style = block
 cursor-style-blink = true
-cursor-opacity=0.96
+cursor-opacity = 0.96
 
-#background = #010101
-#background-opacity = 0.93
+# -----------
+# Keybinding
+# -----------
+keybind = cmd+k=text:\x01T

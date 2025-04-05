@@ -5,6 +5,7 @@ vim.g.autoformat = true -- global var for toggling autoformat
 -- stylua: ignore start
 o.clipboard      = "unnamedplus"                                   -- keep in sync with the system clipboard
 o.cursorline     = true                                            -- highlight the current line
+o.wrap           = false                                           -- display lines as one long line
 o.dir            = vim.fn.stdpath("data") .. "/swp"                -- swap file directory
 o.expandtab      = true                                            -- use spaces instead of tabs
 o.fillchars      = "eob: ,fold: ,foldopen:,foldsep: ,foldclose:" -- hide ~ at the end of buffer and set fold symbols

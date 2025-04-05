@@ -84,12 +84,12 @@ return {
   },
 
   {
-    "assafdori/oldworld.nvim",
+    "folke/tokyonight.nvim",
     priority = 1000,
     lazy = false,
     config = function()
-      require("oldworld").setup()
-      vim.cmd("colorscheme oldworld")
+      require("tokyonight").setup()
+      vim.cmd("colorscheme tokyonight-night")
     end,
   },
 }
