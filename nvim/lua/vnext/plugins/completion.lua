@@ -47,6 +47,9 @@ return {
             score_offset = 0,
           },
           path = {
+            enabled = function()
+              return vim.bo.filetype ~= "copilot-chat"
+            end,
             min_keyword_length = 0,
           },
           snippets = {
