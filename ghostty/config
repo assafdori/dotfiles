@@ -42,6 +42,11 @@ cursor-style-blink = true
 cursor-opacity = 0.96
 
 # -----------
+# MacOS
+# -----------
+macos-option-as-alt = true
+
+# -----------
 # Keybinding
 # -----------
 keybind = cmd+k=text:\x01T
