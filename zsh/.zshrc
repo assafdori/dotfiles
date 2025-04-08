@@ -21,11 +21,11 @@ export ZSH=/Users/assafdori/.oh-my-zsh
 # Environment variables
 export LANG=en_US.UTF-8
 export EDITOR=/opt/homebrew/bin/nvim
-export GOPATH='/Users/assafdori/go'
-export KUBECONFIG=~/.kube/config
+export VISUAL=/opt/homebrew/bin/nvim
+export GOPATH="$HOME/go"
+export KUBECONFIG="$HOME/.kube/config"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
-export TERM=xterm-256color
+export STARSHIP_CONFIG="$HOME/.config/starship.toml"
 
 # Directory paths
 export SECOND_BRAIN=("/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs/Documents/The Garden")
