@@ -10,8 +10,8 @@ return {
     },
     sort = { "alphanum" },
     spec = {
+      { "<leader>a", group = "AI" },
       { "<leader>b", group = "Buffers" },
-      { "<leader>c", group = "Copilot" },
       { "<leader>d", group = "Diagnostic" },
       { "<leader>f", group = "Files" },
       { "<leader>g", group = "Git" },
