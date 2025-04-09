@@ -1,4 +1,5 @@
 ---
+notARepository: skip
 promptToReturnFromSubprocess: false
 git:
   paging:

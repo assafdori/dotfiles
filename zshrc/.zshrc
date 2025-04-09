@@ -143,7 +143,8 @@ alias tfdev='terraform apply -var-file=dev.tfvars'
 alias tfprod='terraform apply -var-file=prod.tfvars'
 
 # Tmux aliases
-alias ta="tmux attach"
+alias ta="tmux attach || tmux new -A -s default"
+alias tn="tmux new-session -s \$(pwd | sed 's/.*\///g')"
 alias td="tmux detach"
 alias mat='osascript -e "tell application \"System Events\" to key code 126 using {command down}" && tmux neww "cmatrix"'
 
