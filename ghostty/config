@@ -2,7 +2,7 @@
 # Style
 # -----------
 font-family = "CommitMono"
-theme = tokyonight_night
+theme = tokyodark
 font-size = 18
 
 # Custom background & opacity

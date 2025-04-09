@@ -1,0 +1,23 @@
+palette = 0=#06080A      # black
+palette = 1=#EE6D85      # red
+palette = 2=#95C561      # green
+palette = 3=#D7A65F      # yellow
+palette = 4=#7199EE      # blue
+palette = 5=#A485DD      # purple (magenta)
+palette = 6=#38A89D      # cyan
+palette = 7=#A0A8CD      # white / fg
+
+palette = 8=#353945      # bright black
+palette = 9=#FE6D85      # bright red (bg_red)
+palette = 10=#98C379     # bright green (bg_green)
+palette = 11=#F6955B     # bright yellow/orange
+palette = 12=#9FBBF3     # bright blue (bg_blue)
+palette = 13=#A485DD     # bright magenta (same as base)
+palette = 14=#38A89D     # bright cyan (same)
+palette = 15=#ffffff     # bright white (pick high contrast)
+
+background = 11121D
+foreground = A0A8CD
+cursor-color = A0A8CD
+selection-background = 262B3D
+selection-foreground = A0A8CD
