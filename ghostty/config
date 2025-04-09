@@ -1,5 +1,8 @@
-font-family = JetBrains Mono
-theme = oldworld
+# -----------
+# Style
+# -----------
+font-family = "CommitMono"
+theme = tokyodark
 font-size = 18
 
 macos-titlebar-style = hidden

@@ -84,12 +84,12 @@ return {
   },
 
   {
-    "assafdori/oldworld.nvim",
+    "tiagovla/tokyodark.nvim",
     priority = 1000,
     lazy = false,
     config = function()
-      require("oldworld").setup()
-      vim.cmd("colorscheme oldworld")
+      require("tokyodark").setup()
+      vim.cmd("colorscheme tokyodark")
     end,
   },
 }
