@@ -120,6 +120,7 @@ return {
     { "<leader>sh", function() Snacks.picker.help():set_layout("ivy") end, desc = "Help" },
     { "<leader>ff", function() Snacks.picker.smart({filter = {cwd = true}}):set_layout("ivy") end, desc = "Smart find" },
     { "<leader>sf", function() Snacks.picker.files() end, desc = "Files" },
+    { "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep Words"},
     { "<leader>sl", function() Snacks.picker.lines() end, desc = "Buffer Fuzzy" },
     { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
     { "<leader>ls", function() Snacks.picker.lsp_symbols() end, desc = "Documents Symbols" },
