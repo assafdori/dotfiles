@@ -24,6 +24,7 @@ disabled = false
 format = "[$hostname](dimmed green) "
 
 [directory]
+style = "cyan"
 
 [battery]
 disabled = true
