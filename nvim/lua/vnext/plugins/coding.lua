@@ -61,7 +61,7 @@ return {
     -- dev = true,
     ft = "yaml",
     opts = {
-      enable_lua_snip = true,
+      enable_lua_snip = false,
       kinds = {
         show_filepath = true,
         show_line = true,

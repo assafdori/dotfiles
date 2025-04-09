@@ -34,10 +34,12 @@ map("n", "<leader>wJ", "<cmd>wincmd J<cr>", { desc = "Move down" })
 map("n", "<leader>wK", "<cmd>wincmd K<cr>", { desc = "Move up" })
 map("n", "<leader>wL", "<cmd>wincmd L<cr>", { desc = "Move right" })
 map("n", "<leader>w=", "<cmd>wincmd =<cr>", { desc = "Equalize size" })
-map("n", "<leader>wk", "<cmd>resize +5<cr>", { desc = "Up" })
-map("n", "<leader>wj", "<cmd>resize -5<cr>", { desc = "Down" })
-map("n", "<leader>wh", "<cmd>vertical resize +3<cr>", { desc = "Left" })
-map("n", "<leader>wl", "<cmd>vertical resize -3<cr>", { desc = "Right" })
+
+-- Repeatable keybinds
+map("n", "<M-h>", "<cmd>vertical resize -2<cr>", { desc = "← shrink width" })
+map("n", "<M-l>", "<cmd>vertical resize +2<cr>", { desc = "→ grow width" })
+map("n", "<M-k>", "<cmd>resize -2<cr>", { desc = "↑ shrink height" })
+map("n", "<M-j>", "<cmd>resize +2<cr>", { desc = "↓ grow height" })
 
 -- buffers
 map("n", "<tab>", "<cmd>bnext<cr>", { desc = "Next buffer" })
