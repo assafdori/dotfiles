@@ -20,8 +20,8 @@ export ZSH=/Users/assafdori/.oh-my-zsh
 
 # Environment variables
 export LANG=en_US.UTF-8
-export EDITOR=/opt/homebrew/bin/nvim
-export VISUAL=/opt/homebrew/bin/nvim
+export EDITOR="nvim"
+export VISUAL="$EDITOR"
 export GOPATH="$HOME/go"
 export KUBECONFIG="$HOME/.kube/config"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
