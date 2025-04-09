@@ -11,11 +11,13 @@ return {
     sort = { "alphanum" },
     spec = {
       { "<leader>b", group = "Buffers" },
+      { "<leader>c", group = "Copilot" },
       { "<leader>d", group = "Diagnostic" },
       { "<leader>f", group = "Files" },
       { "<leader>g", group = "Git" },
       { "<leader>l", group = "Code" },
       { "<leader>m", group = "Misc" },
+      { "<leader>R", group = "Search & Replace" },
       { "<leader>s", group = "Search" },
       { "<leader>t", group = "Toggles" },
       { "<leader>u", group = "UI" },

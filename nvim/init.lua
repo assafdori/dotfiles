@@ -1,3 +1,2 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = ","
-require("vnext.config")
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("assafdori.config")
