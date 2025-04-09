@@ -1,34 +1,29 @@
-# ahh shit here we go again
+# Dotfiles
 
-<a href="https://dotfyle.com/assafdori/dotfiles-nvim"><img src="https://dotfyle.com/assafdori/dotfiles-nvim/badges/plugins?style=flat" /></a>
-<a href="https://dotfyle.com/assafdori/dotfiles-nvim"><img src="https://dotfyle.com/assafdori/dotfiles-nvim/badges/leaderkey?style=flat" /></a>
-<a href="https://dotfyle.com/assafdori/dotfiles-nvim"><img src="https://dotfyle.com/assafdori/dotfiles-nvim/badges/plugin-manager?style=flat" /></a>
+Just some config files to make my dev setup feel right.
 
-## Install Instructions
+## What's inside?
 
-> Install requires Neovim 0.9+.
+- Custom terminal stuff (aliases, prompts, etc.)
+- Nvim config for when I need to get things done fast
+- Settings to keep things smooth
 
-Clone the repository and install the plugins:
+## How to use
 
-```sh
-git clone git@github.com:assafdori/dotfiles ~/.config/assafdori/dotfiles
-```
+1. Clone this repo:
 
-Open Neovim with this config:
+   ```bash
+   git clone https://github.com/assafdori/dotfiles.git ~/dotfiles
+   ```
 
-```sh
-NVIM_APPNAME=assafdori/dotfiles/nvim nvim
-```
+2. Run the install script:
 
-### Stow to ~/.config 📦
+   ```bash
+   cd ~/dotfiles && ./init.sh
+   ```
 
-```bash
-stow .
-```
+3. Done. No fuss, no drama.
 
-### Homebrew Installation 🍺
+## Why?
 
-```bash
- cd homebrew
- brew bundle
-```
+Because I like things simple and fast.
