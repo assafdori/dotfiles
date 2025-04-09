@@ -17,15 +17,12 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = {
-    { import = "vnext.plugins" },
-    { import = "vnext.extra" },
+    { import = "assafdori.plugins" },
+    { import = "assafdori.extra" },
   },
   change_detection = {
     enabled = true, -- automatically check for config file changes and reload the ui
     notify = true, -- get a notification when changes are found
-  },
-  dev = {
-    path = "~/workspace/github.com/assafdori/",
   },
   lockfile = "~/.lazy-lock.json",
   performance = {

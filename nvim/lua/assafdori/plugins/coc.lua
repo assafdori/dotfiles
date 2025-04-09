@@ -10,7 +10,6 @@ return {
       -- See Configuration section for options
     },
     keys = {
-      { "<leader>c", "", desc = "+Copilot" },
       { "<leader>cc", ":CopilotChat<CR>", mode = "n", desc = "Copilot Chat" },
       { "<leader>cc", ":CopilotChat<CR>", mode = "v", desc = "Copilot Chat" },
     },
