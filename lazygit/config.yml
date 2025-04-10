@@ -4,6 +4,6 @@ notARepository: skip
 promptToReturnFromSubprocess: false
 git:
   paging:
-    pager: delta --paging=never
+    pager: delta --dark --paging=never
   merging:
     args: --no-ff
