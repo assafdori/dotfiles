@@ -1,12 +1,38 @@
+// Karabiner Elements configuration file
+
+// Table of contents:
+// Caps Lock -> Hyper
+// Hyper + T -> Launch Ghostty
+// Hyper + b -> Launch Arc Browser
+// Hyper + m -> Launch Music
+
 {
+  "global": {
+    "check_for_updates_on_startup": true,
+    "show_in_menu_bar": false,
+    "show_profile_name_in_menu_bar": false,
+    "virtual_hid_keyboard": {
+      "keyboard_type_v2": "iso"
+    }
+  },
   "profiles": [
     {
+      "name": "Assaf",
+      "selected": true,
+      "simple_modifications": [
+        {
+          "from": { "apple_vendor_top_case_key_code": "keyboard_fn" },
+          "to": [{ "key_code": "left_control" }]
+        }
+      ],
+      "virtual_hid_keyboard": { "keyboard_type_v2": "iso" },
       "complex_modifications": {
         "rules": [
           {
             "manipulators": [
               {
-                "description": "Change caps_lock to command+control+option+shift.",
+                "description": "Caps Lock -> Hyper",
+                "type": "basic",
                 "from": {
                   "key_code": "caps_lock",
                   "modifiers": { "optional": ["any"] }
@@ -16,23 +42,96 @@
                     "key_code": "left_shift",
                     "modifiers": ["left_command", "left_control", "left_option"]
                   }
-                ],
-                "type": "basic"
+                ]
+              },
+              {
+                "description": "Hyper + T -> Launch Ghostty",
+                "type": "basic",
+                "from": {
+                  "key_code": "t",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_command",
+                      "left_control",
+                      "left_option",
+                      "left_shift"
+                    ],
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "open -a 'Ghostty'"
+                  }
+                ]
+              },
+              {
+                "description": "Hyper + b -> Launch Arc Browser",
+                "type": "basic",
+                "from": {
+                  "key_code": "b",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_command",
+                      "left_control",
+                      "left_option",
+                      "left_shift"
+                    ],
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "open -a 'Arc'"
+                  }
+                ]
+              },
+              {
+                "description": "Hyper + m -> Launch Music",
+                "type": "basic",
+                "from": {
+                  "key_code": "m",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_command",
+                      "left_control",
+                      "left_option",
+                      "left_shift"
+                    ],
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "open -a 'Music'"
+                  }
+                ]
+              },
+              {
+                "description": "Hyper + p -> Launch Passwords",
+                "type": "basic",
+                "from": {
+                  "key_code": "p",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_command",
+                      "left_control",
+                      "left_option",
+                      "left_shift"
+                    ],
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "open -a 'Passwords'"
+                  }
+                ]
               }
             ]
           }
         ]
-      },
-      "name": "Assaf",
-      "selected": true,
-      "simple_modifications": [
-        {
-          "from": { "apple_vendor_top_case_key_code": "keyboard_fn" },
-          "to": [{ "key_code": "left_control" }]
-        }
-      ],
-      "virtual_hid_keyboard": { "keyboard_type_v2": "iso" }
+      }
     }
   ]
 }
-
