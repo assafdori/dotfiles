@@ -104,38 +104,62 @@ return {
   },
   keys = {
     -- stylua: ignore start
-    { "<C-s>",      function() Snacks.picker.lines() end, desc = "Search Current File", mode = { "n", "x" } },
-    { "<leader>uZ", function() Snacks.zen() end, desc = "Toggle Zen Mode" },
-    { "<leader>uz", function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
-    { "<leader>nn", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
-    { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
-    { "<leader>gx", function() Snacks.gitbrowse() end, desc = "Git Browse" },
-    { "<leader>gm", function() Snacks.picker.git_status() end, desc = "Git Modified" },
-    { "<leader>sb", function() Snacks.picker.buffers() end, desc = "Buffers" },
-    { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
+
+    -- ╭───────────────────────╮
+    -- │ 📁 File Management    │
+    -- ╰───────────────────────╯
     { "<leader>fR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
-    { "<leader>tt", function() Snacks.terminal() end, desc = "Toggle Terminal" },
+    { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
+
+    -- ╭───────────────────────╮
+    -- │ 🔍 Search / Pickers   │
+    -- ╰───────────────────────╯
+    { "<C-s>",      function() Snacks.picker.lines() end, desc = "Search Current File", mode = { "n", "x" } },
+    { "<leader>ff", function() Snacks.picker.smart({ filter = { cwd = true } }):set_layout("ivy") end, desc = "Smart Find" },
+    { "<leader>sf", function() Snacks.picker.files() end, desc = "Files" },
     { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
     { "<leader>ss", function() Snacks.picker.grep():set_layout("ivy") end, desc = "Strings" },
-    { "<leader>sh", function() Snacks.picker.help():set_layout("ivy") end, desc = "Help" },
-    { "<leader>ff", function() Snacks.picker.smart({filter = {cwd = true}}):set_layout("ivy") end, desc = "Smart find" },
-    { "<leader>sf", function() Snacks.picker.files() end, desc = "Files" },
-    { "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep Words"},
+    { "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep Words" },
     { "<leader>sl", function() Snacks.picker.lines() end, desc = "Buffer Fuzzy" },
-    { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
-    { "<leader>ls", function() Snacks.picker.lsp_symbols() end, desc = "Documents Symbols" },
-    { "<leader>lS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "Workspace Symbols" },
+    { "<leader>sb", function() Snacks.picker.buffers() end, desc = "Buffers" },
+    { "<leader>sk", function() Snacks.picker.keymaps():set_layout("ivy") end, desc = "Keymaps" },
+    { "<leader>sh", function() Snacks.picker.help():set_layout("ivy") end, desc = "Help" },
+    { "<leader>sd", function() Snacks.picker.diagnostics():set_layout("ivy") end, desc = "Diagnostics" },
     { "<leader>sz", function() Snacks.picker.zoxide():set_layout("ivy") end, desc = "Zoxide" },
+
+    -- ╭───────────────────────╮
+    -- │ 🧠 LSP               │
+    -- ╰───────────────────────╯
+    { "<leader>ld", function() Snacks.picker.lsp_definitions():set_layout("ivy") end, desc = "Definition" },
+    { "<leader>lr", function() Snacks.picker.lsp_references():set_layout("ivy") end, nowait = true, desc = "References" },
+    { "<leader>lt", function() Snacks.picker.lsp_type_definitions():set_layout("ivy") end, desc = "Type Definition" },
+    { "<leader>lI", function() Snacks.picker.lsp_implementations():set_layout("ivy") end, desc = "Implementation" },
+    { "<leader>ls", function() Snacks.picker.lsp_symbols() end, desc = "Document Symbols" },
+    { "<leader>lS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "Workspace Symbols" },
+
+    -- ╭───────────────────────╮
+    -- │ 🧬 Git               │
+    -- ╰───────────────────────╯
+    { "<leader>gx", function() Snacks.gitbrowse() end, desc = "Git Browse" },
+    { "<leader>gm", function() Snacks.picker.git_status() end, desc = "Git Modified" },
+    { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
     { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
     { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
     { "<leader>gL", function() Snacks.picker.git_log_line():set_layout("ivy") end, desc = "Git Log Line" },
-    { "<leader>sd", function() Snacks.picker.diagnostics():set_layout("ivy") end, desc = "Diagnostics" },
-    { "<leader>sk", function() Snacks.picker.keymaps():set_layout("ivy") end, desc = "Keymaps" },
-    { "<leader>ld", function() Snacks.picker.lsp_definitions():set_layout("ivy") end, desc = "Definition" },
-    { "<leader>lr", function() Snacks.picker.lsp_references():set_layout("ivy") end, nowait = true, desc = "References" },
-    { "<leader>lI", function() Snacks.picker.lsp_implementations():set_layout("ivy") end, desc = "Implementation" },
-    { "<leader>lt", function() Snacks.picker.lsp_type_definitions():set_layout("ivy") end, desc = "Type Definition" },
+    { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
+
+    -- ╭───────────────────────╮
+    -- │ 🖥️ Terminal / Tools  │
+    -- ╰───────────────────────╯
+    { "<leader>tt", function() Snacks.terminal() end, desc = "Toggle Terminal" },
     { "<leader>te", function() Snacks.picker.explorer() end, desc = "Toggle Explorer" },
+
+    -- ╭───────────────────────╮
+    -- │ 🧘 UI / Zen / UX     │
+    -- ╰───────────────────────╯
+    { "<leader>uZ", function() Snacks.zen() end, desc = "Toggle Zen Mode" },
+    { "<leader>uz", function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
+    { "<leader>nn", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
   },
   -- stylua: ignore end
   init = function()
