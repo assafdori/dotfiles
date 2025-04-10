@@ -1,7 +1,7 @@
 # -----------
 # Style
 # -----------
-font-family = "CommitMono"
+#font-family = "CommitMono"
 theme = tokyodark
 font-size = 18
 
