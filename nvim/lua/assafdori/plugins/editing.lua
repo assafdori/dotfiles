@@ -91,6 +91,11 @@ return {
   },
 
   {
+    "echasnovski/mini.sessions",
+    version = false,
+  },
+
+  {
     "gbprod/substitute.nvim",
     keys = {
     -- stylua: ignore start
