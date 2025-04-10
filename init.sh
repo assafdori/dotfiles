@@ -10,7 +10,7 @@ BREWFILE_PATH="$DOTFILES_DIR/homebrew/Brewfile"
 print_logo() {
   cat <<"EOF"
 
-          "Welcome to the Mac setup script!"
+          Welcome to the Mac setup script!
            __________                                 
          .'----------`.                              
          | .--------. |                             
