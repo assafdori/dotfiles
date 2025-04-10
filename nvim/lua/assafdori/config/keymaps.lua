@@ -23,6 +23,7 @@ map("v", "K", ":m '<-2<cr>gv=gv", { desc = "Move selected lines up" })
 
 -- Cancel search highlighting with ESC
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Clear hlsearch and ESC" })
+map({ "i" }, "<C-c>", "<esc>", { desc = "Clear hlsearch and ESC" })
 
 -- Press jj or jk to escape from insert mode
 map("i", "jj", "<esc>", { desc = "Escape from insert mode" })
