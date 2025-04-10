@@ -50,7 +50,6 @@ return {
     --   { "rcarriga/nvim-notify" },
     -- },
     keys = {
-      { "<leader>n", "", desc = "Noice" },
       { "<leader>no", "<cmd>Noice all<cr>", desc = "Open Noice" },
     },
     opts = {
