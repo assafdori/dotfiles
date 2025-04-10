@@ -6,6 +6,7 @@ return {
     delay = 0,
     height = math.huge,
     icons = {
+      group = "", -- default is "+"
       mappings = false, -- disable icons in keymaps
     },
     sort = { "alphanum" },
@@ -17,7 +18,8 @@ return {
       { "<leader>g", group = "Git" },
       { "<leader>l", group = "Code" },
       { "<leader>m", group = "Misc" },
-      { "<leader>R", group = "Search & Replace" },
+      { "<leader>n", group = "Noice" },
+      { "<leader>R", group = "Replace" },
       { "<leader>s", group = "Search" },
       { "<leader>t", group = "Toggles" },
       { "<leader>u", group = "UI" },
