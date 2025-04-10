@@ -16,6 +16,7 @@ return {
       { "<leader>d", group = "Diagnostic" },
       { "<leader>f", group = "Files" },
       { "<leader>g", group = "Git" },
+      { "<leader>h", group = "Harpoon" },
       { "<leader>l", group = "Code" },
       { "<leader>m", group = "Misc" },
       { "<leader>n", group = "Noice" },
