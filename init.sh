@@ -1,16 +1,32 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
-set -e :          # exit on error
-set -u :          # treat unset variables as error
-set -o pipefail : # capture error code in piped commands
 
 # Variables
 : "${GHREPOS:="$HOME/Repositories/github.com/assafdori"}"
 DOTFILES_DIR="$GHREPOS/dotfiles"
 BREWFILE_PATH="$DOTFILES_DIR/homebrew/Brewfile"
 
-echo "Welcome to the Mac setup script!"
+print_logo() {
+  cat <<"EOF"
+
+          "Welcome to the Mac setup script!"
+           __________                                 
+         .'----------`.                              
+         | .--------. |                             
+         | |########| |       __________              
+         | |########| |      /__________\             
+.--------| `--------' |------|    --=-- |-------------.
+|        `----,-.-----'      |o ======  |             | 
+|       ______|_|_______     |__________|             | Bootstrap MacOS
+|      /  %%%%%%%%%%%%  \                             | Envrionment
+|     /  %%%%%%%%%%%%%%  \                            | 
+|     ^^^^^^^^^^^^^^^^^^^^                            | by: Assaf Dori
++-----------------------------------------------------+ 
+EOF
+}
+
+print_logo
 
 sleep 2
 
@@ -87,8 +103,8 @@ cd "$DOTFILES_DIR"
 stow .
 
 # 8. Source the zshrc
-echo "Sourcing .zshrc..."
-source "$HOME/.zshrc"
+echo "Configuration complete. You'll need to restart your shell or run:"
+echo "source \"$HOME/.zshrc\""
 
 # 9. Install tmux plugin manager
 echo "Installing tmux plugin manager..."
