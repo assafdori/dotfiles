@@ -75,11 +75,14 @@ return {
 
   {
     "catgoose/nvim-colorizer.lua",
-    cmd = "ColorizerToggle",
+    event = { "BufReadPre", "BufNewFile" }, -- Enable on file open
     keys = {
-      { "<leader>ux", "<cmd>ColorizerToggle<cr>", desc = "Colorizer" },
+      { "<leader>ux", "<cmd>ColorizerToggle<cr>", desc = "Toggle Colorizer" },
     },
-    opts = {},
+    opts = {}, -- if you want to pass config options
+    config = function(_, opts)
+      require("colorizer").setup(nil, opts) -- enable for all filetypes by default
+    end,
   },
 
   {
