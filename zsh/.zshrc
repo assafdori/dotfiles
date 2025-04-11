@@ -25,16 +25,12 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
 export STARSHIP_CONFIG="$HOME/.config/starship.toml"
 
 # Directory paths
-export SECOND_BRAIN=("/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs/Documents/The Garden")
+export GARDEN=("/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs/Documents/The Garden")
 export ICLOUD=("/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs")
 export REPOS="$HOME/code"
 export GITUSER="assafdori"
 export GHREPOS="$REPOS/$GITUSER"
 export XDG_CONFIG_HOME="$HOME"/.config
-
-# Symbolic links
-ln -sf "$SECOND_BRAIN" ~/garden
-ln -sf "$ICLOUD" ~/icloud
 
 # ZSH configuration
 setopt prompt_subst
@@ -111,11 +107,12 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
-alias sb="cd \$SECOND_BRAIN"
+alias garden="cd \$GARDEN"
 alias icloud="cd \$ICLOUD"
 alias xdg="cd \"$XDG_CONFIG_HOME/\""
 alias repos="cd $REPOS"
 alias ghrepos="cd $GHREPOS"
+alias work="cd $REPOS/work/"
 
 # Kubernetes aliases
 alias k="kubectl"

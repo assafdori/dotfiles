@@ -127,4 +127,8 @@ case "$response" in
   ;;
 esac
 
+# 13. Symbolic links
+ln -sf "$SECOND_BRAIN" ~/garden
+ln -sf "$ICLOUD" ~/icloud
+
 echo "Done! Your Mac is set up."
