@@ -69,6 +69,7 @@ inline_height = 25
 ## Invert the UI - put the search bar at the top , Default to `false`
 invert = false
 
+
 ## enable or disable showing a preview of the selected command
 ## useful when the command is longer than the terminal width and is cut off
 # show_preview = true
