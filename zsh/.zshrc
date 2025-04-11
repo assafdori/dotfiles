@@ -22,7 +22,7 @@ export VISUAL="$EDITOR"
 export GOPATH="$HOME/go"
 export KUBECONFIG="$HOME/.kube/config"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
-export STARSHIP_CONFIG="$HOME/.config/starship.toml"
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 
 # Directory paths
 export GARDEN=("/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs/Documents/The Garden")
