@@ -31,11 +31,11 @@ return {
     keys = {
       -- NOTE: my mapping <leader>lf is soo good but in the LSP cluster
       {
-        "<leader>lf",
+        "<leader>tf",
         function()
           require("yazi").yazi(nil, vim.fn.getcwd())
         end,
-        desc = "Open Yazi (file manager)",
+        desc = "Toggle Yazi",
       },
     },
     opts = {
