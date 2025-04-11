@@ -37,6 +37,7 @@ window-padding-x = 3,0
 # -----------
 # Cursor
 # -----------
+shell-integration-features = no-cursor
 cursor-style = block
 cursor-style-blink = true
 cursor-opacity = 0.96
