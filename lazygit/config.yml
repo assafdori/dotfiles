@@ -7,3 +7,4 @@ git:
     pager: delta --dark --paging=never
   merging:
     args: --no-ff
+  overrideGpg: true
