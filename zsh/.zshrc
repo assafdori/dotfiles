@@ -15,9 +15,6 @@ path=(
 )
 export PATH
 
-# Path to oh-my-zsh installation
-export ZSH=/Users/assafdori/.oh-my-zsh
-
 # Environment variables
 export LANG=en_US.UTF-8
 export EDITOR="nvim"
@@ -30,9 +27,9 @@ export STARSHIP_CONFIG="$HOME/.config/starship.toml"
 # Directory paths
 export SECOND_BRAIN=("/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs/Documents/The Garden")
 export ICLOUD=("/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs")
-export REPOS="$HOME/Repositories"
+export REPOS="$HOME/code"
 export GITUSER="assafdori"
-export GHREPOS="$REPOS/github.com/$GITUSER"
+export GHREPOS="$REPOS/$GITUSER"
 export XDG_CONFIG_HOME="$HOME"/.config
 
 # Symbolic links

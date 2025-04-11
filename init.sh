@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # Variables
-: "${GHREPOS:="$HOME/Repositories/github.com/assafdori"}"
+: "${GHREPOS:="$HOME/code/assafdori"}"
 DOTFILES_DIR="$GHREPOS/dotfiles"
 BREWFILE_PATH="$DOTFILES_DIR/homebrew/Brewfile"
 
@@ -67,7 +67,13 @@ fi
 echo "Updating Homebrew..."
 brew update
 
-# 3. Ensure Homebrew Bundle is tapped and run bundle
+# 3. Create directories
+echo "Creating directories..."
+mkdir -p "$HOME/.config"
+mkdir -p "$GHREPOS"
+mkdir -p "$HOME/code/work"
+
+# 4. Ensure Homebrew Bundle is tapped and run bundle
 if ! brew tap | grep -q "^homebrew/bundle\$"; then
   brew tap homebrew/bundle
 fi
@@ -78,12 +84,6 @@ if [ -f "$BREWFILE_PATH" ]; then
 else
   echo "No Brewfile found at $BREWFILE_PATH — skipping Homebrew bundle."
 fi
-
-# 4. Create directories
-echo "Creating directories..."
-mkdir -p "$HOME/.config"
-mkdir -p "$GHREPOS"
-mkdir -p "$HOME/Repositories/github.com/work"
 
 # 5. Make sure stow is installed
 if ! command -v stow >/dev/null 2>&1; then
@@ -96,25 +96,30 @@ echo "Symlinking .zshrc..."
 rm -f "$HOME/.zshrc"
 ln -s "$DOTFILES_DIR/zshrc/.zshrc" "$HOME/.zshrc"
 
-# 7. Stow everything
+# 7. Symlink your main git config
+echo "Symlinking .gitconfig..."
+rm -f "$HOME/.gitconfig"
+ln -s "$DOTFILES_DIR/git/.gitconfig" "$HOME/.gitconfig"
+
+# 8. Stow everything
 #    If your .stowrc is properly configured, just run stow from $DOTFILES_DIR
 echo "Stowing dotfiles..."
 cd "$DOTFILES_DIR"
 stow .
 
-# 8. Source the zshrc
+# 9. Source the zshrc
 echo "Configuration complete. You'll need to restart your shell or run:"
 echo "source \"$HOME/.zshrc\""
 
-# 9. Install tmux plugin manager
+# 10. Install tmux plugin manager
 echo "Installing tmux plugin manager..."
 git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 
-# 10. Install tmux plugins
+# 11. Install tmux plugins
 echo "Installing tmux plugins..."
 "$HOME/.tmux/plugins/tpm/scripts/install_plugins.sh"
 
-## 11. Ask if to enable Touch ID for sudo
+## 12. Ask if to enable Touch ID for sudo
 read -r -p "Enable Touch ID for sudo operations? [y/N] " response
 case "$response" in
 [yY][eE][sS] | [yY])
