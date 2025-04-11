@@ -114,4 +114,16 @@ git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 echo "Installing tmux plugins..."
 "$HOME/.tmux/plugins/tpm/scripts/install_plugins.sh"
 
+## 11. Ask if to enable Touch ID for sudo
+read -r -p "Enable Touch ID for sudo operations? [y/N] " response
+case "$response" in
+[yY][eE][sS] | [yY])
+  sed "s/^#auth/auth/" /etc/pam.d/sudo_local.template | sudo tee /etc/pam.d/sudo_local >/dev/null
+  echo "Touch ID for sudo enabled."
+  ;;
+*)
+  echo "Skipped."
+  ;;
+esac
+
 echo "Done! Your Mac is set up."
