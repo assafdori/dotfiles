@@ -74,10 +74,6 @@ mkdir -p "$GHREPOS"
 mkdir -p "$HOME/code/work"
 
 # 4. Ensure Homebrew Bundle is tapped and run bundle
-if ! brew tap | grep -q "^homebrew/bundle\$"; then
-  brew tap homebrew/bundle
-fi
-
 if [ -f "$BREWFILE_PATH" ]; then
   echo "Installing packages from Brewfile..."
   brew bundle --file="$BREWFILE_PATH"
