@@ -4,8 +4,8 @@ set -euo pipefail
 
 # Variables
 : "${GHREPOS:="$HOME/code/assafdori"}"
-DOTFILES_DIR="$GHREPOS/dotfiles"
-BREWFILE_PATH="$DOTFILES_DIR/homebrew/Brewfile"
+DOTFILES="$GHREPOS/dotfiles"
+BREWFILE_PATH="$DOTFILES/homebrew/Brewfile"
 
 print_logo() {
   cat <<"EOF"
@@ -90,7 +90,7 @@ fi
 # 6. Symlink your main shell config
 echo "Symlinking .zshrc..."
 rm -f "$HOME/.zshrc"
-ln -s "$DOTFILES_DIR/zshrc/.zshrc" "$HOME/.zshrc"
+ln -s "$DOTFILES/zsh/.zshrc" "$HOME/.zshrc"
 
 # 7. Symlink your main git config
 echo "Symlinking .gitconfig..."
