@@ -5,4 +5,4 @@
 --ignore=README.md
 --ignore=LICENSE
 --ignore=init.sh
---ignore=assets.png
+--ignore=assets/
