@@ -143,6 +143,8 @@ return {
     { "<leader>sh", function() Snacks.picker.help():set_layout("ivy") end, desc = "Help" },
     { "<leader>sd", function() Snacks.picker.diagnostics():set_layout("ivy") end, desc = "Diagnostics" },
     { "<leader>sz", function() Snacks.picker.zoxide():set_layout("ivy") end, desc = "Zoxide" },
+    { "<leader>su", function() Snacks.picker.undo() end, desc = "Undo" },
+    { "<leader>st", function() Snacks.picker.todo_comments() end, desc = "Todo", },
 
     -- ╭───────────────────────╮
     -- │ 🧠 LSP               │
@@ -158,12 +160,14 @@ return {
     -- │ 🧬 Git               │
     -- ╰───────────────────────╯
     { "<leader>gx", function() Snacks.gitbrowse() end, desc = "Git Browse" },
-    { "<leader>gm", function() Snacks.picker.git_status() end, desc = "Git Modified" },
+    { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
     { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
+    { "<leader>gB", function() Snacks.git.blame_line() end, desc = "Git Blame" },
     { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
     { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
     { "<leader>gL", function() Snacks.picker.git_log_line():set_layout("ivy") end, desc = "Git Log Line" },
     { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
+    { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
 
     -- ╭───────────────────────╮
     -- │ 🖥️ Terminal / Tools  │

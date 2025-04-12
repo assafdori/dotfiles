@@ -119,11 +119,6 @@ return {
           multiline = false, -- I usually only wnat one line to be highlighted
         },
       },
-      keys = {
-        -- stylua: ignore start
-        { "<leader>sT", function() Snacks.picker.todo_comments() end, desc = "Todo", },
-        -- stylua: ignore end
-      },
     },
   },
 
