@@ -29,17 +29,11 @@ return {
     "mikavilpas/yazi.nvim",
     lazy = true, -- use `event = "VeryLazy"` for netrw replacement
     keys = {
-      -- NOTE: my mapping <leader>lf is soo good but in the LSP cluster
-      {
-        "<leader>tf",
-        function()
-          require("yazi").yazi(nil, vim.fn.getcwd())
-        end,
-        desc = "Toggle Yazi",
-      },
+      { "<leader>t-", function() require("yazi").yazi(nil, vim.fn.getcwd()) end, desc = "Toggle Yazi", },
+      { "<leader>tf", mode = { "n", "v" }, "<cmd>Yazi<cr>", desc = "Toggle Yazi for Current File" },
     },
     opts = {
-      open_for_directories = true,
+      open_for_directories = false,
     },
   },
 
