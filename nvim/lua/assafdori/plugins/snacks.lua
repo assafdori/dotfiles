@@ -89,11 +89,12 @@ return {
     },
     picker = {
       ui_select = true,
+      ignored = true,
       layout = {
         cycle = false,
       },
       sources = {
-        explorer = { hidden = true },
+        explorer = { hidden = true, win },
         files = { hidden = true },
         grep = { hidden = true },
       },
