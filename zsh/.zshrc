@@ -31,6 +31,7 @@ export REPOS="$HOME/code"
 export GITUSER="assafdori"
 export GHREPOS="$REPOS/$GITUSER"
 export XDG_CONFIG_HOME="$HOME"/.config
+export DOTFILES="$HOME/code/assafdori/dotfiles"
 
 # ZSH configuration
 setopt prompt_subst
