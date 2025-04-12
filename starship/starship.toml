@@ -1,63 +1,62 @@
 add_newline = true
-# A minimal left prompt
 format = """$username$directory$linebreak$character"""
-# move the rest of the prompt to the right
 right_format = """$all"""
 command_timeout = 1000
-#palette = 'oldworld'
+palette = 'mellow'
 
 [username]
 disabled = true
 show_always = true
-format = '[$user @]($style) '
-style_user = 'color_fg0'
+format = '[$user @]($style)'
+style_user = 'fg'
 aliases = { "assafdori" = "assaf" }
 
 [character]
-success_symbol = "[](green)"
-error_symbol = "[](red)"
-vimcmd_symbol = "[](yellow)"
+success_symbol = "[](accent2)"
+error_symbol = "[](accent5)"
+vimcmd_symbol = "[](accent3)"
 
 [hostname]
 ssh_only = true
 disabled = false
-format = "[$hostname](dimmed green) "
+format = "[$hostname](muted) "
 
 [directory]
-style = "cyan"
+style = "fg"
 
 [battery]
 disabled = true
 
 [package]
 symbol = "📦 "
-style = "orange"
+style = "accent3"
 
 [aws]
 format = 'on [$symbol ($profile/$region)]($style) '
-style = 'green'
+style = 'accent2'
 symbol = ""
 
 [gcloud]
 disabled = true
 format = 'on [$symbol($project $region)]($style)'
 symbol = " "
-style = 'green'
+style = 'accent2'
 
 [pulumi]
 format = 'on [$symbol$stack]($style) '
+style = 'accent4'
 
 [python]
-style = "yellow"
+style = "accent3"
 
 [terraform]
 symbol = " "
-style = "purple"
+style = "accent4"
 
 [git_branch]
 format = 'on [$symbol$branch]($style) '
 symbol = " "
-style = "red"
+style = "accent4"
 disabled = false
 
 [git_state]
@@ -74,50 +73,44 @@ untracked = "?"
 deleted = "✖"
 renamed = "➜"
 modified = "✱"
-style = "red"
+style = "accent4"
 disabled = false
-
-[golang]
 
 [kubernetes]
 symbol = '☸ '
 disabled = false
 format = '[$symbol$context( \($namespace\))]($style) '
-style = 'bright_cyan'
-
+style = 'accent6'
 
 [[kubernetes.contexts]]
-# Matches EKS contexts with "prod" in the cluster name
 context_pattern = "arn:aws:eks:.*:cluster/(?P<cluster>[\\w-]*prod[\\w-]*)"
 context_alias = "$cluster"
-style = "red"
+style = "accent5"
 
 [[kubernetes.contexts]]
-# Matches EKS contexts with "stage" or "stg" in the cluster name
 context_pattern = "arn:aws:eks:.*:cluster/(?P<cluster>[\\w-]*stag[\\w-]*)"
 context_alias = "$cluster"
-style = "yellow"
+style = "accent3"
 
 [[kubernetes.contexts]]
-# Matches EKS contexts with "dev" in the cluster name
 context_pattern = "arn:aws:eks:.*:cluster/(?P<cluster>[\\w-]*dev[\\w-]*)"
 context_alias = "$cluster"
-style = "blue"
+style = "accent1"
 
 [[kubernetes.contexts]]
 context_pattern = "arn:aws:eks:.*:cluster/(?P<cluster>[\\w-]+)"
 context_alias = "$cluster"
+style = "muted"
 
 [[kubernetes.contexts]]
 context_pattern = "gke_[^_]+_[^_]+_(?P<cluster>[\\w-]+)"
 context_alias = "gke-$cluster"
+style = "accent6"
 
 [[kubernetes.contexts]]
 context_pattern = "minikube"
 context_alias = "local-minikube"
-style = "cyan"
-
-[[kubernetes.contexts]]
+style = "accent6"
 
 [docker_context]
 disabled = true
@@ -126,3 +119,14 @@ disabled = true
 "~/code/assafdori" = "@personal"
 "~/code/work" = "@compie"
 "~" = "@home"
+
+[palettes.mellow]
+bg = "#1e1e1e"
+fg = "#dcd7ba"
+muted = "#a89984"
+accent1 = "#7e9cd8" # blue-gray
+accent2 = "#98bb6c" # soft green
+accent3 = "#e6c384" # mellow yellow
+accent4 = "#957fb8" # purple
+accent5 = "#d27e99" # soft red
+accent6 = "#7fb4ca" # teal
