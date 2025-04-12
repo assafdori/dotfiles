@@ -1,6 +1,6 @@
 # Dotfiles
 
-![asset](assets.png)
+![asset](assets/assets.png)
 
 Just some config files to make my dev setup feel right.
 
