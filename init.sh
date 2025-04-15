@@ -95,12 +95,12 @@ ln -s "$DOTFILES/zsh/.zshrc" "$HOME/.zshrc"
 # 7. Symlink your main git config
 echo "Symlinking .gitconfig..."
 rm -f "$HOME/.gitconfig"
-ln -s "$DOTFILES_DIR/git/.gitconfig" "$HOME/.gitconfig"
+ln -s "$DOTFILES/git/.gitconfig" "$HOME/.gitconfig"
 
 # 8. Stow everything
 #    If your .stowrc is properly configured, just run stow from $DOTFILES_DIR
 echo "Stowing dotfiles..."
-cd "$DOTFILES_DIR"
+cd "$DOTFILES"
 stow .
 
 # 9. Source the zshrc
