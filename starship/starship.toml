@@ -56,7 +56,7 @@ style = "accent4"
 [git_branch]
 format = 'on [$symbol$branch]($style) '
 symbol = " "
-style = "accent4"
+style = "accent5"
 disabled = false
 
 [git_state]
@@ -73,7 +73,7 @@ untracked = "?"
 deleted = "✖"
 renamed = "➜"
 modified = "✱"
-style = "accent4"
+style = "accent5"
 disabled = false
 
 [kubernetes]
