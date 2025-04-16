@@ -86,7 +86,7 @@ return {
   },
 
   {
-    "vague1k/vague.nvim",
+    "vague2k/vague.nvim",
     priority = 1000,
     lazy = false,
     config = function()
