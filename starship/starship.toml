@@ -2,7 +2,7 @@ add_newline = true
 format = """$username$directory$linebreak$character"""
 right_format = """$all"""
 command_timeout = 1000
-palette = 'mellow'
+palette = 'vague'
 
 [username]
 disabled = true
@@ -22,7 +22,7 @@ disabled = false
 format = "[$hostname](muted) "
 
 [directory]
-style = "fg"
+style = "accent7"
 
 [battery]
 disabled = true
@@ -119,6 +119,18 @@ disabled = true
 "~/code/assafdori" = "@personal"
 "~/code/work" = "@compie"
 "~" = "@home"
+
+[palettes.vague]
+bg = "#141415"
+fg = "#cdcdcd"
+muted = "#606079"
+accent1 = "#6e94b2" # keyword blue
+accent2 = "#8cb66d" # green (plus)
+accent3 = "#e8b589" # string orange
+accent4 = "#aeaed1" # constant purple-gray
+accent5 = "#df6882" # error pink
+accent6 = "#7e98e8" # hint blue
+accent7 = "#b0b0c0" # comment gray"
 
 [palettes.mellow]
 bg = "#1e1e1e"

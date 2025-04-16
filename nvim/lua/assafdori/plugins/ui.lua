@@ -86,11 +86,11 @@ return {
   },
 
   {
-    "thesimonho/kanagawa-paper.nvim",
+    "vague1k/vague.nvim",
     priority = 1000,
     lazy = false,
     config = function()
-      vim.cmd("colorscheme kanagawa-paper-ink")
+      vim.cmd("colorscheme vague")
     end,
   },
 }
