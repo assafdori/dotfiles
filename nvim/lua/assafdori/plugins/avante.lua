@@ -24,7 +24,7 @@ return {
         "create_dir",
         "rename_dir",
         "delete_dir",
-        "bash",
+        -- "bash",
         -- "web_search",
         -- "fetch",
       },
