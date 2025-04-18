@@ -127,6 +127,12 @@ case "$response" in
   ;;
 esac
 
+## 13. Install Fonts
+echo "Installing fonts..."
+FONT_DIR="$HOME/Library/Fonts"
+mkdir -p "$FONT_DIR"
+cp ~/icloud/Documents/Fonts/ "$FONT_DIR"
+
 # 13. Symbolic links
 ln -sf "$SECOND_BRAIN" ~/garden
 ln -sf "$ICLOUD" ~/icloud

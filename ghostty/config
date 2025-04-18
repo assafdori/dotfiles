@@ -1,7 +1,7 @@
 # -----------
 # Style
 # -----------
-#font-family = "IBM Plex Mono"
+font-family = "Berkeley Mono"
 theme = vague
 font-size = 20
 

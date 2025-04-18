@@ -119,6 +119,8 @@ disabled = true
 "~/code/assafdori" = "@personal"
 "~/code/work" = "@compie"
 "~" = "@home"
+"Library/Mobile Documents/com@homeapple@homeCloudDocs" = "@icloud"
+"@icloud/Documents/The Garden" = "@garden"
 
 [palettes.vague]
 bg = "#141415"

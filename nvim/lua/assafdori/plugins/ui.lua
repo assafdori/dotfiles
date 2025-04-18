@@ -86,11 +86,16 @@ return {
   },
 
   {
-    "vague2k/vague.nvim",
-    priority = 1000,
+    "cdmill/neomodern.nvim",
     lazy = false,
+    priority = 1000,
     config = function()
-      vim.cmd("colorscheme vague")
+      require("neomodern").setup({
+        theme = "roseprime", -- 'iceclimber' | 'gyokuro' | 'hojicha' | 'roseprime'
+        variant = "dark", -- 'dark' | 'light'
+        -- optional configuration here
+      })
+      require("neomodern").load()
     end,
   },
 }
