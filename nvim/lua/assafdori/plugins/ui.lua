@@ -86,16 +86,16 @@ return {
   },
 
   {
-    "cdmill/neomodern.nvim",
+    "projekt0n/github-nvim-theme",
+    name = "github-theme",
     lazy = false,
     priority = 1000,
     config = function()
-      require("neomodern").setup({
-        theme = "roseprime", -- 'iceclimber' | 'gyokuro' | 'hojicha' | 'roseprime'
-        variant = "dark", -- 'dark' | 'light'
-        -- optional configuration here
+      require("github-theme").setup({
+        -- ...
       })
-      require("neomodern").load()
+
+      vim.cmd("colorscheme github_dark_high_contrast")
     end,
   },
 }

@@ -1,9 +1,9 @@
 # -----------
 # Style
 # -----------
-font-family = "Berkeley Mono"
-theme = vague
-font-size = 20
+#font-family = "Berkeley Mono"
+theme = github
+font-size = 17
 
 # Custom background & opacity
 # background = #010101
