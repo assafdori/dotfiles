@@ -1,8 +1,9 @@
+# Starship Config
 add_newline = true
 format = """$username$directory$linebreak$character"""
 right_format = """$all"""
 command_timeout = 1000
-palette = 'vague'
+palette = 'github_dark_high_contrast'
 
 [username]
 disabled = true
@@ -122,25 +123,15 @@ disabled = true
 "Library/Mobile Documents/com@homeapple@homeCloudDocs" = "@icloud"
 "@icloud/Documents/The Garden" = "@garden"
 
-[palettes.vague]
-bg = "#141415"
-fg = "#cdcdcd"
-muted = "#606079"
-accent1 = "#6e94b2" # keyword blue
-accent2 = "#8cb66d" # green (plus)
-accent3 = "#e8b589" # string orange
-accent4 = "#aeaed1" # constant purple-gray
-accent5 = "#df6882" # error pink
-accent6 = "#7e98e8" # hint blue
-accent7 = "#b0b0c0" # comment gray"
-
-[palettes.mellow]
-bg = "#1e1e1e"
-fg = "#dcd7ba"
-muted = "#a89984"
-accent1 = "#7e9cd8" # blue-gray
-accent2 = "#98bb6c" # soft green
-accent3 = "#e6c384" # mellow yellow
-accent4 = "#957fb8" # purple
-accent5 = "#d27e99" # soft red
-accent6 = "#7fb4ca" # teal
+# New GitHub Dark High Contrast palette
+[palettes.github_dark_high_contrast]
+bg = "#0a0c10"
+fg = "#f0f3f6"
+muted = "#272b33"
+accent1 = "#71b7ff" # light blue
+accent2 = "#26cd4d" # strong green
+accent3 = "#f0b72f" # vivid yellow
+accent4 = "#cb9eff" # purple
+accent5 = "#ff9492" # pinkish red
+accent6 = "#76e3ea" # teal-ish
+accent7 = "#d9dee3" # lighter gray for directory
