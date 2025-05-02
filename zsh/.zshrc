@@ -66,7 +66,7 @@ alias cat="bat --theme 1337"
 alias cl='clear'
 alias l="eza -l --icons --git -a"
 alias ls="eza --icons"
-alias lt="eza --tree --level=3 --long --icons --git"
+alias lt="eza --tree --level=2 --long --icons --git"
 alias of="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}' | xargs nvim"
 alias cp="cp -riv"
 alias rm="rm -i"
