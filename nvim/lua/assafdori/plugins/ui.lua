@@ -29,17 +29,17 @@ return {
     "mikavilpas/yazi.nvim",
     lazy = true, -- use `event = "VeryLazy"` for netrw replacement
     keys = {
-      -- NOTE: my mapping <leader>lf is soo good but in the LSP cluster
       {
-        "<leader>lf",
+        "<leader>t-",
         function()
           require("yazi").yazi(nil, vim.fn.getcwd())
         end,
-        desc = "Open Yazi (file manager)",
+        desc = "Toggle Yazi",
       },
+      { "<leader>tf", mode = { "n", "v" }, "<cmd>Yazi<cr>", desc = "Toggle Yazi for Current File" },
     },
     opts = {
-      open_for_directories = true,
+      open_for_directories = false,
     },
   },
 
@@ -50,7 +50,6 @@ return {
     --   { "rcarriga/nvim-notify" },
     -- },
     keys = {
-      { "<leader>n", "", desc = "Noice" },
       { "<leader>no", "<cmd>Noice all<cr>", desc = "Open Noice" },
     },
     opts = {
@@ -76,20 +75,27 @@ return {
 
   {
     "catgoose/nvim-colorizer.lua",
-    cmd = "ColorizerToggle",
+    event = { "BufReadPre", "BufNewFile" }, -- Enable on file open
     keys = {
-      { "<leader>ux", "<cmd>ColorizerToggle<cr>", desc = "Colorizer" },
+      { "<leader>ux", "<cmd>ColorizerToggle<cr>", desc = "Toggle Colorizer" },
     },
-    opts = {},
+    opts = {}, -- if you want to pass config options
+    config = function(_, opts)
+      require("colorizer").setup(nil, opts) -- enable for all filetypes by default
+    end,
   },
 
   {
-    "assafdori/tokyodark.nvim",
-    priority = 1000,
+    "projekt0n/github-nvim-theme",
+    name = "github-theme",
     lazy = false,
+    priority = 1000,
     config = function()
-      require("tokyodark").setup()
-      vim.cmd("colorscheme tokyodark")
+      require("github-theme").setup({
+        -- ...
+      })
+
+      vim.cmd("colorscheme github_dark_high_contrast")
     end,
   },
 }

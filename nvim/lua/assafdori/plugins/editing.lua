@@ -91,6 +91,14 @@ return {
   },
 
   {
+    "folke/persistence.nvim",
+    event = "BufReadPre", -- this will only start session saving when an actual file was opened
+    opts = {
+      -- add any custom options here
+    },
+  },
+
+  {
     "gbprod/substitute.nvim",
     keys = {
     -- stylua: ignore start
@@ -110,11 +118,6 @@ return {
         highlight = {
           multiline = false, -- I usually only wnat one line to be highlighted
         },
-      },
-      keys = {
-        -- stylua: ignore start
-        { "<leader>sT", function() Snacks.picker.todo_comments() end, desc = "Todo", },
-        -- stylua: ignore end
       },
     },
   },

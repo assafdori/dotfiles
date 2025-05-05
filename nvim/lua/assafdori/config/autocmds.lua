@@ -48,14 +48,3 @@ api.nvim_create_autocmd("FileType", {
   end,
   desc = "close certain windows with q",
 })
-
-local chezmoi_path = vim.fn.resolve(vim.fn.expand("~/.local/share/chezmoi"))
-vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = {
-    chezmoi_path .. "/**/*", -- files in subdirectories
-  },
-  callback = function()
-    vim.notify("Applying chezmoi changes", vim.log.levels.INFO)
-    vim.system({ "chezmoi", "apply", "-k" })
-  end,
-})

@@ -15,12 +15,15 @@ map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 vim.keymap.set({ "n", "x", "o" }, "H", "^", opts)
 vim.keymap.set({ "n", "x", "o" }, "L", "g_", opts)
 
--- Keep selection while indenting
-map("v", "<", "<gv")
-map("v", ">", ">gv")
+-- Indenting
+map("v", "<", "<gv", { desc = "Unindent selected lines" })
+map("v", ">", ">gv", { desc = "Indent selected lines" })
+map("v", "J", ":m '>+1<cr>gv=gv", { desc = "Move selected lines down" })
+map("v", "K", ":m '<-2<cr>gv=gv", { desc = "Move selected lines up" })
 
 -- Cancel search highlighting with ESC
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Clear hlsearch and ESC" })
+map({ "i" }, "<C-c>", "<esc>", { desc = "Clear hlsearch and ESC" })
 
 -- Press jj or jk to escape from insert mode
 map("i", "jj", "<esc>", { desc = "Escape from insert mode" })
