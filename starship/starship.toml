@@ -1,22 +1,21 @@
+# Starship Config
 add_newline = true
-# A minimal left prompt
 format = """$username$directory$linebreak$character"""
-# move the rest of the prompt to the right
 right_format = """$all"""
 command_timeout = 1000
-#palette = 'oldworld'
+palette = 'github_dark_high_contrast'
 
 [username]
 disabled = true
 show_always = true
-format = '[$user @]($style) '
-style_user = 'color_fg0'
+format = '[$user @]($style)'
+style_user = 'fg'
 aliases = { "assafdori" = "assaf" }
 
 [character]
-success_symbol = "[](green)"
-error_symbol = "[](red)"
-vimcmd_symbol = "[](yellow)"
+success_symbol = "[](accent2)"
+error_symbol = "[](accent5)"
+vimcmd_symbol = "[](accent3)"
 
 [hostname]
 ssh_only = true
@@ -24,7 +23,7 @@ disabled = false
 format = "[$hostname](dimmed green) "
 
 [directory]
-style = "cyan"
+style = "accent7"
 
 [battery]
 disabled = true
@@ -35,7 +34,7 @@ style = "orange"
 
 [aws]
 format = 'on [$symbol ($profile/$region)]($style) '
-style = 'green'
+style = 'accent2'
 symbol = ""
 
 [gcloud]
@@ -44,19 +43,22 @@ format = 'on [$symbol($project $region)]($style)'
 symbol = " "
 style = 'green'
 
+
 [pulumi]
 format = 'on [$symbol$stack]($style) '
+style = 'accent4'
 
 [python]
-style = "yellow"
+style = "accent3"
 
 [terraform]
 symbol = " "
+style = "accent4"
 
 [git_branch]
 format = 'on [$symbol$branch]($style) '
 symbol = " "
-style = "red"
+style = "accent5"
 disabled = false
 
 [git_state]
@@ -77,13 +79,29 @@ style = "red"
 disabled = false
 
 [golang]
+style = "accent5"
+disabled = false
 
 [kubernetes]
 symbol = '☸ '
 disabled = false
 format = '[$symbol$context( \($namespace\))]($style) '
-style = 'bright_cyan'
+style = 'accent6'
 
+[[kubernetes.contexts]]
+context_pattern = "arn:aws:eks:.*:cluster/(?P<cluster>[\\w-]*prod[\\w-]*)"
+context_alias = "$cluster"
+style = "accent5"
+
+[[kubernetes.contexts]]
+context_pattern = "arn:aws:eks:.*:cluster/(?P<cluster>[\\w-]*stag[\\w-]*)"
+context_alias = "$cluster"
+style = "accent3"
+
+[[kubernetes.contexts]]
+context_pattern = "arn:aws:eks:.*:cluster/(?P<cluster>[\\w-]*dev[\\w-]*)"
+context_alias = "$cluster"
+style = "accent1"
 
 [[kubernetes.contexts]]
 # Matches EKS contexts with "prod" in the cluster name
@@ -106,10 +124,17 @@ style = "blue"
 [[kubernetes.contexts]]
 context_pattern = "arn:aws:eks:.*:cluster/(?P<cluster>[\\w-]+)"
 context_alias = "$cluster"
+style = "muted"
 
 [[kubernetes.contexts]]
 context_pattern = "gke_[^_]+_[^_]+_(?P<cluster>[\\w-]+)"
 context_alias = "gke-$cluster"
+style = "accent6"
+
+[[kubernetes.contexts]]
+context_pattern = "minikube"
+context_alias = "local-minikube"
+style = "accent6"
 
 [[kubernetes.contexts]]
 context_pattern = "minikube"
@@ -125,81 +150,20 @@ disabled = true
 "~/Repositories/github.com/assafdori" = "@personal"
 "~/Repositories/github.com/work" = "@compie"
 "~" = "@home"
+"~/code/assafdori" = "@personal"
+"~/code/work" = "@compie"
+"Library/Mobile Documents/com@homeapple@homeCloudDocs" = "@icloud"
+"@icloud/Documents/The Garden" = "@garden"
 
-[palettes.oldworld]
-bg = "#161617"
-fg = "#c9c7cd"
-subtext1 = "#b4b1ba"
-subtext2 = "#9f9ca6"
-subtext3 = "#8b8693"
-subtext4 = "#6c6874"
-bg_dark = "#131314"
-black = "#27272a"
-red = "#ff3f52"
-green = "#90b99f"
-yellow = "#e6b99d"
-purple = "#aca1cf"
-magenta = "#e29eca"
-orange = "#f5a191"
-blue = "#92a2d5"
-cyan = "#85b5ba"
-bright_black = "#353539"
-bright_red = "#ed96b3"
-bright_green = "#a7c8b3"
-bright_yellow = "#eac5ae"
-bright_purple = "#b7aed5"
-bright_magenta = "#e8b0d4"
-bright_orange = "#f6b0a2"
-bright_blue = "#a7b3dd"
-bright_cyan = "#97c0c4"
-gray0 = "#18181a"
-gray1 = "#1b1b1c"
-gray2 = "#2a2a2c"
-gray3 = "#313134"
-gray4 = "#3b3b3e"
-none = "NONE"
-
-[palettes.catppuccin_mocha]
-rosewater = "#f5e0dc"
-flamingo = "#f2cdcd"
-pink = "#f5c2e7"
-mauve = "#cba6f7"
-red = "#f38ba8"
-maroon = "#eba0ac"
-peach = "#fab387"
-yellow = "#f9e2af"
-green = "#a6e3a1"
-teal = "#94e2d5"
-sky = "#89dceb"
-sapphire = "#74c7ec"
-blue = "#89b4fa"
-lavender = "#b4befe"
-text = "#cdd6f4"
-subtext1 = "#bac2de"
-subtext0 = "#a6adc8"
-overlay2 = "#9399b2"
-overlay1 = "#7f849c"
-overlay0 = "#6c7086"
-surface2 = "#585b70"
-surface1 = "#45475a"
-surface0 = "#313244"
-base = "#1e1e2e"
-mantle = "#181825"
-crust = "#11111b"
-
-[palettes.gruvbox_dark]
-color_fg0 = '#fbf1c7'
-color_bg1 = '#3c3836'
-color_bg3 = '#665c54'
-color_blue = '#458588'
-color_aqua = '#689d6a'
-color_green = '#98971a'
-color_orange = '#d65d0e'
-color_purple = '#b16286'
-color_red = '#cc241d'
-color_yellow = '#d79921'
-color_teal = "#94e2d5"
-color_white = "#ebdbb2"
-flamingo = "#f2cdcd"
-light_brown = "#967969"
-lavender = "#b4befe"
+# New GitHub Dark High Contrast palette
+[palettes.github_dark_high_contrast]
+bg = "#0a0c10"
+fg = "#f0f3f6"
+muted = "#272b33"
+accent1 = "#71b7ff" # light blue
+accent2 = "#26cd4d" # strong green
+accent3 = "#f0b72f" # vivid yellow
+accent4 = "#cb9eff" # purple
+accent5 = "#ff9492" # pinkish red
+accent6 = "#76e3ea" # teal-ish
+accent7 = "#d9dee3" # lighter gray for directory

@@ -1,4 +1,5 @@
 ---
+quitOnTopLevelReturn: true
 notARepository: skip
 promptToReturnFromSubprocess: false
 git:
@@ -6,3 +7,4 @@ git:
     pager: delta --paging=never
   merging:
     args: --no-ff
+  overrideGpg: true

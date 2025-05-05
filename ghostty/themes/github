@@ -1,0 +1,25 @@
+# Github Dark High Contrast (Based on Primitives)
+
+palette = 0=#0a0c10
+palette = 1=#ff9492
+palette = 2=#26cd4d
+palette = 3=#f0b72f
+palette = 4=#71b7ff
+palette = 5=#cb9eff
+palette = 6=#76e3ea
+palette = 7=#d9dee3
+
+palette = 8=#272b33
+palette = 9=#ffb1af
+palette = 10=#4ae168
+palette = 11=#f7c843
+palette = 12=#91cbff
+palette = 13=#dbb7ff
+palette = 14=#b3f0ff
+palette = 15=#ffffff
+
+foreground = #f0f3f6
+background = #0a0c10
+cursor-color = #f0f3f6
+selection-background = #264265
+selection-foreground = #f0f3f6

@@ -1,23 +1,53 @@
 # -----------
 # Style
 # -----------
-font-family = "CommitMono"
-theme = tokyodark
-font-size = 18
+#font-family = "Berkeley Mono"
+theme = github
+font-size = 17
 
-macos-titlebar-style = hidden
-
-quit-after-last-window-closed = true
-
-copy-on-select = true
-
-window-padding-balance = true
-window-padding-y = 0
-window-padding-x = 0
-
-cursor-style = block
-cursor-style-blink = true
-cursor-opacity=0.96
-
+# Custom background & opacity
 # background = #010101
 # background-opacity = 0.93
+
+# Adjust cell width slightly
+# adjust-cell-width = -0%
+
+# -----------
+# Window
+# -----------
+macos-titlebar-style = hidden
+macos-window-shadow = true
+quit-after-last-window-closed = true
+confirm-close-surface = false
+
+# -----------
+# Clipboard
+# -----------
+copy-on-select = true
+clipboard-read = allow
+clipboard-write = allow
+
+# -----------
+# Padding
+# -----------
+window-padding-balance = true
+window-padding-y = 2,2
+window-padding-x = 4,4
+
+# -----------
+# Cursor
+# -----------
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-style-blink = true
+cursor-opacity = 0.96
+
+# -----------
+# MacOS
+# -----------
+macos-option-as-alt = true
+
+# -----------
+# Keybinding
+# -----------
+keybind = cmd+k=text:\x01T

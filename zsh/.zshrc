@@ -40,6 +40,24 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # Modify or remove links that don't apply to Linux (e.g., iCloud)
 # ln -sf "$SECOND_BRAIN" ~/garden
 # ln -sf "$ICLOUD" ~/icloud
+# Environment variables
+export LANG=en_US.UTF-8
+export EDITOR="nvim"
+export VISUAL="$EDITOR"
+export GOPATH="$HOME/go"
+export KUBECONFIG="$HOME/.kube/config"
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+
+# Directory paths
+export GARDEN=("/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs/Documents/The Garden")
+export ICLOUD=("/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs")
+export REPOS="$HOME/code"
+export GITUSER="assafdori"
+export GHREPOS="$REPOS/$GITUSER"
+export XDG_CONFIG_HOME="$HOME"/.config
+export DOTFILES="$HOME/code/assafdori/dotfiles"
+>>>>>>> feat/mcp-hub:zsh/.zshrc
 
 # ZSH configuration
 setopt prompt_subst
@@ -69,7 +87,6 @@ bindkey 'jj' vi-cmd-mode
 eval "$(starship init zsh)"
 
 # Base aliases
-alias ssh="kitty +kitten ssh" # fix for $TERM issues
 alias la=tree
 alias cat="bat --theme 1337"
 alias cl='clear'
@@ -77,17 +94,20 @@ alias l="eza -l --icons --git -a"
 alias ls="eza --icons"
 alias lt="eza --tree --level=2 --long --icons --git"
 alias of="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}' | xargs nvim"
+alias cp="cp -riv"
+alias rm="rm -i"
 alias http="xh"
 alias rr='ranger'
 alias ff="fastfetch"
 alias v="/home/linuxbrew/.linuxbrew/bin/nvim"  # Update for Homebrew nvim location
+
 
 # Git aliases
 alias gc="git commit -m"
 alias gca="git commit -a -m"
 alias gp="git push origin HEAD"
 alias gpu="git pull origin"
-alias gst="git status"
+alias gs="git status --short"
 alias glog="git log --graph --topo-order --pretty='%w(100,0,6)%C(yellow)%h%C(bold)%C(black)%d %C(cyan)%ar %C(green)%an%n%C(bold)%C(white)%s %N' --abbrev-commit"
 alias gdiff="git diff"
 alias gco="git checkout"
@@ -114,11 +134,12 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
-alias sb="cd \$SECOND_BRAIN"
+alias garden="cd \$GARDEN"
 alias icloud="cd \$ICLOUD"
 alias xdg="cd \"$XDG_CONFIG_HOME/\""
 alias repos="cd $REPOS"
 alias ghrepos="cd $GHREPOS"
+alias work="cd $REPOS/work/"
 
 # Kubernetes aliases
 alias k="kubectl"
@@ -139,8 +160,8 @@ alias k8s='nvim +"lua require(\"kubectl\").open()"'
 # Terraform aliases
 alias tf="terraform"
 alias tfsl="terraform state list"
-alias tfdev='terraform apply -var-file=dev.tfvars'
-alias tfprod='terraform apply -var-file=prod.tfvars'
+alias tfdev="terraform apply -var-file=dev.tfvars"
+alias tfprod="terraform apply -var-file=prod.tfvars"
 
 # Tmux aliases
 alias ta="tmux attach || tmux new -A -s default"
@@ -154,6 +175,7 @@ alias pg="pwgen -sy -1 15 | pbcopy"
 
 # Cloud aliases
 alias aws-profile='export AWS_PROFILE=$(aws configure list-profiles | fzf --prompt "Select AWS profile:")'
+alias gcp-profile='export CLOUDSDK_ACTIVE_CONFIG_NAME=$(gcloud config configurations list --format="value(name)" | fzf --prompt "Select GCP configuration: ")'
 
 # Functions
 function ss() {
@@ -168,35 +190,86 @@ function ss() {
   }
 }
 # DevOps tmux session setup
+# Tmux session management
 devops() {
-    local session_name="$GITUSER"
+    local session_name="${1:-$GITUSER}" # Default session name is $GITUSER
 
-    if tmux has-session -t $session_name 2>/dev/null; then
-        echo "Session '$session_name' already exists. Attaching..."
+    # Check if tmux is available
+    command -v tmux >/dev/null 2>&1 || { echo "tmux is not installed."; return 1; }
+
+    # Check if already inside a tmux session
+    if [ -n "$TMUX" ]; then
+        echo "Already inside a tmux session. Setting up 'devops' environment in the current session..."
+        
+        # Clear existing windows (optional: prevent clutter)
+        tmux kill-window -a 2>/dev/null
+
+        # Create windows and panes for the current session
+        tmux new-window -n neovim
+        tmux send-keys "nvim" C-m
+
+        tmux new-window -n terminal
+        tmux send-keys "clear" C-m
+
+        tmux new-window -n git
+        tmux send-keys "lazygit" C-m
+
+        tmux new-window -n k9s
+        tmux send-keys "k9s" C-m
+
+        tmux new-window -n top
+        tmux send-keys "btop" C-m
+
+        tmux new-window -n logs
+        tmux split-window -h
+        tmux send-keys "tail -f /var/log/syslog" C-m
+        tmux select-pane -t 1
+        tmux send-keys "tail -f /var/log/auth.log" C-m
+
+        tmux select-window -t neovim # Focus on the first window
+    else
+        # If not inside tmux, create a new session
+        if tmux has-session -t $session_name 2>/dev/null; then
+            echo "Session '$session_name' already exists. Attaching..."
+            tmux attach-session -t $session_name
+            return
+        fi
+
+        echo "Creating new tmux session '$session_name'..."
+        tmux new-session -d -s $session_name -n neovim
+        tmux send-keys "nvim" C-m
+
+        tmux new-window -t $session_name -n yazi
+        tmux send-keys "yazi" C-m
+
+        tmux new-window -t $session_name -n git
+        tmux send-keys "lazygit" C-m
+
+        tmux new-window -t $session_name -n k9s
+        tmux send-keys "k9s" C-m
+
+        tmux new-window -t $session_name -n top
+        tmux send-keys "btop" C-m
+
+        tmux new-window -t $session_name -n helm
+        tmux send-keys "helm tui" C-m
+
+        tmux select-window -t $session_name:1
         tmux attach-session -t $session_name
-        return
     fi
+}
 
-    tmux new-session -d -s $session_name -n neovim
-    tmux send-keys "nvim" C-m
 
-    tmux new-window -t $session_name -n terminal
-    tmux send-keys "clear" C-m
-
-    tmux new-window -t $session_name -n git
-    tmux send-keys "lazygit" C-m
-
-    tmux new-window -t $session_name -n k9s
-    tmux send-keys "k9s" C-m
-
-    tmux new-window -t $session_name -n top
-    tmux send-keys "btop" C-m
-
-    tmux new-window -t $session_name -n helm
-    tmux send-keys "helm tui" C-m
-
-    tmux select-window -t $session_name:1
-    tmux attach-session -t $session_name
+function ss() {
+  {
+    exec </dev/tty
+    exec <&1
+    local session
+    session=$(sesh list -t -c | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
+    zle reset-prompt > /dev/null 2>&1 || true
+    [[ -z "$session" ]] && return
+    sesh connect $session
+  }
 }
 
 # Copy-cat function: cap
@@ -216,6 +289,14 @@ fcd() { cd "$(find . -type d -not -path '*/.*' | fzf)" && l; }
 f() { echo "$(find . -type f -not -path '*/.*' | fzf)" | pbcopy }
 fv() { nvim "$(find . -type f -not -path '*/.*' | fzf)" }
 
+# Yank to the system clipboard
+function vi-yank-xclip {
+    zle vi-yank
+   echo "$CUTBUFFER" | pbcopy -i
+}
+zle -N vi-yank-xclip
+bindkey -M vicmd 'y' vi-yank-xclip
+
 # Duckduckgo search
 function ddg() {
     open "https://duckduckgo.com/?q=$*"
@@ -230,3 +311,6 @@ eval "$(zoxide init zsh)"
 
 . "$HOME/.atuin/bin/env"
 eval "$(atuin init zsh)"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform

@@ -2,6 +2,7 @@ return {
   "yetone/avante.nvim",
   event = "VeryLazy",
   version = false, -- Never set this value to "*"! Never!
+  build = "make",
   config = function()
     require("avante").setup({
       provider = "copilot", -- The provider used in Aider mode or in the planning phase of Cursor Planning Mode
