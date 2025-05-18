@@ -8,6 +8,7 @@ path=(
     /bin
     /usr/sbin
     /sbin
+    ${HOME}/.local/bin
     ${GOPATH}/bin
     ${HOME}/.cargo/bin
     ${HOME}/.vimpkg/bin
