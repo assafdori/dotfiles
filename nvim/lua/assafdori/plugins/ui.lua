@@ -29,7 +29,13 @@ return {
     "mikavilpas/yazi.nvim",
     lazy = true, -- use `event = "VeryLazy"` for netrw replacement
     keys = {
-      { "<leader>t-", function() require("yazi").yazi(nil, vim.fn.getcwd()) end, desc = "Toggle Yazi", },
+      {
+        "<leader>t-",
+        function()
+          require("yazi").yazi(nil, vim.fn.getcwd())
+        end,
+        desc = "Toggle Yazi",
+      },
       { "<leader>tf", mode = { "n", "v" }, "<cmd>Yazi<cr>", desc = "Toggle Yazi for Current File" },
     },
     opts = {
@@ -80,12 +86,16 @@ return {
   },
 
   {
-    "assafdori/tokyodark.nvim",
-    priority = 1000,
+    "projekt0n/github-nvim-theme",
+    name = "github-theme",
     lazy = false,
+    priority = 1000,
     config = function()
-      require("tokyodark").setup()
-      vim.cmd("colorscheme tokyodark")
+      require("github-theme").setup({
+        -- ...
+      })
+
+      vim.cmd("colorscheme github_dark_high_contrast")
     end,
   },
 }

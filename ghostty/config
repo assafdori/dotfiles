@@ -1,16 +1,16 @@
 # -----------
 # Style
 # -----------
-#font-family = "CommitMono"
-theme = tokyodark
-font-size = 18
+#font-family = "Berkeley Mono"
+theme = github
+font-size = 17
 
 # Custom background & opacity
 # background = #010101
 # background-opacity = 0.93
 
 # Adjust cell width slightly
-adjust-cell-width = -4%
+# adjust-cell-width = -0%
 
 # -----------
 # Window
@@ -31,8 +31,8 @@ clipboard-write = allow
 # Padding
 # -----------
 window-padding-balance = true
-window-padding-y = 0
-window-padding-x = 1,1
+window-padding-y = 2,2
+window-padding-x = 4,4
 
 # -----------
 # Cursor
