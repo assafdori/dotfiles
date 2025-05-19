@@ -57,7 +57,6 @@ export GITUSER="assafdori"
 export GHREPOS="$REPOS/$GITUSER"
 export XDG_CONFIG_HOME="$HOME"/.config
 export DOTFILES="$HOME/code/assafdori/dotfiles"
->>>>>>> feat/mcp-hub:zsh/.zshrc
 
 # ZSH configuration
 setopt prompt_subst
@@ -300,6 +299,10 @@ bindkey -M vicmd 'y' vi-yank-xclip
 # Duckduckgo search
 function ddg() {
     open "https://duckduckgo.com/?q=$*"
+}
+
+function google() {
+    open "https://www.google.com/search?q=$*"
 }
 
 # Load additional tools
