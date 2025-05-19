@@ -263,6 +263,11 @@ function ddg() {
     open "https://duckduckgo.com/?q=$*"
 }
 
+# Google search
+function google() {
+    open "https://www.google.com/search?q=$*"
+}
+
 # Load additional tools
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval $(thefuck --alias)
