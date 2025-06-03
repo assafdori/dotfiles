@@ -5,7 +5,7 @@ return {
       default_global_keymaps = true, -- If false, disables all default global keymaps
       keymap = {
         global = {
-          toggle = "<leader>ag", -- Open goose. Close if opened
+          toggle = "<leader>aa", -- Open goose. Close if opened
           open_input = "<leader>ai", -- Opens and focuses on input window on insert mode
           open_input_new_session = "<leader>aI", -- Opens and focuses on input window on insert mode. Creates a new session
           open_output = "<leader>ao", -- Opens and focuses on output window
