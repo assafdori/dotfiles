@@ -237,7 +237,7 @@ function ss() {
 cap() {
   # If no arguments and nothing on stdin, show usage
   if [[ -t 0 && $# -eq 0 ]]; then
-    echo "Usage: ccat [file ...]"
+    echo "Usage: cap [file ...]"
     return 1
   fi
 
