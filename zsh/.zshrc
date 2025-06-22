@@ -8,6 +8,7 @@ path=(
     /bin
     /usr/sbin
     /sbin
+    ${HOME}/.local/bin
     ${GOPATH}/bin
     ${HOME}/.cargo/bin
     ${HOME}/.vimpkg/bin
@@ -236,7 +237,7 @@ function ss() {
 cap() {
   # If no arguments and nothing on stdin, show usage
   if [[ -t 0 && $# -eq 0 ]]; then
-    echo "Usage: ccat [file ...]"
+    echo "Usage: cap [file ...]"
     return 1
   fi
 
@@ -260,6 +261,11 @@ bindkey -M vicmd 'y' vi-yank-xclip
 # Duckduckgo search
 function ddg() {
     open "https://duckduckgo.com/?q=$*"
+}
+
+# Google search
+function google() {
+    open "https://www.google.com/search?q=$*"
 }
 
 # Load additional tools
