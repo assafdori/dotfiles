@@ -24,7 +24,7 @@ Just some config files to make my dev setup feel right.
    cd ~/dotfiles && ./init.sh
    ```
 
-3. Done. No fuss, no drama.
+3. Done
 
 ## Why?
 
