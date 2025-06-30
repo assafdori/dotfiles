@@ -23,7 +23,7 @@ disabled = false
 format = "[$hostname](muted) "
 
 [directory]
-style = "accent7"
+style = "fg"
 
 [battery]
 disabled = true
