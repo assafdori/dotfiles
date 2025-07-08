@@ -4,6 +4,7 @@ typeset -U path  # Ensure unique entries in PATH
 path=(
     /opt/homebrew/bin
     /usr/local/bin
+    /usr/local/sbin
     /usr/bin
     /bin
     /usr/sbin
@@ -41,9 +42,17 @@ autoload -Uz compinit bashcompinit
 compinit
 bashcompinit
 
-# Shell completions
+# Kubectl completion
 source <(kubectl completion zsh)
-complete -C '/opt/homebrew/bin/aws_completer' aws
+
+# AWS CLI autocompletion
+if [[ "$(uname -m)" == "arm64" ]]; then
+  # Apple Silicon
+  complete -C '/opt/homebrew/bin/aws_completer' aws
+elif [[ "$(uname -m)" == "x86_64" ]]; then
+  # Intel Macs
+  complete -C '/usr/local/bin/aws_completer' aws
+fi
 
 # Plugin sourcing
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
