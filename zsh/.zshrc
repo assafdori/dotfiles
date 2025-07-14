@@ -54,6 +54,15 @@ elif [[ "$(uname -m)" == "x86_64" ]]; then
   complete -C '/usr/local/bin/aws_completer' aws
 fi
 
+# GCP CLI autocompletion
+if [ -f /opt/homebrew/share/google-cloud-sdk/path.zsh.inc ]; then
+  source /opt/homebrew/share/google-cloud-sdk/path.zsh.inc
+fi
+
+if [ -f /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc ]; then
+  source /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc
+fi
+
 # Plugin sourcing
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -159,6 +168,7 @@ alias pg="pwgen -sy -1 15 | pbcopy"
 # Cloud aliases
 alias aws-profile='export AWS_PROFILE=$(aws configure list-profiles | fzf --prompt "Select AWS profile:")'
 alias gcp-profile='export CLOUDSDK_ACTIVE_CONFIG_NAME=$(gcloud config configurations list --format="value(name)" | fzf --prompt "Select GCP configuration: ")'
+alias gcp-project='export SELECTED_PROJECT=$(gcloud projects list --format="value(projectId)" | fzf --prompt="Select GCP project: ") gcloud config set project $SELECTED_PROJECT '
 
 # Tmux session management
 devops() {
