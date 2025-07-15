@@ -55,12 +55,24 @@ elif [[ "$(uname -m)" == "x86_64" ]]; then
 fi
 
 # GCP CLI autocompletion
-if [ -f /opt/homebrew/share/google-cloud-sdk/path.zsh.inc ]; then
-  source /opt/homebrew/share/google-cloud-sdk/path.zsh.inc
-fi
+if [[ "$(uname -m)" == "arm64" ]]; then
+  # Apple Silicon
+  if [ -f /opt/homebrew/share/google-cloud-sdk/path.zsh.inc ]; then
+    source /opt/homebrew/share/google-cloud-sdk/path.zsh.inc
+  fi
 
-if [ -f /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc ]; then
-  source /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc
+  if [ -f /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc ]; then
+    source /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc
+  fi
+elif [[ "$(uname -m)" == "x86_64" ]]; then
+  # Intel Macs
+  if [ -f /usr/local/share/google-cloud-sdk/path.zsh.inc ]; then
+    source /usr/local/share/google-cloud-sdk/path.zsh.inc
+  fi
+
+  if [ -f /usr/local/share/google-cloud-sdk/completion.zsh.inc ]; then
+    source /usr/local/share/google-cloud-sdk/completion.zsh.inc
+  fi
 fi
 
 # Plugin sourcing
