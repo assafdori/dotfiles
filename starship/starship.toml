@@ -39,9 +39,10 @@ symbol = ""
 
 [gcloud]
 disabled = false
-format = 'on [$symbol($project $region)]($style)'
+format = 'via [$symbol$account@$project/($region)]($style)'
 symbol = " "
 style = 'accent2'
+detect_env_vars = ['CLOUDSDK_CONFIG', 'CLOUDSDK_ACTIVE_CONFIG_NAME']
 
 [pulumi]
 format = 'on [$symbol$stack]($style) '
