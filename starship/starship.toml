@@ -38,7 +38,7 @@ style = 'accent2'
 symbol = ""
 
 [gcloud]
-disabled = true
+disabled = false
 format = 'on [$symbol($project $region)]($style)'
 symbol = " "
 style = 'accent2'
