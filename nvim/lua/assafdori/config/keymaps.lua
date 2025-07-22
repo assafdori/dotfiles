@@ -2,6 +2,11 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+-- Toggle between dark and light theme
+vim.keymap.set("n", "<leader>ut", function()
+  vim.cmd("ToggleTheme")
+end, { desc = "Toggle dark/light theme" })
+
 local function map(mode, l, r, opts)
   opts = opts or {}
   vim.keymap.set(mode, l, r, opts)
