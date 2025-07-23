@@ -103,20 +103,20 @@ return {
           vim.cmd("colorscheme github_dark_high_contrast")
           -- Explicitly set cursor color for dark mode (white box, black text)
           vim.api.nvim_set_hl(0, "Cursor", { fg = "#0a0c10", bg = "#f0f3f6" })
-          vim.o.guicursor = 'n-v-c:block-Cursor/lCursor-blinkon0' ..
-            ',i-ci-ve:ver25-Cursor/lCursor-blinkon1' ..
-            ',r-cr:hor20-Cursor/lCursor-blinkon0' ..
-            ',o:hor50-Cursor/lCursor-blinkon0'
+          vim.o.guicursor = "n-v-c:block-Cursor/lCursor-blinkon0"
+            .. ",i-ci-ve:ver25-Cursor/lCursor-blinkon1"
+            .. ",r-cr:hor20-Cursor/lCursor-blinkon0"
+            .. ",o:hor50-Cursor/lCursor-blinkon0"
         else
           vim.o.background = "light"
           vim.cmd("colorscheme github_light_high_contrast")
           -- Set cursor color to blue for visibility in light mode
           vim.api.nvim_set_hl(0, "Cursor", { fg = "#ffffff", bg = "#2563eb" })
           vim.api.nvim_set_hl(0, "CursorLine", { bg = "#a5b4fc" })
-          vim.o.guicursor = 'n-v-c:block-Cursor/lCursor-blinkon0' ..
-            ',i-ci-ve:ver25-Cursor/lCursor-blinkon1' ..
-            ',r-cr:hor20-Cursor/lCursor-blinkon0' ..
-            ',o:hor50-Cursor/lCursor-blinkon0'
+          vim.o.guicursor = "n-v-c:block-Cursor/lCursor-blinkon0"
+            .. ",i-ci-ve:ver25-Cursor/lCursor-blinkon1"
+            .. ",r-cr:hor20-Cursor/lCursor-blinkon0"
+            .. ",o:hor50-Cursor/lCursor-blinkon0"
         end
       end
 
