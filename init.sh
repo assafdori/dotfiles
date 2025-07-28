@@ -137,4 +137,34 @@ cp ~/icloud/Documents/Fonts/ "$FONT_DIR"
 ln -sf "$SECOND_BRAIN" ~/garden
 ln -sf "$ICLOUD" ~/icloud
 
+# 14. Bootstrap SSH keys
+echo "Bootstrapping SSH keys..."
+
+SSH_SOURCE="/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs/Documents/ssh"
+SSH_DEST="$HOME/.ssh"
+
+# Ensure .ssh directory exists
+mkdir -p "$SSH_DEST"
+
+# Copy keys from iCloud folder
+cp "$SSH_SOURCE"/* "$SSH_DEST"/
+
+# Fix permissions
+chmod 700 "$SSH_DEST"
+chmod 600 "$SSH_DEST"/*
+chmod 644 "$SSH_DEST"/*.pub 2>/dev/null || true
+
+# Start ssh-agent if not running
+if ! pgrep -u "$USER" ssh-agent >/dev/null; then
+  eval "$(ssh-agent -s)"
+fi
+
+# Add all private keys (optional)
+for key in "$SSH_DEST"/*; do
+  if [[ "$key" != *.pub ]]; then
+    ssh-add "$key" || true
+  fi
+done
+echo "SSH keys bootstrapped."
+
 echo "Done! Your Mac is set up."

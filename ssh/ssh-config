@@ -14,4 +14,10 @@ Host github.com
 
 Host gitlab.com
   AddKeysToAgent yes
+  UseKeychain yes
   IdentityFile ~/.ssh/gitlab
+
+Host bitbucket.org
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/bitbucket
