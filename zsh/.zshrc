@@ -20,6 +20,7 @@ export PATH
 # Environment variables
 export LANG=en_US.UTF-8
 export EDITOR="nvim"
+export MANPAGER="nvim +Man!"
 export VISUAL="$EDITOR"
 export GOPATH="$HOME/go"
 export KUBECONFIG="$HOME/.kube/config"
@@ -252,7 +253,7 @@ devops() {
     fi
 }
 
-
+# Sesh session management
 function ss() {
   {
     exec </dev/tty
@@ -275,6 +276,13 @@ cap() {
 
   cat "$@" | pbcopy
 }
+
+# Finder function: open current directory in Finder
+finder() {
+    open .
+}
+zle -N finder
+bindkey '^f' finder
 
 # Navigation functions
 cx() { cd "$@" && l; }
