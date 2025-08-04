@@ -2,7 +2,7 @@
 # Style
 # -----------
 font-family = "Berkeley Mono"
-theme = github
+theme = no-clown-fiesta
 font-size = 17
 
 # Custom background & opacity

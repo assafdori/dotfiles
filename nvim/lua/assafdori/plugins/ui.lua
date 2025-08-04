@@ -86,60 +86,15 @@ return {
   },
 
   {
-    "projekt0n/github-nvim-theme",
-    name = "github-theme",
-    lazy = false,
+    "assafdori/ssshhh",
     priority = 1000,
+    lazy = false,
     config = function()
-      require("github-theme").setup({
-        -- ...
-      })
-
-      -- Theme toggle logic
-      local current_bg = vim.o.background
-      local function set_theme(mode)
-        if mode == "dark" then
-          vim.o.background = "dark"
-          vim.cmd("colorscheme github_dark_high_contrast")
-          -- Explicitly set cursor color for dark mode (white box, black text)
-          vim.api.nvim_set_hl(0, "Cursor", { fg = "#0a0c10", bg = "#f0f3f6" })
-          vim.o.guicursor = "n-v-c:block-Cursor/lCursor-blinkon0"
-            .. ",i-ci-ve:ver25-Cursor/lCursor-blinkon1"
-            .. ",r-cr:hor20-Cursor/lCursor-blinkon0"
-            .. ",o:hor50-Cursor/lCursor-blinkon0"
-        else
-          vim.o.background = "light"
-          vim.cmd("colorscheme github_light_high_contrast")
-          -- Set cursor color to blue for visibility in light mode
-          vim.api.nvim_set_hl(0, "Cursor", { fg = "#ffffff", bg = "#2563eb" })
-          vim.api.nvim_set_hl(0, "CursorLine", { bg = "#a5b4fc" })
-          vim.o.guicursor = "n-v-c:block-Cursor/lCursor-blinkon0"
-            .. ",i-ci-ve:ver25-Cursor/lCursor-blinkon1"
-            .. ",r-cr:hor20-Cursor/lCursor-blinkon0"
-            .. ",o:hor50-Cursor/lCursor-blinkon0"
-        end
-      end
-
-      -- Set initial theme (default: dark)
-      set_theme("dark")
-
-      -- Toggle function
-      function ToggleTheme()
-        if vim.o.background == "dark" then
-          set_theme("light")
-        else
-          set_theme("dark")
-        end
-      end
-
-      -- User command
-      vim.api.nvim_create_user_command("ToggleTheme", ToggleTheme, {})
+      vim.cmd.colorscheme("no-clown-fiesta")
+      vim.api.nvim_set_hl(0, "CursorLine", { bg = "#202020", underline = false })
+      vim.api.nvim_set_hl(0, "@keyword", { fg = "#b46958", bold = true })
+      vim.api.nvim_set_hl(0, "@type", { fg = "#BAD7FF" })
+      vim.api.nvim_set_hl(0, "@property", { fg = "#88afa2" })
     end,
-  },
-  {
-    "mcauley-penney/visual-whitespace.nvim",
-    config = true,
-    event = "ModeChanged *:[vV\22]", -- optionally, lazy load on entering visual mode
-    opts = {},
   },
 }

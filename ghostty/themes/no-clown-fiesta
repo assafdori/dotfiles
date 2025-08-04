@@ -1,0 +1,25 @@
+# No Clown Fiesta (Official) for Ghostty
+
+palette = 0=#202020
+palette = 1=#ac4142
+palette = 2=#90a959
+palette = 3=#f4bf75
+palette = 4=#e1e1e1
+palette = 5=#aa759f
+palette = 6=#5f9ea0
+palette = 7=#d0d0d0
+
+palette = 8=#555555
+palette = 9=#cd5c5c
+palette = 10=#90a959
+palette = 11=#ffdead
+palette = 12=#a5d6ff
+palette = 13=#cf75bc
+palette = 14=#75b5aa
+palette = 15=#e1e1e1
+
+foreground = #e1e1e1
+background = #151515
+cursor-color = #e1e1e1
+selection-background = #5e5e5e
+selection-foreground = #e1e1e1

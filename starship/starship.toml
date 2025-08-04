@@ -3,7 +3,7 @@ add_newline = true
 format = """$username$directory$linebreak$character"""
 right_format = """$all"""
 command_timeout = 1000
-palette = 'github_dark_high_contrast'
+palette = 'no-clown-fiesta'
 
 [username]
 disabled = true
@@ -23,7 +23,7 @@ disabled = false
 format = "[$hostname](muted) "
 
 [directory]
-style = "fg"
+style = "white"
 
 [battery]
 disabled = true
@@ -124,15 +124,15 @@ disabled = true
 "Library/Mobile Documents/com@homeapple@homeCloudDocs" = "@icloud"
 "@icloud/Documents/The Garden" = "@garden"
 
-# New GitHub Dark High Contrast palette
-[palettes.github_dark_high_contrast]
-bg = "#0a0c10"
-fg = "#f0f3f6"
-muted = "#272b33"
-accent1 = "#71b7ff" # light blue
-accent2 = "#26cd4d" # strong green
-accent3 = "#f0b72f" # vivid yellow
-accent4 = "#cb9eff" # purple
-accent5 = "#ff9492" # pinkish red
-accent6 = "#76e3ea" # teal-ish
-accent7 = "#d9dee3" # lighter gray for directory
+[palettes.no-clown-fiesta]
+white = "#ffffff"   # white
+bg = "#151515"      # background
+fg = "#e1e1e1"      # foreground (main text)
+muted = "#373737"   # muted text / disabled
+accent1 = "#73c0ff" # light blue
+accent2 = "#90a959" # strong green
+accent3 = "#f4bf75" # vivid yellow
+accent4 = "#aa749f" # purple/magenta
+accent5 = "#b46958" # red/orange/pinkish
+accent6 = "#88afa2" # cyan/teal
+accent7 = "#d0d0d0" # light gray for folders
