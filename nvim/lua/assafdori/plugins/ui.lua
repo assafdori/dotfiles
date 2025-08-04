@@ -97,4 +97,10 @@ return {
       vim.api.nvim_set_hl(0, "@property", { fg = "#88afa2" })
     end,
   },
+  {
+    "mcauley-penney/visual-whitespace.nvim",
+    config = true,
+    event = "ModeChanged *:[vV\22]", -- optionally, lazy load on entering visual mode
+    opts = {},
+  },
 }
