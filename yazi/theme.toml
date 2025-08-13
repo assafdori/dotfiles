@@ -1,166 +1,137 @@
-# Сolor palette: https://stephango.com/flexoki
-# ---
-# black       "#100F0F" bg
-# base-950    "#1C1B1A" bg-2
-# base-900    "#282726" ui
-# base-850    "#343331" ui-2
-# base-800    "#403E3C" ui-3
-# base-700    "#575653" tx-3
-# base-500    "#878580" tx-2
-# base-200    "#CECDC3" tx
-# red-400     "#D14D41" re
-# orange-400  "#DA702C" or
-# yellow-400  "#D0A215" ye
-# yellow-600  "#AD8301" ye-2
-# green-400   "#879A39" gr
-# cyan-400    "#3AA99F" cy
-# cyan-600    "#24837B" cy-2
-# cyan-700    "#1C6C66" cy-700
-# cyan-900    "#122F2C" cy-900
-# blue-400    "#4385BE" bl
-# purple-400  "#8B7EC8" pu
-# magenta-400 "#CE5D97" ma
+## Color palette
+## Check https://github.com/rebelot/kanagawa.nvim for more details
+# sumiInk0      "#16161d" dark bg
+# sumiInk3      "#181616" bg
+# sumiInk4      "#0d0c0c"
+# sumiInk6      "#54546d"
+# fujiWhite     "#c5c9c5" fg
+# oldWhite      "#7fb4ca" dark fg
+# fujiGray      "#a6a69c"
+# peachRed      "#ff5d62"
+# autumnRed     "#c4746e"
+# crystalBlue   "#8ba4b0"
+# waveRed       "#e46876"
+# carpYellow    "#e6c384"
+# springGreen   "#8a9a7b"
+# autumnGreen   "#76946a"
+# oniViolet     "#a292a3"
+# waveAqua1     "#6a9589"
+# surimiOrange  "#e46876"
+# waveAqua2     "#7aa89f"
 
 [mgr]
-cwd = { fg = "#CECDC3", bold = true } # tx
+marker_copied = { fg = "#8a9a7b", bg = "#8a9a7b" }
+marker_cut = { fg = "#e46876", bg = "#e46876" }
+marker_marked = { fg = "#a292a3", bg = "#a292a3" }
+marker_selected = { fg = "#e46876", bg = "#e46876" }
 
-# Hovered
-hovered = { bg = "#1C1B1A" }           # bg-2
-preview_hovered = { underline = true }
+cwd = { fg = "#e6c384" }
+hovered = { reversed = true }
+preview_hovered = { reversed = true }
 
-# Find
-find_keyword = { fg = "#AD8301", reversed = true }             # ye-2
-find_position = { fg = "#575653", bold = true, italic = true } # tx-3
+find_keyword = { fg = "#e46876", bg = "#181616" }
+find_position = {}
 
-# Marker
-marker_copied = { fg = "#879A39", bg = "#879A39" }   # gr, gr
-marker_cut = { fg = "#D14D41", bg = "#D14D41" }      # re, re
-marker_marked = { fg = "#1C6C66", bg = "#1C6C66" }   # cy-700, cy-700
-marker_selected = { fg = "#3AA99F", bg = "#3AA99F" } # cy, cy
-
-# Tab
-tab_active = { fg = "#CECDC3", bg = "#403E3C", bold = true } # tx, ui-3
-tab_inactive = { fg = "#878580", bg = "#282726" }            # tx-2, ui
+tab_active = { reversed = true }
+tab_inactive = {}
 tab_width = 1
 
-# Count
-count_copied = { fg = "#879A39", bold = true, reversed = true }   # gr
-count_cut = { fg = "#D14D41", bold = true, reversed = true }      # re
-count_selected = { fg = "#3AA99F", bold = true, reversed = true } # cy
+count_copied = { fg = "#181616", bg = "#8a9a7b" }
+count_cut = { fg = "#181616", bg = "#e46876" }
+count_selected = { fg = "#181616", bg = "#e6c384" }
 
-# Border
 border_symbol = "│"
-border_style = { fg = "#282726" } # ui
+border_style = { fg = "#c5c9c5" }
+
 
 [mode]
-# Normal mode
-normal_main = { fg = "#CECDC3", bg = "#403E3C", bold = true } # tx, ui-3
-normal_alt = { fg = "#878580", bg = "#282726" }               # tx-2, ui
+normal_main = { fg = "#181616", bg = "#8ba4b0" }
+normal_alt = { fg = "#8ba4b0", bg = "#0d0c0c" }
+select_main = { fg = "#181616", bg = "#a292a3" }
+select_alt = { fg = "#a292a3", bg = "#0d0c0c" }
+unset_main = { fg = "#181616", bg = "#e6c384" }
+unset_alt = { fg = "#e6c384", bg = "#0d0c0c" }
 
-# Select mode
-select_main = { fg = "#100F0F", bg = "#3AA99F", bold = true } # bg, cy
-select_alt = { fg = "#3AA99F", bg = "#122F2C" }               # cy, cy-900
-
-# Unset mode
-unset_main = { fg = "#100F0F", bg = "#3AA99F", bold = true } # bg, cy
-unset_alt = { fg = "#3AA99F", bg = "#122F2C" }               # cy, cy-900
 
 [status]
-overall = { fg = "#CECDC3" } # tx
+sep_left = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+overall = { fg = "#7fb4ca", bg = "#16161d" }
 
-# Permissions
-perm_type = { fg = "#4385BE" }  # bl
-perm_read = { fg = "#D0A215" }  # ye
-perm_write = { fg = "#D14D41" } # re
-perm_exec = { fg = "#879A39" }  # gr
-perm_sep = { fg = "#878580" }   # tx-2
+progress_label = { fg = "#8ba4b0", bg = "#0d0c0c", bold = true }
+progress_normal = { fg = "#0d0c0c", bg = "#181616" }
+progress_error = { fg = "#0d0c0c", bg = "#181616" }
 
-# Progress
-progress_label = { fg = "#100F0F" }                  # bg
-progress_normal = { fg = "#3AA99F", bg = "#1C6C66" } # cy, cy-700
-progress_error = { bg = "#D14D41" }                  # re
+perm_type = { fg = "#8a9a7b" }
+perm_read = { fg = "#e6c384" }
+perm_write = { fg = "#ff5d62" }
+perm_exec = { fg = "#7aa89f" }
+perm_sep = { fg = "#a292a3" }
 
-[which]
-cols = 3
-mask = { bg = "#1C1B1A" }                # bg-2
-cand = { fg = "#D0A215", bold = true }   # ye
-rest = { fg = "#D0A215", italic = true } # ye
-desc = { fg = "#575653" }                # tx-3
-separator = " "
-separator_style = {}
-
-[confirm]
-border = { fg = "#403E3C" }                               # ui-3
-title = { fg = "#575653", bold = true }                   # tx-3
-content = { fg = "#CECDC3", bold = true }                 # tx
-list = { fg = "#CECDC3" }                                 # tx
-btn_yes = { fg = "#CECDC3", bg = "#403E3C", bold = true } # tx, ui-3
-btn_no = { fg = "#878580", bg = "#282726" }               # tx-2, ui
-
-[spot]
-border = { fg = "#403E3C" }             # ui-3
-title = { fg = "#575653", bold = true } # tx-3
-tbl_col = { fg = "#878580" }            # tx-2
-tbl_cell = { bg = "#1C1B1A" }           # bg-2
-
-[notify]
-# Notification title
-title_info = { fg = "#4385BE" }  # bl
-title_warn = { fg = "#DA702C" }  # or
-title_error = { fg = "#D14D41" } # re
 
 [pick]
-border = { fg = "#403E3C", bold = true } # ui-3
-active = { fg = "#CECDC3" }              # tx
-inactive = { fg = "#878580" }            # tx-2
+border = { fg = "#8ea4a2" }
+active = { fg = "#a292a3", bold = true }
+inactive = {}
 
 [input]
-border = { fg = "#403E3C" }             # ui-3
-title = { fg = "#575653", bold = true } # tx-3
-value = { fg = "#CECDC3" }              # tx
-selected = { bg = "#1C1B1A" }           # bg-2
+border = { fg = "#8ea4a2" }
+title = {}
+value = {}
+selected = { reversed = true }
 
-[cmp]
-border = { fg = "#403E3C", bold = true }    # ui-3
-active = { fg = "#878580", bg = "#1C1B1A" } # tx-2, bg-2
-inactive = { fg = "#878580" }               # tx-2
+[completion]
+border = { fg = "#8ea4a2" }
+active = { reversed = true }
+inactive = {}
 
 [tasks]
-border = { fg = "#403E3C" }             # ui-3
-title = { fg = "#575653", bold = true } # tx-3
-hovered = { bg = "#1C1B1A" }            # bg-2
+border = { fg = "#8ea4a2" }
+title = {}
+hovered = { fg = "#a292a3" }
+
+[which]
+cols = 2
+separator = " - "
+separator_style = { fg = "#a6a69c" }
+mask = { bg = "#16161d" }
+rest = { fg = "#a6a69c" }
+cand = { fg = "#8ba4b0" }
+desc = { fg = "#54546d" }
 
 [help]
-on = { fg = "#4385BE" }                                  # bl
-run = { fg = "#3AA99F" }                                 # cy
-desc = { fg = "#575653", italic = true }                 # tx-3
-hovered = { bg = "#1C1B1A" }                             # bg-2
-footer = { fg = "#CECDC3", bg = "#282726", bold = true } # tx, ui
+on = { fg = "#7aa89f" }
+run = { fg = "#a292a3" }
+desc = {}
+hovered = { reversed = true, bold = true }
+footer = { fg = "#181616", bg = "#c5c9c5" }
+
+[notify]
+title_info = { fg = "#8a9a7b" }
+title_warn = { fg = "#e6c384" }
+title_error = { fg = "#ff5d62" }
 
 [filetype]
 rules = [
-  # Images
-  { mime = "image/*", fg = "#8B7EC8" }, # pu
+  # images
+  { mime = "image/*", fg = "#e6c384" },
 
-  # Media
-  { mime = "video/*", fg = "#D0A215" }, # ye
-  { mime = "audio/*", fg = "#D0A215" }, # ye
+  # media
+  { mime = "{audio,video}/*", fg = "#a292a3" },
 
-  # Broken symbolic link
-  { name = "*", is = "orphan", fg = "#575653", crossed = true },  # tx-3
-  { name = "*/", is = "orphan", fg = "#575653", crossed = true }, # tx-3
+  # archives
+  { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#e46876" },
 
-  # Symbolic links
-  { name = "*", is = "link", fg = "#3AA99F" },  # cy
-  { name = "*/", is = "link", fg = "#3AA99F" }, # cy
+  # documents
+  { mime = "application/{pdf,doc,rtf,vnd.*}", fg = "#6a9589" },
 
-  # Executable
-  { name = "*", is = "exec", fg = "#879A39" }, # gr
+  # broken links
+  { name = "*", is = "orphan", fg = "#c4746e" },
 
-  # Empty files
-  { mime = "inode/empty", fg = "#575653" }, # tx-3
+  # executables
+  { name = "*", is = "exec", fg = "#76946a" },
 
-  # Fallback
-  { name = "*", fg = "#878580" },  # tx-2
-  { name = "*/", fg = "#CECDC3" }, # tx
+  # fallback
+  { name = "*", fg = "#c5c9c5" },
+  { name = "*/", fg = "#8ba4b0" },
 ]
