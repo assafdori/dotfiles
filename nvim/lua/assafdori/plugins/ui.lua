@@ -91,7 +91,7 @@ return {
     lazy = false,
     config = function()
       vim.cmd.colorscheme("no-clown-fiesta")
-      vim.api.nvim_set_hl(0, "CursorLine", { bg = "#202020", underline = false })
+      vim.api.nvim_set_hl(0, "CursorLine", { bg = "#2A2A2A", underline = false })
       vim.api.nvim_set_hl(0, "@keyword", { fg = "#b46958", bold = true })
       vim.api.nvim_set_hl(0, "@type", { fg = "#BAD7FF" })
       vim.api.nvim_set_hl(0, "@property", { fg = "#88afa2" })
