@@ -319,4 +319,12 @@ eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
+
+# Terraform completion
+if [[ "$(uname -m)" == "arm64" ]]; then
+  # Apple Silicon
+  complete -o nospace -C /opt/homebrew/bin/terraform terraform
+elif [[ "$(uname -m)" == "x86_64" ]]; then
+  # Intel Macs
+  complete -o nospace -C /usr/local/bin/terraform terraform
+fi
