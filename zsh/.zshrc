@@ -177,7 +177,14 @@ alias mat='osascript -e "tell application \"System Events\" to key code 126 usin
 
 # Security aliases
 alias pg="pwgen -sy -1 15 | pbcopy"
-alias ip="curl -s4 https://ip.me | pbcopy && echo 'IP address copied to clipboard.'"
+
+# Find and copy IP address to clipboard
+ip() {
+  local ip_address
+  ip_address=$(curl -s4 https://ip.me)
+  printf "%s" "$ip_address" | pbcopy   # no newline
+  echo "IP address: $ip_address (copied to clipboard)"
+}
 
 # Cloud aliases
 alias aws-profile='export AWS_PROFILE=$(aws configure list-profiles | fzf --prompt "Select AWS profile:")'
