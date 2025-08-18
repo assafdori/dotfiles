@@ -175,8 +175,13 @@ alias tn="tmux new-session -s \$(pwd | sed 's/.*\///g')"
 alias td="tmux detach"
 alias mat='osascript -e "tell application \"System Events\" to key code 126 using {command down}" && tmux neww "cmatrix"'
 
-# Security aliases
-alias pg="pwgen -sy -1 15 | pbcopy"
+# Password generation
+pg() {
+  local password
+  password=$(pwgen -sy -1 15)
+  printf "%s" "$password" | pbcopy
+  echo "Password: $password (copied to clipboard)"
+}
 
 # Find and copy IP address to clipboard
 ip() {
