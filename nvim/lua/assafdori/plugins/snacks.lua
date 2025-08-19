@@ -132,6 +132,7 @@ return {
     -- │ 🔍 Search / Pickers   │
     -- ╰───────────────────────╯
     { "<C-s>",      function() Snacks.picker.lines() end, desc = "Search Current File", mode = { "n", "x" } },
+    { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
     { "<leader>ff", function() Snacks.picker.smart({ filter = { cwd = true } }):set_layout("ivy") end, desc = "Smart Find" },
     { "<leader>sf", function() Snacks.picker.files() end, desc = "Files" },
     { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
