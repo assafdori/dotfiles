@@ -6,6 +6,7 @@ return {
       current_line_blame_opts = {
         delay = 0,
       },
+      current_line_blame = false, -- Auto show blame on current line
       signs = {
         add = { text = "▎" },
         change = { text = "▎" },
@@ -39,7 +40,7 @@ return {
         -- map("n", "<leader>gu", gs.undo_stage_hunk, { desc = "Undo stage hunk" })
         -- map("n", "<leader>gR", gs.reset_buffer, { desc = "Reset buffer" })
         -- map("n", "<leader>gp", gs.preview_hunk, { desc = "Preview hunk" })
-        -- map("n", "<leader>gB", gs.toggle_current_line_blame, { desc = "Toggle Blame line" })
+        map("n", "<leader>gB", gs.blame_line, { desc = "Blame line" })
         -- map("n", "<leader>gD", gs.diffthis, {desc="Diff"})
         -- map("n", "<leader>gd", gs.toggle_deleted, { desc = "Show deleted" })
       end,
