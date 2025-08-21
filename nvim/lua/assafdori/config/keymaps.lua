@@ -90,6 +90,24 @@ map("i", "<C-l>", function()
   end
 end, { desc = "move over a closing element" })
 
+-- Jumps to matching pair
+vim.keymap.set("n", "mm", "%")
+
+-- Selects until matching pair, ex: `vm` - select until matching pair
+vim.keymap.set("x", "m", "%")
+
+-- Use with operators, ex: `dm` - delete until matching pair
+vim.keymap.set("o", "m", "%")
+
+-- With mini.ai, ex: `yim` - copy inside matching pair
+opts = {
+  custom_textobjects = {
+    m = {
+      { "%b()", "%b[]", "%b{}" },
+      "^.().*().$",
+    },
+  },
+}
 -- Disable default mappings to declutter which-key
 -- vim.api.nvim_del_keymap("n", "gra") -- vim.lsp.buf...
 -- vim.api.nvim_del_keymap("x", "gra") -- vim.lsp.buf...
