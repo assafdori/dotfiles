@@ -133,6 +133,7 @@ alias dps="docker ps"
 alias dpa="docker ps -a"
 alias dl="docker ps -l -q"
 alias dx="docker exec -it"
+alias minikube-start="minikube start --addons=metrics-server"
 
 # Directory navigation aliases
 alias ..="cd .."
