@@ -95,6 +95,9 @@ return {
       vim.api.nvim_set_hl(0, "@keyword", { fg = "#b46958", bold = true })
       vim.api.nvim_set_hl(0, "@type", { fg = "#BAD7FF" })
       vim.api.nvim_set_hl(0, "@property", { fg = "#88afa2" })
+      vim.api.nvim_set_hl(0, "SnacksDashboardHeader", { fg = "#dddddd", bold = true })
+      vim.api.nvim_set_hl(0, "SnacksDashboardKey", { fg = "#dc4c44", bold = true })
+      vim.api.nvim_set_hl(0, "SnacksDashboardFooter", { fg = "#dddddd", italic = true })
     end,
   },
   {
