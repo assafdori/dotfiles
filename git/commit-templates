@@ -1,40 +1,59 @@
-# feat: ✨ 
-# feat: 🔍 
-# feat: 🔗 
-# feat: 🔒 
+# Features
+# feat: ✨
+# feat: 🔍
+# feat: 🔗
+# feat: 🔒
 
+# Fixes
 # fix: 🐛 
 # fix: 🐞 
 # fix: 🩹 
 # fix: 🚑️ 
 
+# Hotfixes
 # hotfix: 🔥
 # hotfix: 🏃‍♂️
 
-# style: 💅 
-# style: 🎨 
-# style: 💄 
+# Refactor / Performance / Style
+# refactor: 🔨
+# refactor: ♻️
+# perf: 🚀
+# perf: ⚡
+# style: 💅
+# style: 🎨
+# style: 💄
 
-# ci: 🦊 
-# ci: 📦 
+# CI/CD / Build / Deploy
+# ci: 🦊
+# ci: 📦
+# ci: 🤖
+# deploy: 🚀
+# deploy: 📦
+# deploy: 🌐
 
-# deploy: 🚀 
-# deploy: 📦 
+# Maintenance / Chores / Config
+# chore: 🧹
+# chore: 🔧
+# chore: ⚙️
+# chore: 🗑️
+# config: 🛠️
+# dx: 🌟
 
-# chore: 🧹 
-# chore: 🔧 
-# chore: ⚙️ 
-
+# Documentation
 # docs: 📚
 # docs: 📝
 # docs: 📖
 
-# refactor: 🔨 
-# perf: 🚀 
+# Tests / Debug
+# test: 🚦
+# test: 🧪
+# debug: 🐞
+# debug: 🔍
 
-# test: 🚦 
-# debug: 🧪 
+# Meta
+# revert: ⏪
 
-# BREAKING CHANGE: 🚨 
-# BREAKING CHANGE: 💥 
-# BREAKING CHANGE: 💣 
+# Breaking changes
+# BREAKING CHANGE: 🚨
+# BREAKING CHANGE: 💥
+# BREAKING CHANGE: 💣
