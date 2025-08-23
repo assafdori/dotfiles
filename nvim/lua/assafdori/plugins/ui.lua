@@ -22,6 +22,7 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     config = function()
       vim.api.nvim_set_hl(0, "WinBar", { bg = "NONE" }) -- no background for dropbar
+      vim.api.nvim_set_hl(0, "WinBarNC", { bg = "NONE" }) -- no background for dropbar
     end,
   },
 
