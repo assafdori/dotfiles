@@ -76,6 +76,9 @@ return {
       },
     },
     dim = { enabled = true },
+    win = {
+      backdrop = { transparent = true, blend = 100 },
+    },
     lazygit = {
       enabled = true,
       win = {
