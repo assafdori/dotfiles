@@ -1,0 +1,5 @@
+---
+theme_directory: /Users/assafdori/.config/posting/themes/
+theme: no-clown-fiesta
+heading:
+  show_host: false

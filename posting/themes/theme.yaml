@@ -1,0 +1,13 @@
+---
+name: no-clown-fiesta
+primary: '#8aadf4' # buttons, fixed columns (muted blue)
+secondary: '#e6c384' # method selector, minor labels (warm amber)
+accent: '#e46876' # headers, cursors, focus (soft red)
+background: '#151515' # main background (very dark, low-chroma)
+surface: '#151821' # panels, cards (slightly lighter than bg)
+error: '#e46876' # errors (same red as accent)
+success: '#98c379' # success (muted green)
+warning: '#e5c07b' # warnings (soft yellow)
+
+author: Assaf Dori
+description: Muted, high-contrast palette inspired by no-clown-fiesta.
