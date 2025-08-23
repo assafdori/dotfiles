@@ -76,7 +76,13 @@ return {
       },
     },
     dim = { enabled = true },
-    lazygit = { enabled = true },
+    lazygit = {
+      enabled = true,
+      win = {
+        border = "rounded",
+        backdrop = { transparent = true, blend = 100 },
+      },
+    },
     indent = {
       enabled = true,
       indent = { only_scope = false }, -- only show indent where cursor is
