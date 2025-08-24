@@ -2,8 +2,6 @@
 
 ![asset](assets/assets.png)
 
-Just some config files to make my dev setup feel right.
-
 ## What's inside?
 
 - Custom terminal stuff (aliases, prompts, etc.)
