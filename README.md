@@ -25,7 +25,3 @@ Just some config files to make my dev setup feel right.
    ```
 
 3. Done
-
-## Why?
-
-Because I like things simple and fast.
