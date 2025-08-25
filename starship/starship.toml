@@ -102,11 +102,26 @@ style = "accent1"
 [[kubernetes.contexts]]
 context_pattern = "arn:aws:eks:.*:cluster/(?P<cluster>[\\w-]+)"
 context_alias = "$cluster"
-style = "muted"
+style = "accent6"
+
+[[kubernetes.contexts]]
+context_pattern = "gke_[^_]+_[^_]+_(?P<cluster>[\\w-]*prod[\\w-]*)"
+context_alias = "$cluster"
+style = "accent5"
+
+[[kubernetes.contexts]]
+context_pattern = "gke_[^_]+_[^_]+_(?P<cluster>[\\w-]*stag[\\w-]*)"
+context_alias = "$cluster"
+style = "accent3"
+
+[[kubernetes.contexts]]
+context_pattern = "gke_[^_]+_[^_]+_(?P<cluster>[\\w-]*dev[\\w-]*)"
+context_alias = "$cluster"
+style = "accent1"
 
 [[kubernetes.contexts]]
 context_pattern = "gke_[^_]+_[^_]+_(?P<cluster>[\\w-]+)"
-context_alias = "gke-$cluster"
+context_alias = "$cluster"
 style = "accent6"
 
 [[kubernetes.contexts]]
