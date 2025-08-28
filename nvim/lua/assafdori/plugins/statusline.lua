@@ -52,6 +52,18 @@ return {
             symbols = { added = " ", modified = " ", removed = " " },
             colored = true,
           },
+          {
+            "searchcount",
+            padding = { left = 1, right = 0 },
+            icon = " ",
+            count_format = "%d/%d",
+          },
+          {
+            "selectioncount",
+            padding = { left = 1, right = 1 },
+            icon = " ",
+            max_count = 999,
+          },
         },
         lualine_x = {
           {
