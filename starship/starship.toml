@@ -8,8 +8,8 @@ palette = 'no-clown-fiesta'
 [username]
 disabled = true
 show_always = true
-format = '[$user @]($style)'
-style_user = 'fg'
+format = '[$user@]($style)'
+style_user = 'white'
 aliases = { "assafdori" = "assaf" }
 
 [character]
