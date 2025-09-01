@@ -193,9 +193,24 @@ ip() {
 }
 
 # Cloud aliases
-alias aws-profile='export AWS_PROFILE=$(aws configure list-profiles | fzf --prompt "Select AWS profile:")'
-alias gcp-profile='export CLOUDSDK_ACTIVE_CONFIG_NAME=$(gcloud config configurations list --format="value(name)" | fzf --prompt "Select GCP configuration: ")'
-alias gcp-project='export SELECTED_PROJECT=$(gcloud projects list --format="value(projectId)" | fzf --prompt="Select GCP project: ") gcloud config set project $SELECTED_PROJECT '
+awsprofile() {
+  export AWS_PROFILE=$(aws configure list-profiles | fzf --prompt "Select AWS profile:") || return
+  echo "👷🏼 Working with AWS profile: $AWS_PROFILE"
+}
+alias aws-profile=awsprofile
+
+gcpprofile() {
+  export CLOUDSDK_ACTIVE_CONFIG_NAME=$(gcloud config configurations list --format="value(name)" | fzf --prompt "Select GCP configuration: ") || return
+  echo "👷🏼 Working with GCP configuration: $CLOUDSDK_ACTIVE_CONFIG_NAME"
+}
+alias gcp-profile=gcpprofile
+
+gcpproject() {
+  export SELECTED_PROJECT=$(gcloud projects list --format="value(projectId)" | fzf --prompt="Select GCP project: ") || return
+  gcloud config set project $SELECTED_PROJECT
+  echo "👷🏼 Working with GCP project: $SELECTED_PROJECT"
+}
+alias gcp-project=gcpproject
 
 # Tmux session management
 devops() {
