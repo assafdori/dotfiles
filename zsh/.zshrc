@@ -302,7 +302,17 @@ cap() {
     return 1
   fi
 
-  cat "$@" | pbcopy
+  if [[ $# -gt 0 ]]; then
+    # Remove trailing whitespace/newlines before copying
+    content=$(cat "$@" | sed -e 's/[[:space:]]*$//')
+    printf "%s" "$content" | pbcopy
+    echo "Copied contents of: $* to clipboard"
+  else
+    # Handle stdin input
+    content=$(cat | sed -e 's/[[:space:]]*$//')
+    printf "%s" "$content" | pbcopy
+    echo "Copied input from stdin to clipboard"
+  fi
 }
 
 # Finder function: open current directory in Finder
