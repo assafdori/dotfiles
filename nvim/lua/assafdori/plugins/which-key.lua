@@ -18,7 +18,7 @@ return {
       { "<leader>g", group = "Git" },
       { "<leader>h", group = "Harpoon" },
       { "<leader>l", group = "Code" },
-      { "<leader>m", group = "Misc" },
+      { "<leader>m", group = "Music" },
       { "<leader>n", group = "Noice" },
       { "<leader>R", group = "Replace" },
       { "<leader>s", group = "Search" },

@@ -111,4 +111,14 @@ return {
     "sphamba/smear-cursor.nvim",
     opts = {},
   },
+  {
+    'p5quared/apple-music.nvim',
+    config = true,
+    keys = {
+      { "<leader>mp",  function() require("apple-music").toggle_play() end,  desc = "Play/Pause" },
+      { "<leader>mP", function() require("apple-music").select_playlist() end, desc = "Find Playlists" },
+      { "<leader>ma", function() require("apple-music").select_album() end, desc = "Find Albums" },
+      { "<leader>ms", function() require("apple-music").select_track() end, desc = "Find Songs" },
+    },
+  },
 }
