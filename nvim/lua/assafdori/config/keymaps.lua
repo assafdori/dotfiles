@@ -2,6 +2,8 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+local opts = {}
+
 local function map(mode, l, r, opts)
   opts = opts or {}
   vim.keymap.set(mode, l, r, opts)
