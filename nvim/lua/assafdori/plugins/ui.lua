@@ -102,6 +102,12 @@ return {
     end,
   },
   {
+   "darianmorat/gruvdark.nvim",
+   lazy = false,
+   priority = 1000,
+   opts = {},
+  },
+  {
     "mcauley-penney/visual-whitespace.nvim",
     config = true,
     event = "ModeChanged *:[vV\22]", -- optionally, lazy load on entering visual mode
