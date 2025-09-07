@@ -177,7 +177,7 @@ return {
     { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
     { "<leader>gL", function() Snacks.picker.git_log_line():set_layout("ivy") end, desc = "Git Log Line" },
     { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
-    { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
+    { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git Diff" },
 
     -- ╭───────────────────────╮
     -- │ 🖥️ Terminal / Tools  │
