@@ -5,6 +5,8 @@
 // Hyper + T -> Launch Ghostty
 // Hyper + b -> Launch Arc Browser
 // Hyper + m -> Launch Music
+// Hyper + p -> Launch Passwords
+// Hyper + f -> Launch Finder
 
 {
   "global": {
@@ -88,7 +90,7 @@
               },
 
               {
-                "description": "Hyper + b -> Launch Arc Browser",
+                "description": "Hyper + b -> Launch Browser",
                 "type": "basic",
                 "from": {
                   "key_code": "b",
@@ -109,7 +111,7 @@
                 ]
               },
               {
-                "description": "Hyper + m -> Launch Music",
+                "description": "Hyper + m -> Launch Apple Music",
                 "type": "basic",
                 "from": {
                   "key_code": "m",
