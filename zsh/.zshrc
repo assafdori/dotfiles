@@ -194,23 +194,58 @@ ip() {
 
 # Cloud aliases
 awsprofile() {
-  export AWS_PROFILE=$(aws configure list-profiles | fzf --prompt "Select AWS profile:") || return
+  local profile
+  profile=$(aws configure list-profiles | fzf --prompt "Select AWS profile:") || {
+    echo "❌ No profile selected."
+    return 1
+  }
+  export AWS_PROFILE="$profile"
   echo "👷🏼 Working with AWS profile: $AWS_PROFILE"
 }
 alias aws-profile=awsprofile
 
 gcpprofile() {
-  export CLOUDSDK_ACTIVE_CONFIG_NAME=$(gcloud config configurations list --format="value(name)" | fzf --prompt "Select GCP configuration: ") || return
+  local config
+  config=$(gcloud config configurations list --format="value(name)" \
+    | fzf --prompt "Select GCP configuration: ") || {
+      echo "❌ No GCP configuration selected."
+      return 1
+    }
+  export CLOUDSDK_ACTIVE_CONFIG_NAME="$config"
   echo "👷🏼 Working with GCP configuration: $CLOUDSDK_ACTIVE_CONFIG_NAME"
 }
 alias gcp-profile=gcpprofile
 
 gcpproject() {
-  export SELECTED_PROJECT=$(gcloud projects list --format="value(projectId)" | fzf --prompt="Select GCP project: ") || return
-  gcloud config set project $SELECTED_PROJECT
-  echo "👷🏼 Working with GCP project: $SELECTED_PROJECT"
+  local project
+  project=$(gcloud projects list --format="value(projectId)" \
+    | fzf --prompt="Select GCP project: ") || {
+      echo "❌ No GCP project selected."
+      return 1
+    }
+
+  export CLOUDSDK_CORE_PROJECT="$project"
+  echo "👷🏼 Working with GCP project: $CLOUDSDK_CORE_PROJECT"
 }
 alias gcp-project=gcpproject
+
+gcpdrop() {
+  if ! gcloud config configurations describe empty >/dev/null 2>&1; then
+    echo "⚙️ Creating 'empty' GCP configuration..."
+    gcloud config configurations create empty >/dev/null 2>&1 || {
+      echo "❌ Failed to create empty config."
+      return 1
+    }
+  fi
+
+  gcloud config configurations activate empty >/dev/null 2>&1
+  unset CLOUDSDK_ACTIVE_CONFIG_NAME
+  unset CLOUDSDK_CORE_PROJECT
+
+  echo "🧹 Dropped GCP profile/project → switched to 'empty' configuration"
+}
+alias gcp-drop=gcpdrop
+
 
 # Tmux session management
 devops() {
