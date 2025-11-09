@@ -8,18 +8,17 @@
 - Nvim config for when I need to get things done fast
 - Settings to keep things smooth
 
-## How to use
+## Quick Start
 
-1. Clone this repo:
+On a fresh Mac, run this one-liner to set everything up automatically:
 
-   ```bash
-   git clone https://github.com/assafdori/dotfiles.git ~/dotfiles
-   ```
+```bash
+curl -fsSL https://raw.githubusercontent.com/assafdori/dotfiles/main/bootstrap.sh | bash
+```
 
-2. Run the install script:
+This will:
 
-   ```bash
-   cd ~/dotfiles && ./init.sh
-   ```
-
-3. Done
+1. Install Xcode CLI tools, Homebrew, and Git
+2. Copy SSH keys from iCloud
+3. Clone this dotfiles repository
+4. Automatically run the full setup script (`init.sh`)

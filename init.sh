@@ -8,6 +8,13 @@ BREWFILE_PATH="$DOTFILES/homebrew/Brewfile"
 SECOND_BRAIN="$HOME/SecondBrain" # adjust if needed
 ICLOUD="$HOME/iCloud"            # adjust if needed
 
+# Verify dotfiles directory exists
+if [ ! -d "$DOTFILES" ]; then
+  error "Dotfiles directory not found at $DOTFILES"
+  error "Please run bootstrap.sh first or ensure the dotfiles are cloned."
+  exit 1
+fi
+
 # Colored output helpers
 info() { printf "\033[1;34m[INFO]\033[0m %s\n" "$*"; }
 success() { printf "\033[1;32m[SUCCESS]\033[0m %s\n" "$*"; }
@@ -78,21 +85,12 @@ ARCH=$(uname -m)
 info "Detected architecture: $ARCH"
 sleep 0.5
 
-# Homebrew install
+# Verify Homebrew is installed (should be done by bootstrap.sh)
 if ! command -v brew >/dev/null 2>&1; then
-  info "Homebrew not found. Installing..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  if [ "$ARCH" = "arm64" ]; then
-    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >>"$HOME/.zprofile"
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-  else
-    echo 'eval "$(/usr/local/bin/brew shellenv)"' >>"$HOME/.zprofile"
-    eval "$(/usr/local/bin/brew shellenv)"
-  fi
-  success "Homebrew installed."
-else
-  success "Homebrew already installed."
+  error "Homebrew not found. Please run bootstrap.sh first."
+  exit 1
 fi
+success "Homebrew found."
 
 # Update Homebrew
 info "Updating Homebrew..."
@@ -133,18 +131,17 @@ success "Configs symlinked."
 # Stow dotfiles
 info "Stowing dotfiles..."
 cd "$DOTFILES"
-stow . &
-spinner $!
-success "Dotfiles stowed."
-
-# Source zshrc
-info "You may now run: source \"$HOME/.zshrc\""
+stow . 2>&1 && success "Dotfiles stowed." || warn "Some dotfiles may have conflicts. Continuing anyway..."
 
 # TPM install
 info "Installing tmux plugin manager..."
-git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm" &
-spinner $!
-success "TPM installed."
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+  git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm" &
+  spinner $!
+  success "TPM installed."
+else
+  success "TPM already installed."
+fi
 
 info "Installing tmux plugins..."
 "$HOME/.tmux/plugins/tpm/scripts/install_plugins.sh" &
@@ -163,37 +160,43 @@ case "$response" in
   ;;
 esac
 
-# Fonts
-info "Installing fonts..."
-FONT_DIR="$HOME/Library/Fonts"
-mkdir -p "$FONT_DIR"
-cp ~/icloud/Documents/Fonts/* "$FONT_DIR/" 2>/dev/null || warn "No fonts found to copy."
-success "Fonts installed."
-
-# Symbolic links
+# Symbolic links (create before fonts so fonts can use icloud symlink)
 info "Creating symbolic links for SecondBrain and iCloud..."
 ln -sf "$SECOND_BRAIN" ~/garden
 ln -sf "$ICLOUD" ~/icloud
 success "Symbolic links created."
 
-# SSH bootstrap
-info "Bootstrapping SSH keys..."
-SSH_SOURCE="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Documents/ssh"
+# Fonts (after icloud symlink is created)
+info "Installing fonts..."
+FONT_DIR="$HOME/Library/Fonts"
+mkdir -p "$FONT_DIR"
+if [ -d ~/icloud/Documents/Fonts ] && [ -n "$(ls -A ~/icloud/Documents/Fonts 2>/dev/null)" ]; then
+  cp ~/icloud/Documents/Fonts/* "$FONT_DIR/" 2>/dev/null || warn "Failed to copy some fonts."
+  success "Fonts installed."
+else
+  warn "No fonts found to copy."
+fi
+
+# SSH config (replace minimal config from bootstrap.sh with full config from dotfiles)
+info "Setting up SSH config..."
 SSH_DEST="$HOME/.ssh"
 SSH_CONFIG_SOURCE="$DOTFILES/ssh/config"
 mkdir -p "$SSH_DEST"
+
 if [ -f "$SSH_CONFIG_SOURCE" ]; then
   ln -sf "$SSH_CONFIG_SOURCE" "$SSH_DEST/config"
-  success "SSH config symlinked."
+  success "SSH config symlinked (replaced minimal config from bootstrap)."
 else
-  warn "No SSH config found, skipping."
+  warn "No SSH config found in dotfiles, skipping."
 fi
-cp "$SSH_SOURCE"/* "$SSH_DEST"/ 2>/dev/null || warn "No SSH keys found to copy."
-chmod 700 "$SSH_DEST"
-chmod 600 "$SSH_DEST"/* 2>/dev/null || true
-chmod 644 "$SSH_DEST"/*.pub 2>/dev/null || true
-eval "$(ssh-agent -s)"
-for key in "$SSH_DEST"/*; do [[ "$key" != *.pub ]] && ssh-add "$key" || true; done
-success "SSH keys bootstrapped."
 
 success "🎉 Mac setup complete!"
+
+# Note about .zshrc
+info ""
+info "Your dotfiles are now configured!"
+info "New zsh terminal sessions will automatically load your configuration."
+if [ -n "${ZSH_VERSION:-}" ]; then
+  info "Since you're in zsh, you can run 'source ~/.zshrc' to load the config in this session."
+fi
+info ""
