@@ -149,16 +149,21 @@ spinner $!
 success "Tmux plugins installed."
 
 # Touch ID for sudo
-read -r -p "Enable Touch ID for sudo operations? [y/N] " response
-case "$response" in
-[yY][eE][sS] | [yY])
-  sudo sh -c 'sed "s/^#auth/auth/" /etc/pam.d/sudo_local.template > /etc/pam.d/sudo_local'
-  success "Touch ID enabled for sudo."
-  ;;
-*)
-  warn "Skipped Touch ID setup."
-  ;;
-esac
+if [ -t 0 ]; then
+  # Only prompt if stdin is a terminal
+  info ""
+  read -r -p "Enable Touch ID for sudo operations? [y/N] " response
+  case "$response" in
+  [yY][eE][sS] | [yY])
+    sudo sh -c 'sed "s/^#auth/auth/" /etc/pam.d/sudo_local.template > /etc/pam.d/sudo_local' 2>/dev/null && success "Touch ID enabled for sudo." || warn "Failed to enable Touch ID (may require manual setup)."
+    ;;
+  *)
+    warn "Skipped Touch ID setup."
+    ;;
+  esac
+else
+  warn "Skipping Touch ID setup (non-interactive mode)."
+fi
 
 # Symbolic links (create before fonts so fonts can use icloud symlink)
 info "Creating symbolic links for SecondBrain and iCloud..."

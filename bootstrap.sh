@@ -83,7 +83,7 @@ fi
 # 5b. Create minimal SSH config for keychain persistence (will be replaced by full config in init.sh)
 if [ ! -f "$SSH_DEST/config" ]; then
   info "Creating minimal SSH config for keychain persistence..."
-  cat >"$SSH_DEST/config" <<'EOF'
+  cat > "$SSH_DEST/config" <<'EOF'
 Host *
   AddKeysToAgent yes
   UseKeychain yes
@@ -131,13 +131,14 @@ else
   fi
 fi
 
-success "Bootstrap complete. Running main Mac setup script..."
+info "Bootstrap complete. Running main Mac setup script..."
 sleep 1
 
 # Run init.sh if it exists
 if [ -f "$DOTFILES_DIR/init.sh" ]; then
   info "Starting dotfiles installation..."
-  bash "$DOTFILES_DIR/init.sh"
+  # Forward stdin/stdout/stderr properly
+  bash "$DOTFILES_DIR/init.sh" < /dev/tty
 else
   warn "init.sh not found. Please run it manually from $DOTFILES_DIR"
 fi
