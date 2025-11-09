@@ -123,8 +123,6 @@ if ! command -v stow >/dev/null 2>&1; then
   success "GNU Stow installed."
 fi
 
-exit 1
-
 # Symlink shell & git configs
 info "Symlinking .zshrc and .gitconfig..."
 rm -f "$HOME/.zshrc" "$HOME/.gitconfig"
