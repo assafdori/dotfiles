@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Variables
-: "${GHREPOS:="$HOME/code/assafdori"}"
+: "${GHREPOS:="$HOME/code/$USER"}"
 DOTFILES="$GHREPOS/dotfiles"
 BREWFILE_PATH="$DOTFILES/homebrew/Brewfile"
 SECOND_BRAIN="$HOME/SecondBrain" # adjust if needed
@@ -44,7 +44,7 @@ print_logo() {
          | |########| |      /__________\\             
 .--------| \`--------' |------|    --=-- |-------------.
 |        \`----,-.-----'      |o ======  |             | 
-|       ______|_|_______     |__________|             | Bootstrap MacOS
+|       ______|_|_______     |__________|              | Bootstrap MacOS
 |      /  %%%%%%%%%%%%  \\                             | Environment
 |     /  %%%%%%%%%%%%%%  \\                            | by: Assaf Dori
 |     ^^^^^^^^^^^^^^^^^^^^

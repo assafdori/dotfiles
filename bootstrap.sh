@@ -83,7 +83,7 @@ fi
 # 5b. Create minimal SSH config for keychain persistence (will be replaced by full config in init.sh)
 if [ ! -f "$SSH_DEST/config" ]; then
   info "Creating minimal SSH config for keychain persistence..."
-  cat > "$SSH_DEST/config" <<'EOF'
+  cat >"$SSH_DEST/config" <<'EOF'
 Host *
   AddKeysToAgent yes
   UseKeychain yes
@@ -109,7 +109,7 @@ done
 success "SSH keys loaded into ssh-agent and keychain."
 
 # 7. Clone dotfiles repo
-DOTFILES_DIR="$HOME/code/assafdori/dotfiles"
+DOTFILES_DIR="$HOME/code/$USER/dotfiles"
 if [ ! -d "$DOTFILES_DIR" ]; then
   info "Cloning dotfiles repository..."
   if git clone git@github.com:assafdori/dotfiles.git "$DOTFILES_DIR"; then
@@ -138,7 +138,7 @@ sleep 1
 if [ -f "$DOTFILES_DIR/init.sh" ]; then
   info "Starting dotfiles installation..."
   # Forward stdin/stdout/stderr properly
-  bash "$DOTFILES_DIR/init.sh" < /dev/tty
+  bash "$DOTFILES_DIR/init.sh" </dev/tty
 else
   warn "init.sh not found. Please run it manually from $DOTFILES_DIR"
 fi
