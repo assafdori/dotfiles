@@ -1,11 +1,9 @@
 Host *
-  SendEnv LANG LC_*
-  MACs hmac-md5,hmac-sha1
   ForwardX11 no
-  ForwardAgent yes
-  AddressFamily inet
+  ForwardAgent no
   ServerAliveInterval 15
   ConnectTimeout 20
+  MACs hmac-sha2-256,hmac-sha2-512
 
 Host github.com
   AddKeysToAgent yes
