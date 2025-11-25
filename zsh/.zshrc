@@ -1,22 +1,3 @@
-# Path configuration - defined early to ensure proper precedence
-# Define PATH before loading other configurations to avoid conflicts
-typeset -U path  # Ensure unique entries in PATH
-path=(
-    /opt/homebrew/bin
-    /usr/local/bin
-    /usr/local/sbin
-    /usr/bin
-    /bin
-    /usr/sbin
-    /sbin
-    ${HOME}/.local/bin
-    ${GOPATH}/bin
-    ${HOME}/.cargo/bin
-    ${HOME}/.vimpkg/bin
-    $path
-)
-export PATH
-
 # Environment variables
 export LANG=en_US.UTF-8
 export EDITOR="nvim"
@@ -28,13 +9,36 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 
 # Directory paths
-export GARDEN=("/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs/Documents/The Garden")
-export ICLOUD=("/Users/assafdori/Library/Mobile Documents/com~apple~CloudDocs")
+export GARDEN=("$HOME/Library/Mobile Documents/com~apple~CloudDocs/Documents/The Garden")
+export ICLOUD=("$HOME/Library/Mobile Documents/com~apple~CloudDocs")
 export REPOS="$HOME/code"
-export GITUSER="assafdori"
+export GITUSER="$USER"
 export GHREPOS="$REPOS/$GITUSER"
 export XDG_CONFIG_HOME="$HOME"/.config
-export DOTFILES="$HOME/code/assafdori/dotfiles"
+export DOTFILES="$HOME/code/$GITUSER/dotfiles"
+
+# Path configuration
+typeset -U path
+
+# Arch-specific Homebrew first
+if [[ $(uname -m) == arm64 ]]; then
+  path=(/opt/homebrew/bin /opt/homebrew/sbin)
+else
+  path=(/usr/local/bin /usr/local/sbin)
+fi
+
+# User-level tools
+path+=(
+  $HOME/.local/bin
+  $GOPATH/bin
+  $HOME/.cargo/bin
+  $HOME/.vimpkg/bin
+)
+
+# System paths
+path+=(/usr/bin /bin /usr/sbin /sbin)
+
+export PATH
 
 # ZSH configuration
 setopt prompt_subst
