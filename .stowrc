@@ -6,3 +6,4 @@
 --ignore=LICENSE
 --ignore=init.sh
 --ignore=assets/
+--ignore=bootstrap.sh
