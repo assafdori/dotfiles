@@ -2,6 +2,10 @@
 
 ![asset](assets/assets.png)
 
+
+#### these dotfiles are super opinionated and will most likely require modifications to work for you
+
+
 ## What's inside?
 
 - Custom terminal stuff (aliases, prompts, etc.)
