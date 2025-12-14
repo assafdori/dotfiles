@@ -17,14 +17,14 @@ export GHREPOS="$REPOS/$GITUSER"
 export XDG_CONFIG_HOME="$HOME"/.config
 export DOTFILES="$HOME/code/$GITUSER/dotfiles"
 
-# Path configuration
+# Update PATH
 typeset -U path
 
-# Arch-specific Homebrew first
+# Homebrew first (arch-aware)
 if [[ $(uname -m) == arm64 ]]; then
-  path=(/opt/homebrew/bin /opt/homebrew/sbin)
+  path=(/opt/homebrew/bin /opt/homebrew/sbin $path)
 else
-  path=(/usr/local/bin /usr/local/sbin)
+  path=(/usr/local/bin /usr/local/sbin $path)
 fi
 
 # User-level tools
@@ -34,9 +34,6 @@ path+=(
   $HOME/.cargo/bin
   $HOME/.vimpkg/bin
 )
-
-# System paths
-path+=(/usr/bin /bin /usr/sbin /sbin)
 
 export PATH
 
