@@ -389,7 +389,6 @@ source <(stern --completion=zsh)
 source <(helm completion zsh)
 eval "$(zoxide init zsh)"
 
-. "$HOME/.atuin/bin/env"
 eval "$(atuin init zsh)"
 
 autoload -U +X bashcompinit && bashcompinit
