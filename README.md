@@ -7,7 +7,7 @@
 ## What's inside?
 
 - Custom terminal stuff (aliases, prompts, etc.)
-- Nvim config for when I need to get things done fast
+- Neovim config for when I need to get things done fast
 - Settings to keep things smooth
 
 ## Quick Start
