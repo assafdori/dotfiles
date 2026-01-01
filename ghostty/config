@@ -53,3 +53,4 @@ macos-option-as-alt = true
 # Keybinding
 # -----------
 keybind = cmd+k=text:\x01T
+keybind = shift+enter=text:\x1b\r
