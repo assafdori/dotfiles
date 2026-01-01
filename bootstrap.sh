@@ -50,7 +50,7 @@ else
 fi
 
 # 5. Fetch SSH keys from iCloud
-# Try lowercase first (matches init.sh), fallback to uppercase
+# Try lowercase first (matches setup.sh), fallback to uppercase
 SSH_REMOTE_LOWER="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Documents/ssh"
 SSH_REMOTE_UPPER="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Documents/SSH"
 if [ -d "$SSH_REMOTE_LOWER" ]; then
@@ -80,7 +80,7 @@ else
   warn "No SSH keys found at $SSH_REMOTE. Please copy manually."
 fi
 
-# 5b. Create minimal SSH config for keychain persistence (will be replaced by full config in init.sh)
+# 5b. Create minimal SSH config for keychain persistence (will be replaced by full config in setup.sh)
 if [ ! -f "$SSH_DEST/config" ]; then
   info "Creating minimal SSH config for keychain persistence..."
   cat >"$SSH_DEST/config" <<'EOF'
@@ -134,11 +134,11 @@ fi
 info "Bootstrap complete. Running main Mac setup script..."
 sleep 1
 
-# Run init.sh if it exists
-if [ -f "$DOTFILES_DIR/init.sh" ]; then
+# Run setup.sh if it exists
+if [ -f "$DOTFILES_DIR/setup.sh" ]; then
   info "Starting dotfiles installation..."
   # Forward stdin/stdout/stderr properly
-  bash "$DOTFILES_DIR/init.sh" </dev/tty
+  bash "$DOTFILES_DIR/setup.sh" </dev/tty
 else
-  warn "init.sh not found. Please run it manually from $DOTFILES_DIR"
+  warn "setup.sh not found. Please run it manually from $DOTFILES_DIR"
 fi
