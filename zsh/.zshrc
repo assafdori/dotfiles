@@ -7,6 +7,7 @@ export GOPATH="$HOME/go"
 export KUBECONFIG="$HOME/.kube/config"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+export ARCH="$(uname -m)"
 
 # Directory paths
 export GARDEN=("$HOME/Library/Mobile Documents/com~apple~CloudDocs/Documents/The Garden")
@@ -21,7 +22,7 @@ export DOTFILES="$HOME/code/$GITUSER/dotfiles"
 typeset -U path
 
 # Homebrew first (arch-aware)
-if [[ $(uname -m) == arm64 ]]; then
+if [[ $ARCH == arm64 ]]; then
   path=(/opt/homebrew/bin /opt/homebrew/sbin $path)
 else
   path=(/usr/local/bin /usr/local/sbin $path)
@@ -48,16 +49,16 @@ bashcompinit
 source <(kubectl completion zsh)
 
 # AWS CLI autocompletion
-if [[ "$(uname -m)" == "arm64" ]]; then
+if [[ "$ARCH" == "arm64" ]]; then
   # Apple Silicon
   complete -C '/opt/homebrew/bin/aws_completer' aws
-elif [[ "$(uname -m)" == "x86_64" ]]; then
+elif [[ "$ARCH" == "x86_64" ]]; then
   # Intel Macs
   complete -C '/usr/local/bin/aws_completer' aws
 fi
 
 # GCP CLI autocompletion
-if [[ "$(uname -m)" == "arm64" ]]; then
+if [[ "$ARCH" == "arm64" ]]; then
   # Apple Silicon
   if [ -f /opt/homebrew/share/google-cloud-sdk/path.zsh.inc ]; then
     source /opt/homebrew/share/google-cloud-sdk/path.zsh.inc
@@ -66,7 +67,7 @@ if [[ "$(uname -m)" == "arm64" ]]; then
   if [ -f /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc ]; then
     source /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc
   fi
-elif [[ "$(uname -m)" == "x86_64" ]]; then
+elif [[ "$ARCH" == "x86_64" ]]; then
   # Intel Macs
   if [ -f /usr/local/share/google-cloud-sdk/path.zsh.inc ]; then
     source /usr/local/share/google-cloud-sdk/path.zsh.inc
@@ -394,10 +395,10 @@ eval "$(atuin init zsh)"
 autoload -U +X bashcompinit && bashcompinit
 
 # Terraform completion
-if [[ "$(uname -m)" == "arm64" ]]; then
+if [[ "$ARCH" == "arm64" ]]; then
   # Apple Silicon
   complete -o nospace -C /opt/homebrew/bin/terraform terraform
-elif [[ "$(uname -m)" == "x86_64" ]]; then
+elif [[ "$ARCH" == "x86_64" ]]; then
   # Intel Macs
   complete -o nospace -C /usr/local/bin/terraform terraform
 fi
