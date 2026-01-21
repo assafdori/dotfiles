@@ -135,8 +135,8 @@ stow . 2>&1 && success "Dotfiles stowed." || warn "Some dotfiles may have confli
 
 # TPM install
 info "Installing tmux plugin manager..."
-if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
-  git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm" &
+if [ ! -d "$HOME/.config/tmux/plugins/tpm" ]; then
+  git clone https://github.com/tmux-plugins/tpm "$HOME/.config/tmux/plugins/tpm" &
   spinner $!
   success "TPM installed."
 else
@@ -144,7 +144,7 @@ else
 fi
 
 info "Installing tmux plugins..."
-"$HOME/.tmux/plugins/tpm/scripts/install_plugins.sh" &
+"$HOME/.config/tmux/plugins/tpm/scripts/install_plugins.sh" &
 spinner $!
 success "Tmux plugins installed."
 
