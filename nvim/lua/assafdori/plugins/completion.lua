@@ -98,7 +98,7 @@ return {
       -- completion = { accept = { auto_brackets = { enabled = true } } },
 
       -- experimental signature help support
-      -- signature = { enabled = true }
+      signature = { enabled = true },
     },
     opts_extend = {
       "sources.default",
