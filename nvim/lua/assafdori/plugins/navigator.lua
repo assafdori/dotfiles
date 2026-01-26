@@ -1,11 +1,20 @@
 return {
-  "numToStr/Navigator.nvim",
-  opts = {},
-  keys = {
-    { "<C-h>", "<cmd>lua require('Navigator').left()<CR>" },
-    { "<C-k>", "<cmd>lua require('Navigator').up()<CR>" },
-    { "<C-l>", "<cmd>lua require('Navigator').right()<CR>" },
-    { "<C-j>", "<cmd>lua require('Navigator').down()<CR>" },
+  {
+    "christoomey/vim-tmux-navigator",
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+    },
+    keys = {
+      { "<C-h>", "<cmd>TmuxNavigateLeft<cr>", desc = "Navigate left (tmux/vim)" },
+      { "<C-j>", "<cmd>TmuxNavigateDown<cr>", desc = "Navigate down (tmux/vim)" },
+      { "<C-k>", "<cmd>TmuxNavigateUp<cr>", desc = "Navigate up (tmux/vim)" },
+      { "<C-l>", "<cmd>TmuxNavigateRight<cr>", desc = "Navigate right (tmux/vim)" },
+      { "<C-\\>", "<cmd>TmuxNavigatePrevious<cr>", desc = "Navigate to previous (tmux/vim)" },
+    },
   },
   {
     "karb94/neoscroll.nvim",

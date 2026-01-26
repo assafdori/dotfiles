@@ -71,7 +71,8 @@ map("n", "<leader>dd", function() vim.diagnostic.setqflist() end, { desc = "Open
 -- stylua: ignore end
 
 -- move over a closing element in insert mode
-map("i", "<C-l>", function()
+-- Note: Using <C-f> instead of <C-l> to avoid conflict with vim-tmux-navigator
+map("i", "<C-f>", function()
   local closers = { ")", "]", "}", ">", "'", '"', "`", "," }
   local line = vim.api.nvim_get_current_line()
   local row, col = unpack(vim.api.nvim_win_get_cursor(0))
