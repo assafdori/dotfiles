@@ -5,8 +5,8 @@ set -euo pipefail
 : "${GHREPOS:="$HOME/code/$USER"}"
 DOTFILES="$GHREPOS/dotfiles"
 BREWFILE_PATH="$DOTFILES/homebrew/Brewfile"
-SECOND_BRAIN="$HOME/SecondBrain" # adjust if needed
-ICLOUD="$HOME/iCloud"            # adjust if needed
+SECOND_BRAIN="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Documents/The Garden" # adjust if needed
+ICLOUD="$HOME/Library/Mobile Documents/com~apple~CloudDocs" # adjust if needed
 
 # Verify dotfiles directory exists
 if [ ! -d "$DOTFILES" ]; then
@@ -167,15 +167,15 @@ fi
 
 # Symbolic links (create before fonts so fonts can use icloud symlink)
 info "Creating symbolic links for SecondBrain and iCloud..."
-ln -sf "$SECOND_BRAIN" ~/garden
-ln -sf "$ICLOUD" ~/icloud
+ln -sfn "$SECOND_BRAIN" ~/garden
+ln -sfn "$ICLOUD" ~/icloud
 success "Symbolic links created."
 
 # Fonts (after icloud symlink is created)
 info "Installing fonts..."
 FONT_DIR="$HOME/Library/Fonts"
 mkdir -p "$FONT_DIR"
-if [ -d ~/icloud/Documents/Fonts ] && [ -n "$(ls -A ~/icloud/Documents/Fonts 2>/dev/null)" ]; then
+if [ -d "$ICLOUD/Documents/Fonts" ] && [ -n "$(ls -A "$ICLOUD/Documents/Fonts" 2>/dev/null)" ]; then
   cp ~/icloud/Documents/Fonts/* "$FONT_DIR/" 2>/dev/null || warn "Failed to copy some fonts."
   success "Fonts installed."
 else
