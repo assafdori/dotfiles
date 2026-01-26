@@ -191,6 +191,22 @@ return {
   },
   -- stylua: ignore end
   init = function()
+    -- Set up terminal-mode navigation for Snacks terminal buffers
+    vim.api.nvim_create_autocmd("TermOpen", {
+      pattern = "*",
+      callback = function()
+        -- Check if this is a Snacks terminal
+        local buf_name = vim.api.nvim_buf_get_name(0)
+        if buf_name:match("snacks_terminal") or vim.bo.filetype == "snacks_terminal" then
+          -- Set up terminal-mode navigation mappings for all directions
+          vim.keymap.set("t", "<C-h>", "<cmd>TmuxNavigateLeft<cr>", { buffer = true, desc = "Navigate left (terminal)" })
+          vim.keymap.set("t", "<C-j>", "<cmd>TmuxNavigateDown<cr>", { buffer = true, desc = "Navigate down (terminal)" })
+          vim.keymap.set("t", "<C-k>", "<cmd>TmuxNavigateUp<cr>", { buffer = true, desc = "Navigate up (terminal)" })
+          vim.keymap.set("t", "<C-l>", "<cmd>TmuxNavigateRight<cr>", { buffer = true, desc = "Navigate right (terminal)" })
+        end
+      end,
+    })
+
     vim.api.nvim_create_autocmd("User", {
       pattern = "VeryLazy",
       callback = function()
