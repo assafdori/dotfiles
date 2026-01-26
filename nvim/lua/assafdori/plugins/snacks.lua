@@ -22,20 +22,12 @@ return {
           { icon = "", key = "n", desc = "new file", action = ":ene | startinsert" },
           { icon = "", key = "g", desc = "grep text", action = ":lua Snacks.dashboard.pick('live_grep')" },
           { icon = "", key = "r", desc = "recent file", action = ":lua Snacks.dashboard.pick('oldfiles')" },
-          { icon = "", key = "c", desc = "config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})", },
+          { icon = "", key = "c", desc = "config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",},
           { icon = "󰴽", key = "s", desc = "session", section = "session" },
           { icon = "󰒲", key = "L", desc = "lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
           { icon = "󰈆", key = "q", desc = "quit", action = ":qa" },
         },
         header = [[
-
-
-
-
-
-
-
-
     ____           __                   ____           __  
    / __/___ ______/ /_   ____ ______   / __/_  _______/ /__
   / /_/ __ `/ ___/ __/  / __ `/ ___/  / /_/ / / / ___/ //_/
@@ -47,7 +39,6 @@ return {
     / /_/ / /_/ / /_/ / /_/ / /_/ / /_/ / /_/ / /_/ /      
    /_.___/\____/\____/\____/\____/\__, /\__, /\__, /       
                                  /____//____//____/        
-
 ]],
       },
       formats = {
@@ -58,16 +49,14 @@ return {
       sections = {
         {
           section = "header",
-          padding = 2,
+          padding = 6,
         },
         {
           pane = 2,
+          padding = 1,
           {
-            text = "\n\n\n\n\n\n",
-          },
-          {
-            { section = "keys", gap = 1, padding = 2 },
-            { section = "startup", icon = "󱐌 ", gap = 1, padding = 2 },
+            { section = "keys", gap = 1, padding = 1 },
+            { section = "startup", icon = "󱐌 ", gap = 1, padding = 1 },
           },
         },
       },
@@ -199,10 +188,25 @@ return {
         local buf_name = vim.api.nvim_buf_get_name(0)
         if buf_name:match("snacks_terminal") or vim.bo.filetype == "snacks_terminal" then
           -- Set up terminal-mode navigation mappings for all directions
-          vim.keymap.set("t", "<C-h>", "<cmd>TmuxNavigateLeft<cr>", { buffer = true, desc = "Navigate left (terminal)" })
-          vim.keymap.set("t", "<C-j>", "<cmd>TmuxNavigateDown<cr>", { buffer = true, desc = "Navigate down (terminal)" })
+          vim.keymap.set(
+            "t",
+            "<C-h>",
+            "<cmd>TmuxNavigateLeft<cr>",
+            { buffer = true, desc = "Navigate left (terminal)" }
+          )
+          vim.keymap.set(
+            "t",
+            "<C-j>",
+            "<cmd>TmuxNavigateDown<cr>",
+            { buffer = true, desc = "Navigate down (terminal)" }
+          )
           vim.keymap.set("t", "<C-k>", "<cmd>TmuxNavigateUp<cr>", { buffer = true, desc = "Navigate up (terminal)" })
-          vim.keymap.set("t", "<C-l>", "<cmd>TmuxNavigateRight<cr>", { buffer = true, desc = "Navigate right (terminal)" })
+          vim.keymap.set(
+            "t",
+            "<C-l>",
+            "<cmd>TmuxNavigateRight<cr>",
+            { buffer = true, desc = "Navigate right (terminal)" }
+          )
         end
       end,
     })
