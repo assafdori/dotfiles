@@ -7,16 +7,16 @@ config:
 
 icons:
   gh: ""
-  gt: "\U000F02A2"
   nvim: ""
   mprocs: ""
   yazi: "\U000F0645"
   man: ""
   devbox: ""
   openapi-tui: "\U000F109B"
-  eksctl: "\U000F1846"
+  eksctl: "\U000F0862"
   terraform: ""
   opencode: ""
   cmatrix: ""
   q: ""
   fzf: ""
+  xh: ""
