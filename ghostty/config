@@ -1,7 +1,7 @@
 # -----------
 # Style
 # -----------
-# font-family = "Berkeley Mono"
+font-family = "Berkeley Mono"
 theme = no-clown-fiesta
 font-size = 15
 
