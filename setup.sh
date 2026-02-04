@@ -19,12 +19,15 @@ CURRENT_STEP=0
 # Colored output helpers with emojis
 info() {
 	printf "${BLUE}ℹ️  [INFO]${RESET} %b\n" "$*"
+	sleep 0.5
 }
 success() {
 	printf "${GREEN}✅ [SUCCESS]${RESET} %b\n" "$*"
+	sleep 0.8
 }
 warn() {
 	printf "${YELLOW}⚠️  [WARN]${RESET} %b\n" "$*"
+	sleep 0.5
 }
 error() {
 	printf "${RED}❌ [ERROR]${RESET} %b\n" "$*" >&2
@@ -34,6 +37,7 @@ error() {
 step() {
 	CURRENT_STEP=$((CURRENT_STEP + 1))
 	printf "\n${CYAN}${BOLD}[Step %d/%d]${RESET} ${BOLD}%s${RESET}\n" "$CURRENT_STEP" "$TOTAL_STEPS" "$*"
+	sleep 0.4
 }
 
 # Section header with border

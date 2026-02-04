@@ -19,12 +19,15 @@ CURRENT_STEP=0
 # Colored output helpers with emojis
 info() {
 	printf "${BLUE}ℹ️  [INFO]${RESET} %b\n" "$*"
+	sleep 0.8
 }
 success() {
 	printf "${GREEN}✅ [SUCCESS]${RESET} %b\n" "$*"
+	sleep 1.2
 }
 warn() {
 	printf "${YELLOW}⚠️  [WARN]${RESET} %b\n" "$*"
+	sleep 0.8
 }
 error() {
 	printf "${RED}❌ [ERROR]${RESET} %b\n" "$*" >&2
@@ -34,6 +37,7 @@ error() {
 step() {
 	CURRENT_STEP=$((CURRENT_STEP + 1))
 	printf "\n${CYAN}${BOLD}[Step %d/%d]${RESET} ${BOLD}%s${RESET}\n" "$CURRENT_STEP" "$TOTAL_STEPS" "$*"
+	sleep 0.6
 }
 
 # Section header with border
@@ -166,17 +170,14 @@ fi
 
 SSH_DEST="$HOME/.ssh"
 if [ -n "$SSH_REMOTE" ] && [ -d "$SSH_REMOTE" ]; then
-	info "Copying SSH keys from ${BOLD}iCloud${RESET}..."
-	# Count files for progress bar
+	# Count files first
 	total_keys=$(find "$SSH_REMOTE" -maxdepth 1 -type f | wc -l | tr -d ' ')
-	current_key=0
+	info "Copying ${BOLD}${total_keys} SSH keys${RESET} from ${BOLD}iCloud${RESET}..."
 
 	# Copy files, forcing overwrite of existing read-only files
 	for key_file in "$SSH_REMOTE"/*; do
 		if [ -f "$key_file" ]; then
 			cp -f "$key_file" "$SSH_DEST/"
-			current_key=$((current_key + 1))
-			progress_bar $current_key $total_keys
 		fi
 	done
 
@@ -185,8 +186,8 @@ if [ -n "$SSH_REMOTE" ] && [ -d "$SSH_REMOTE" ]; then
 	find "$SSH_DEST" -maxdepth 1 -type f -name "*.pub" -exec chmod 644 {} \;
 	# Ensure ownership is correct
 	chown -R "$(id -un):$(id -gn)" "$SSH_DEST"
-	success "SSH keys copied to ${BOLD}$SSH_DEST${RESET}"
-	add_summary "Copied SSH keys from iCloud ($current_key files)"
+	success "SSH keys copied to ${BOLD}$SSH_DEST${RESET} (${total_keys} files)"
+	add_summary "Copied SSH keys from iCloud (${total_keys} files)"
 else
 	warn "No SSH keys found at iCloud location"
 	warn "Please copy SSH keys manually to ${BOLD}~/.ssh${RESET}"
