@@ -85,20 +85,13 @@ return {
       require("colorizer").setup(nil, opts) -- enable for all filetypes by default
     end,
   },
-
   {
-    "assafdori/ssshhh",
-    priority = 1000,
-    lazy = false,
+    "oskarnurm/koda.nvim",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      vim.cmd.colorscheme("no-clown-fiesta")
-      vim.api.nvim_set_hl(0, "CursorLine", { bg = "#2A2A2A", underline = false })
-      vim.api.nvim_set_hl(0, "@keyword", { fg = "#b46958", bold = true })
-      vim.api.nvim_set_hl(0, "@type", { fg = "#BAD7FF" })
-      vim.api.nvim_set_hl(0, "@property", { fg = "#88afa2" })
-      vim.api.nvim_set_hl(0, "SnacksDashboardHeader", { fg = "#dddddd", bold = true })
-      vim.api.nvim_set_hl(0, "SnacksDashboardKey", { fg = "#dc4c44", bold = true })
-      vim.api.nvim_set_hl(0, "SnacksDashboardFooter", { fg = "#dddddd", italic = true })
+      -- require("koda").setup({ transparent = true })
+      vim.cmd("colorscheme koda")
     end,
   },
   {
@@ -112,13 +105,37 @@ return {
     opts = {},
   },
   {
-    'p5quared/apple-music.nvim',
+    "p5quared/apple-music.nvim",
     config = true,
     keys = {
-      { "<leader>mp",  function() require("apple-music").toggle_play() end,  desc = "Play/Pause" },
-      { "<leader>mP", function() require("apple-music").select_playlist() end, desc = "Find Playlists" },
-      { "<leader>ma", function() require("apple-music").select_album() end, desc = "Find Albums" },
-      { "<leader>ms", function() require("apple-music").select_track() end, desc = "Find Songs" },
+      {
+        "<leader>mp",
+        function()
+          require("apple-music").toggle_play()
+        end,
+        desc = "Play/Pause",
+      },
+      {
+        "<leader>mP",
+        function()
+          require("apple-music").select_playlist()
+        end,
+        desc = "Find Playlists",
+      },
+      {
+        "<leader>ma",
+        function()
+          require("apple-music").select_album()
+        end,
+        desc = "Find Albums",
+      },
+      {
+        "<leader>ms",
+        function()
+          require("apple-music").select_track()
+        end,
+        desc = "Find Songs",
+      },
     },
   },
 }
