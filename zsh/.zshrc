@@ -237,16 +237,81 @@ awsprofile() {
     prompt="Select AWS profile (current: $AWS_PROFILE)"
   fi
 
-  # Select profile with enhanced fzf UI
+  # Create preview script for fzf
+  local preview_script='
+    profile=$(echo {} | sed "s/^[● ]*//" | sed "s/^\[Clear Profile\]//")
+    if [[ -z "$profile" ]] || [[ "$profile" == "[Clear Profile]" ]]; then
+      echo "╭─────────────────────────────────────────╮"
+      echo "│ Clear the current AWS profile           │"
+      echo "╰─────────────────────────────────────────╯"
+    else
+      echo "╭─────────────────────────────────────────╮"
+      echo "│ Profile: $profile"
+      echo "├─────────────────────────────────────────┤"
+      
+      # Check if this is an SSO profile
+      sso_start_url=$(AWS_PROFILE="$profile" aws configure get sso_start_url 2>/dev/null)
+      sso_account_id=$(AWS_PROFILE="$profile" aws configure get sso_account_id 2>/dev/null)
+      sso_role=$(AWS_PROFILE="$profile" aws configure get sso_role_name 2>/dev/null)
+      region=$(AWS_PROFILE="$profile" aws configure get region 2>/dev/null)
+      
+      # Try to get identity (this will fail if SSO session expired)
+      account_id=$(AWS_PROFILE="$profile" aws sts get-caller-identity --query Account --output text 2>/dev/null)
+      user_arn=$(AWS_PROFILE="$profile" aws sts get-caller-identity --query Arn --output text 2>/dev/null)
+      
+      # Display SSO info if available
+      if [[ -n "$sso_start_url" ]]; then
+        echo "│ Type:        SSO Profile"
+        if [[ -n "$sso_account_id" ]]; then
+          echo "│ SSO Account: $sso_account_id"
+        fi
+        if [[ -n "$sso_role" ]]; then
+          echo "│ SSO Role:    $sso_role"
+        fi
+      fi
+      
+      # Display region
+      if [[ -n "$region" ]]; then
+        echo "│ Region:      $region"
+      else
+        echo "│ Region:      <not configured>"
+      fi
+      
+      # Show live credentials status
+      if [[ -n "$account_id" ]]; then
+        echo "│ Account ID:  $account_id"
+        echo "│ Status:      ✓ Active"
+        if [[ -n "$user_arn" ]]; then
+          identity_name=$(echo "$user_arn" | awk -F"/" "{print \$NF}")
+          echo "│ Identity:    $identity_name"
+        fi
+      else
+        # No active session
+        if [[ -n "$sso_start_url" ]]; then
+          echo "│ Status:      ⚠ SSO login required"
+          echo "│"
+          echo "│ Run: aws sso login --profile $profile"
+        else
+          echo "│ Status:      ⚠ Unable to authenticate"
+        fi
+      fi
+      
+      echo "╰─────────────────────────────────────────╯"
+    fi
+  '
+
+  # Select profile with enhanced fzf UI including preview
   local selection
   selection=$(echo -e "$profile_list" | fzf \
     --prompt "$prompt: " \
-    --height 60% \
+    --height 80% \
     --reverse \
     --border rounded \
     --border-label " AWS Profiles " \
     --header "● = current profile | ↑↓ navigate | enter select" \
-    --color "border:#589df6,label:#89b4fa,header:#cba6f7" \
+    --preview "$preview_script" \
+    --preview-window "right:45%:wrap" \
+    --color "border:#589df6,label:#89b4fa,header:#cba6f7,preview-border:#589df6" \
     --pointer "▶" \
     --marker "✓") || {
     echo "No profile selected"
@@ -259,7 +324,7 @@ awsprofile() {
       local old_profile="$AWS_PROFILE"
       unset AWS_PROFILE
       unset AWS_DEFAULT_REGION
-      echo "Cleared AWS profile: $old_profile"
+      echo "✓ Cleared AWS profile: $old_profile"
     else
       echo "No AWS profile currently set"
     fi
@@ -276,6 +341,7 @@ awsprofile() {
   # Show profile details with formatting
   echo "╭─────────────────────────────────────────╮"
   echo "│ AWS Profile: $AWS_PROFILE"
+  echo "├─────────────────────────────────────────┤"
   
   # Get and display account details
   local account_id region user_arn
@@ -290,8 +356,10 @@ awsprofile() {
     echo "│ Region:      $region"
   fi
   if [[ -n "$user_arn" ]]; then
-    # Extract just the user/role name from ARN
+    # Extract identity type and name from ARN
+    local identity_type=$(echo "$user_arn" | grep -o "assumed-role\|user\|role" | head -1)
     local identity_name=$(echo "$user_arn" | awk -F'/' '{print $NF}')
+    echo "│ Type:        ${identity_type:-user}"
     echo "│ Identity:    $identity_name"
   fi
   echo "╰─────────────────────────────────────────╯"
