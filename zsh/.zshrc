@@ -196,13 +196,105 @@ ip() {
 
 # Cloud aliases
 awsprofile() {
-  local profile
-  profile=$(aws configure list-profiles | fzf --prompt "Select AWS profile:") || {
-    echo "❌ No profile selected."
+  # Check if AWS CLI is installed
+  if ! command -v aws &>/dev/null; then
+    echo "Error: AWS CLI is not installed"
+    return 1
+  fi
+
+  # Get available profiles
+  local profiles
+  profiles=$(aws configure list-profiles 2>/dev/null) || {
+    echo "Error: Failed to list AWS profiles"
     return 1
   }
-  export AWS_PROFILE="$profile"
-  echo "👷🏼 Working with AWS profile: $AWS_PROFILE"
+
+  if [[ -z "$profiles" ]]; then
+    echo "No AWS profiles found"
+    return 1
+  fi
+
+  # Add clear option and format profiles with current indicator
+  local profile_list=""
+  local current_marker=""
+  
+  # Add option to clear/unset profile
+  profile_list="[Clear Profile]"
+  
+  # Add each profile with current indicator
+  while IFS= read -r prof; do
+    if [[ "$AWS_PROFILE" == "$prof" ]]; then
+      current_marker="● "
+    else
+      current_marker="  "
+    fi
+    profile_list="$profile_list\n${current_marker}${prof}"
+  done <<< "$profiles"
+
+  # Build prompt showing current profile
+  local prompt="Select AWS profile"
+  if [[ -n "$AWS_PROFILE" ]]; then
+    prompt="Select AWS profile (current: $AWS_PROFILE)"
+  fi
+
+  # Select profile with enhanced fzf UI
+  local selection
+  selection=$(echo -e "$profile_list" | fzf \
+    --prompt "$prompt: " \
+    --height 60% \
+    --reverse \
+    --border rounded \
+    --border-label " AWS Profiles " \
+    --header "● = current profile | ↑↓ navigate | enter select" \
+    --color "border:#589df6,label:#89b4fa,header:#cba6f7" \
+    --pointer "▶" \
+    --marker "✓") || {
+    echo "No profile selected"
+    return 1
+  }
+
+  # Handle clear profile option
+  if [[ "$selection" == "[Clear Profile]" ]]; then
+    if [[ -n "$AWS_PROFILE" ]]; then
+      local old_profile="$AWS_PROFILE"
+      unset AWS_PROFILE
+      unset AWS_DEFAULT_REGION
+      echo "Cleared AWS profile: $old_profile"
+    else
+      echo "No AWS profile currently set"
+    fi
+    return 0
+  fi
+
+  # Remove the current indicator marker if present
+  selection="${selection#● }"
+  selection="${selection#  }"
+
+  # Set the profile
+  export AWS_PROFILE="$selection"
+  
+  # Show profile details with formatting
+  echo "╭─────────────────────────────────────────╮"
+  echo "│ AWS Profile: $AWS_PROFILE"
+  
+  # Get and display account details
+  local account_id region user_arn
+  account_id=$(aws sts get-caller-identity --query Account --output text 2>/dev/null)
+  user_arn=$(aws sts get-caller-identity --query Arn --output text 2>/dev/null)
+  region=$(aws configure get region 2>/dev/null)
+  
+  if [[ -n "$account_id" ]]; then
+    echo "│ Account ID:  $account_id"
+  fi
+  if [[ -n "$region" ]]; then
+    echo "│ Region:      $region"
+  fi
+  if [[ -n "$user_arn" ]]; then
+    # Extract just the user/role name from ARN
+    local identity_name=$(echo "$user_arn" | awk -F'/' '{print $NF}')
+    echo "│ Identity:    $identity_name"
+  fi
+  echo "╰─────────────────────────────────────────╯"
 }
 alias aws-profile=awsprofile
 
