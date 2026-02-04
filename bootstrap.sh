@@ -107,11 +107,17 @@ print_summary() {
 print_banner
 
 step "Creating base directories"
-info "Creating ${BOLD}~/code${RESET} and ${BOLD}~/.ssh${RESET}..."
-mkdir -p "$HOME/code" "$HOME/.ssh"
-chmod 700 "$HOME/.ssh"
-success "Base directories created"
-add_summary "Created base directories (~/code, ~/.ssh)"
+if [ -d "$HOME/code" ] && [ -d "$HOME/.ssh" ]; then
+	info "Base directories already exist"
+	chmod 700 "$HOME/.ssh" 2>/dev/null || true
+	add_summary "Base directories (already present)"
+else
+	info "Creating ${BOLD}~/code${RESET} and ${BOLD}~/.ssh${RESET}..."
+	mkdir -p "$HOME/code" "$HOME/.ssh"
+	chmod 700 "$HOME/.ssh"
+	success "Base directories created"
+	add_summary "Created base directories (~/code, ~/.ssh)"
+fi
 
 step "Installing Xcode command line tools"
 if ! xcode-select -p &>/dev/null; then
@@ -236,12 +242,11 @@ if [ ! -d "$DOTFILES_DIR" ]; then
 		exit 1
 	fi
 else
-	warn "Dotfiles repo already exists at ${BOLD}$DOTFILES_DIR${RESET}"
+	info "Dotfiles repo already exists at ${BOLD}$DOTFILES_DIR${RESET}"
 	# Check if we can access the repo
 	if [ -d "$DOTFILES_DIR/.git" ]; then
-		info "Verifying repository access..."
 		if git -C "$DOTFILES_DIR" remote get-url origin &>/dev/null; then
-			success "Repository is accessible"
+			info "Repository is accessible"
 			add_summary "Dotfiles repository (already present)"
 		else
 			warn "Repository exists but may not be properly configured"

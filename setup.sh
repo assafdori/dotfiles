@@ -182,10 +182,16 @@ success "Homebrew updated"
 add_summary "Updated Homebrew to latest version"
 
 step "Creating directories"
-info "Setting up ${BOLD}~/.config${RESET}, ${BOLD}~/code${RESET} structures..."
-mkdir -p "$HOME/.config" "$GHREPOS" "$HOME/code/work"
-success "Directories created"
-add_summary "Created directory structure"
+# Check if directories already exist
+if [ -d "$HOME/.config" ] && [ -d "$GHREPOS" ] && [ -d "$HOME/code/work" ]; then
+	info "Directory structure already exists"
+	add_summary "Directory structure (already present)"
+else
+	info "Setting up ${BOLD}~/.config${RESET}, ${BOLD}~/code${RESET} structures..."
+	mkdir -p "$HOME/.config" "$GHREPOS" "$HOME/code/work"
+	success "Directories created"
+	add_summary "Created directory structure"
+fi
 
 step "Installing Brewfile packages"
 if [ -f "$BREWFILE_PATH" ]; then
@@ -269,12 +275,20 @@ else
 fi
 
 step "Creating symbolic links"
-info "Linking ${BOLD}~/garden${RESET} to Second Brain..."
-ln -sfn "$SECOND_BRAIN" ~/garden
-info "Linking ${BOLD}~/icloud${RESET} to iCloud Drive..."
-ln -sfn "$ICLOUD" ~/icloud
-success "Symbolic links created"
-add_summary "Created ~/garden and ~/icloud symlinks"
+if [ -L "$HOME/garden" ] && [ -L "$HOME/icloud" ]; then
+	info "Symbolic links already exist, updating..."
+	ln -sfn "$SECOND_BRAIN" ~/garden
+	ln -sfn "$ICLOUD" ~/icloud
+	info "Symbolic links updated"
+	add_summary "Updated ~/garden and ~/icloud symlinks"
+else
+	info "Linking ${BOLD}~/garden${RESET} to Second Brain..."
+	ln -sfn "$SECOND_BRAIN" ~/garden
+	info "Linking ${BOLD}~/icloud${RESET} to iCloud Drive..."
+	ln -sfn "$ICLOUD" ~/icloud
+	success "Symbolic links created"
+	add_summary "Created ~/garden and ~/icloud symlinks"
+fi
 
 step "Installing fonts"
 FONT_DIR="$HOME/Library/Fonts"
