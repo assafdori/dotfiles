@@ -262,6 +262,13 @@ awsprofile() {
       # Display SSO info if available
       if [[ -n "$sso_start_url" ]]; then
         echo "│ Type:        SSO Profile"
+        
+        # Extract organization name from SSO URL
+        org_name=$(echo "$sso_start_url" | sed -n "s|https://\([^.]*\)\.awsapps\.com.*|\1|p")
+        if [[ -n "$org_name" ]]; then
+          echo "│ Org:         $org_name"
+        fi
+        
         if [[ -n "$sso_account_id" ]]; then
           echo "│ SSO Account: $sso_account_id"
         fi
