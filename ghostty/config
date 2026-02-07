@@ -2,7 +2,7 @@
 # Style
 # -----------
 font-family = "Berkeley Mono"
-theme = koda
+theme = koda-dark
 font-size = 15
 
 # Custom background & opacity
