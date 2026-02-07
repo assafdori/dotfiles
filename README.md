@@ -1,6 +1,6 @@
 # Dotfiles
 
-![asset](assets/assets.png)
+![asset](assets/assets.jpg)
 
 #### these dotfiles are super opinionated and will most likely require modifications to work for you
 
