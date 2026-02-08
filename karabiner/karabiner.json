@@ -7,6 +7,8 @@
 // Hyper + m -> Launch Music
 // Hyper + p -> Launch Passwords
 // Hyper + f -> Launch Finder
+// Hyper + e -> Launch Mail
+// Hyper + w -> Launch WhatsApp
 
 {
   "global": {
@@ -191,6 +193,27 @@
                 "to": [
                   {
                     "shell_command": "open -a 'Mail'"
+                  }
+                ]
+              },
+              {
+                "description": "Hyper + w -> Launch WhatsApp",
+                "type": "basic",
+                "from": {
+                  "key_code": "w",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_command",
+                      "left_control",
+                      "left_option",
+                      "left_shift"
+                    ],
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "open -a 'WhatsApp'"
                   }
                 ]
               }
