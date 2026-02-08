@@ -25,6 +25,7 @@ return {
         component_separators = "",
         section_separators = { left = "", right = "" },
         disabled_filetypes = { "alpha", "Outline", "snacks_dashboard" },
+        globalstatus = true, -- Enable global statusline, trying this out
       },
       sections = {
         lualine_a = {
