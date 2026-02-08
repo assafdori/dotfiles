@@ -3,7 +3,7 @@ add_newline = true
 format = """$username$directory$linebreak$character"""
 right_format = """$all"""
 command_timeout = 1000
-palette = 'koda'
+palette = 'koda-dark'
 
 [username]
 disabled = true
@@ -152,7 +152,7 @@ accent5 = "#b46958" # red/orange/pinkish
 accent6 = "#88afa2" # cyan/teal
 accent7 = "#d0d0d0" # light gray for folders
 
-[palettes.koda]
+[palettes.koda-dark]
 white = "#ffffff"   # bright white (palette 3, 11, 12)
 bg = "#101010"      # dark background
 fg = "#b0b0b0"      # light gray foreground
@@ -165,3 +165,15 @@ accent5 = "#ff7676" # coral red (palette 1)
 accent6 = "#a5adce" # lavender blue (palette 7)
 accent7 = "#b3b3b3" # light gray (palette 4)
 
+[palettes.koda-light]
+white = "#000000"   # black for light theme (palette 12)
+bg = "#faf9f5"      # light background
+fg = "#101010"      # dark foreground
+muted = "#ababab"   # muted gray (palette 8)
+accent1 = "#009797" # cyan/teal (palette 14)
+accent2 = "#407f00" # green (palette 2)
+accent3 = "#926200" # golden brown (palette 3)
+accent4 = "#a200d1" # purple/magenta (palette 5)
+accent5 = "#ca0043" # red (palette 1)
+accent6 = "#6a6a6a" # gray blue (palette 7)
+accent7 = "#3d3d3d" # dark gray (palette 4)
