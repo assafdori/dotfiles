@@ -197,7 +197,7 @@ step "Installing Brewfile packages"
 if [ -f "$BREWFILE_PATH" ]; then
 	info "Installing packages from ${BOLD}Brewfile${RESET}..."
 	info "This may take several minutes..."
-	brew bundle --file="$BREWFILE_PATH" &
+	brew bundle --upgrade --file="$BREWFILE_PATH" &
 	spinner $!
 	success "Brewfile packages installed"
 	add_summary "Installed all Brewfile packages"
