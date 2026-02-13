@@ -256,18 +256,65 @@ step "Configuring Touch ID for sudo"
 # Check if Touch ID is already enabled
 if sudo grep -q "^auth.*pam_tid.so" /etc/pam.d/sudo_local 2>/dev/null; then
 	info "Touch ID for sudo already enabled"
-	add_summary "Touch ID for sudo (already enabled)"
+
+	# Check if pam-reattach is also configured (needed for tmux)
+	if sudo grep -q "^auth.*pam_reattach.so" /etc/pam.d/sudo_local 2>/dev/null; then
+		info "pam-reattach already configured for tmux support"
+		add_summary "Touch ID for sudo (already enabled with tmux support)"
+	else
+		info "Adding pam-reattach for tmux support..."
+		# Find the pam_reattach.so path
+		if [ -f "/opt/homebrew/lib/pam/pam_reattach.so" ]; then
+			PAM_REATTACH_PATH="/opt/homebrew/lib/pam/pam_reattach.so"
+		elif [ -f "/usr/local/lib/pam/pam_reattach.so" ]; then
+			PAM_REATTACH_PATH="/usr/local/lib/pam/pam_reattach.so"
+		else
+			warn "pam_reattach.so not found - install with: brew install pam-reattach"
+			add_summary "Touch ID for sudo (tmux support needs pam-reattach)"
+		fi
+
+		if [ -n "${PAM_REATTACH_PATH:-}" ]; then
+			# Add pam_reattach.so before pam_tid.so
+			sudo sed -i '' "s|^auth.*sufficient.*pam_tid\.so|auth       optional       $PAM_REATTACH_PATH\nauth       sufficient     pam_tid.so|" /etc/pam.d/sudo_local
+			success "pam-reattach configured - Touch ID now works in tmux"
+			add_summary "Configured pam-reattach for Touch ID in tmux"
+		fi
+	fi
 elif [ -t 0 ]; then
 	# Only prompt if stdin is a terminal
 	printf "\n"
 	read -r -p "$(printf "${CYAN}Enable Touch ID for sudo operations? [y/N]${RESET} ")" response
 	case "$response" in
 	[yY][eE][sS] | [yY])
-		if sudo sh -c 'sed "s/^#auth.*pam_tid\.so/auth       sufficient     pam_tid.so/" /etc/pam.d/sudo_local.template > /etc/pam.d/sudo_local' 2>/dev/null; then
-			success "Touch ID enabled for sudo"
-			add_summary "Enabled Touch ID for sudo"
+		# Find the pam_reattach.so path
+		if [ -f "/opt/homebrew/lib/pam/pam_reattach.so" ]; then
+			PAM_REATTACH_PATH="/opt/homebrew/lib/pam/pam_reattach.so"
+		elif [ -f "/usr/local/lib/pam/pam_reattach.so" ]; then
+			PAM_REATTACH_PATH="/usr/local/lib/pam/pam_reattach.so"
 		else
-			warn "Failed to enable Touch ID (may require manual setup)"
+			PAM_REATTACH_PATH=""
+		fi
+
+		if [ -n "$PAM_REATTACH_PATH" ]; then
+			# Create sudo_local with both pam_reattach and pam_tid
+			sudo sh -c "cat > /etc/pam.d/sudo_local <<EOF
+# sudo_local: local config file which survives system update and is included for sudo
+# pam_reattach.so enables Touch ID to work inside tmux sessions
+auth       optional       $PAM_REATTACH_PATH
+# pam_tid.so enables Touch ID for sudo
+auth       sufficient     pam_tid.so
+EOF"
+			success "Touch ID enabled for sudo (with tmux support)"
+			add_summary "Enabled Touch ID for sudo with tmux support"
+		else
+			# Fallback to just pam_tid if pam_reattach not found
+			if sudo sh -c 'sed "s/^#auth.*pam_tid\.so/auth       sufficient     pam_tid.so/" /etc/pam.d/sudo_local.template > /etc/pam.d/sudo_local' 2>/dev/null; then
+				success "Touch ID enabled for sudo"
+				warn "Install pam-reattach for tmux support: brew install pam-reattach"
+				add_summary "Enabled Touch ID for sudo (tmux support requires pam-reattach)"
+			else
+				warn "Failed to enable Touch ID (may require manual setup)"
+			fi
 		fi
 		;;
 	*)
