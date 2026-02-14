@@ -7,5 +7,6 @@
     "scroll_acceleration": {
       "enabled": true
     }
-  }
+  },
+  "plugin": ["oh-my-opencode@latest"]
 }
