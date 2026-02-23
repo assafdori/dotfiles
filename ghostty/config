@@ -2,7 +2,7 @@ working-directory = /Users/assafdori/code/assafdori/dotfiles
 # -----------
 # Style
 # -----------
-# font-family = "Berkeley Mono"
+font-family = "Berkeley Mono"
 theme = koda-dark
 font-size = 14
 
