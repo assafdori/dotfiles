@@ -200,6 +200,33 @@ alias tn="tmux new-session -s \$(pwd | sed 's/.*\///g')"
 alias td="tmux detach"
 alias mat='osascript -e "tell application \"System Events\" to key code 126 using {command down}" && tmux neww "cmatrix"'
 
+# Create a tmux layout for dev with editor, ai, and terminal
+tml() {
+  local current_dir="${PWD}"
+  local session_name="${current_dir##*/}"
+  local editor_pane ai_pane
+  local ai="opencode"
+  # If not inside tmux, create a session and run tml inside it
+  if [[ -z "$TMUX" ]]; then
+    tmux new-session -d -s "$session_name" -c "$current_dir"
+    tmux send-keys -t "$session_name" "tml $ai" C-m
+    tmux attach -t "$session_name"
+    return
+  fi
+
+  # Already inside tmux — set up the layout
+  editor_pane=$(tmux display-message -p '#{pane_id}')
+  tmux split-window -v -p 15 -c "$current_dir"
+
+  tmux select-pane -t "$editor_pane"
+  tmux split-window -h -p 30 -c "$current_dir"
+  ai_pane=$(tmux display-message -p '#{pane_id}')
+  tmux send-keys -t "$ai_pane" "$ai" C-m
+  tmux send-keys -t "$editor_pane" "$EDITOR ." C-m
+
+  tmux select-pane -t "$editor_pane"
+}
+
 # Password generation
 pg() {
   local password
