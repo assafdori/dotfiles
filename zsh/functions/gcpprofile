@@ -1,8 +1,0 @@
-  local config
-  config=$(gcloud config configurations list --format="value(name)" \
-    | fzf --prompt "Select GCP configuration: ") || {
-      echo "❌ No GCP configuration selected."
-      return 1
-    }
-  export CLOUDSDK_ACTIVE_CONFIG_NAME="$config"
-  echo "👷🏼 Working with GCP configuration: $CLOUDSDK_ACTIVE_CONFIG_NAME"

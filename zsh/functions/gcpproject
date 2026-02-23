@@ -1,9 +1,0 @@
-  local project
-  project=$(gcloud projects list --format="value(projectId)" \
-    | fzf --prompt="Select GCP project: ") || {
-      echo "❌ No GCP project selected."
-      return 1
-    }
-
-  export CLOUDSDK_CORE_PROJECT="$project"
-  echo "👷🏼 Working with GCP project: $CLOUDSDK_CORE_PROJECT"
