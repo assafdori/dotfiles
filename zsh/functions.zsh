@@ -23,15 +23,12 @@ tml() {
 
   # Already inside tmux — set up the layout
   editor_pane=$(tmux display-message -p '#{pane_id}')
-  tmux split-window -v -p 15 -c "$current_dir"
-
-  tmux select-pane -t "$editor_pane"
   tmux split-window -h -p 35 -c "$current_dir"
-
   ai_pane=$(tmux display-message -p '#{pane_id}')
   tmux send-keys -t "$ai_pane" "$ai" C-m
+  tmux select-pane -t "$editor_pane"
+  tmux split-window -v -p 15 -c "$current_dir"
   tmux send-keys -t "$editor_pane" "$EDITOR ." C-m
-
   tmux select-pane -t "$editor_pane"
 }
 
