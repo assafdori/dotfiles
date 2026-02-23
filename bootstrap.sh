@@ -51,25 +51,6 @@ section() {
   printf "${RESET}\n"
 }
 
-# Progress bar
-progress_bar() {
-  local current=$1
-  local total=$2
-  local width=40
-  local percentage=$((current * 100 / total))
-  local filled=$((width * current / total))
-  local empty=$((width - filled))
-
-  printf "\r${BOLD}["
-  printf '#%.0s' $(seq 1 $filled)
-  printf -- '-%.0s' $(seq 1 $empty)
-  printf "]${RESET} ${percentage}%%"
-
-  if [ "$current" -eq "$total" ]; then
-    printf "\n"
-  fi
-}
-
 # Banner
 print_banner() {
   printf "\n${BOLD}"
@@ -86,25 +67,41 @@ EOF
   printf "${RESET}\n"
 }
 
-# Summary tracking
+# Error and summary tracking
 declare -a SUMMARY_ITEMS=()
+declare -a ERROR_ITEMS=()
 add_summary() {
   SUMMARY_ITEMS+=("$1")
 }
-
+add_error() {
+  ERROR_ITEMS+=("$1")
+}
 # Print summary at the end
 print_summary() {
   section "📊 INSTALLATION SUMMARY"
-  printf "\n${BOLD}Completed actions:${RESET}\n\n"
-  for item in "${SUMMARY_ITEMS[@]}"; do
-    printf "  ${GREEN}✓${RESET} %s\n" "$item"
-  done
-  printf "\n${GREEN}${BOLD}🎉 Bootstrap completed successfully!${RESET}\n"
+  if [ ${#SUMMARY_ITEMS[@]} -gt 0 ]; then
+    printf "\n${BOLD}Completed actions:${RESET}\n\n"
+    for item in "${SUMMARY_ITEMS[@]}"; do
+      printf "  ${GREEN}✓${RESET} %s\n" "$item"
+    done
+  fi
+
+  if [ ${#ERROR_ITEMS[@]} -gt 0 ]; then
+    printf "\n${BOLD}${RED}Failed actions:${RESET}\n\n"
+    for item in "${ERROR_ITEMS[@]}"; do
+      printf "  ${RED}✗${RESET} %s\n" "$item"
+    done
+    printf "\n${YELLOW}${BOLD}⚠️  Bootstrap completed with %d error(s)${RESET}\n" "${#ERROR_ITEMS[@]}"
+  else
+    printf "\n${GREEN}${BOLD}🎉 Bootstrap completed successfully!${RESET}\n"
+  fi
   printf "${CYAN}Next: Run ${UNDERLINE}setup.sh${RESET}${CYAN} to complete installation${RESET}\n\n"
 }
 
 # Start
 print_banner
+
+sleep 0.8
 
 step "Creating base directories"
 if [ -d "$HOME/code" ] && [ -d "$HOME/.ssh" ]; then
@@ -123,6 +120,11 @@ step "Installing Xcode command line tools"
 if ! xcode-select -p &>/dev/null; then
   info "Installing Xcode CLI tools (this may take a while)..."
   xcode-select --install
+  # Wait for Xcode CLI tools to actually finish installing
+  info "Waiting for Xcode CLI tools installation to complete..."
+  until xcode-select -p &>/dev/null; do
+    sleep 5
+  done
   success "Xcode CLI tools installed"
   add_summary "Installed Xcode command line tools"
 else
@@ -214,7 +216,7 @@ fi
 
 # Add keys to ssh-agent and keychain
 info "Loading SSH keys into ssh-agent..."
-eval "$(ssh-agent -s)"
+eval "$(ssh-agent -s)" >/dev/null
 keys_added=0
 for key in "$SSH_DEST"/*; do
   # Only add private keys (files that are not .pub, not config, and are regular files)
@@ -256,9 +258,11 @@ fi
 
 # Print summary
 print_summary
+sleep 2
 
 # Run setup.sh if it exists
 section "🚀 LAUNCHING MAIN SETUP"
+sleep 0.8
 if [ -f "$DOTFILES_DIR/setup.sh" ]; then
   info "Starting dotfiles installation..."
   sleep 2
