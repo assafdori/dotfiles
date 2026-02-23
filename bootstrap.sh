@@ -45,9 +45,9 @@ section() {
 	local text="$1"
 	local width=60
 	printf "\n${BOLD}"
-	printf '═%.0s' $(seq 1 $width)
+	printf -- '-%.0s' $(seq 1 $width)
 	printf "\n  %s\n" "$text"
-	printf '═%.0s' $(seq 1 $width)
+	printf -- '-%.0s' $(seq 1 $width)
 	printf "${RESET}\n"
 }
 
@@ -61,8 +61,8 @@ progress_bar() {
 	local empty=$((width - filled))
 
 	printf "\r${BOLD}["
-	printf '█%.0s' $(seq 1 $filled)
-	printf '░%.0s' $(seq 1 $empty)
+	printf '#%.0s' $(seq 1 $filled)
+	printf -- '-%.0s' $(seq 1 $empty)
 	printf "]${RESET} ${percentage}%%"
 
 	if [ "$current" -eq "$total" ]; then
@@ -74,14 +74,14 @@ progress_bar() {
 print_banner() {
 	printf "\n${BOLD}"
 	cat <<"EOF"
-╔══════════════════════════════════════════════════════════╗
-║                                                          ║
-║        🚀 BOOTSTRAP SCRIPT FOR MACOS DOTFILES 🚀         ║
-║                                                          ║
-║              Setting up your development                 ║
-║                   environment...                         ║
-║                                                          ║
-╚══════════════════════════════════════════════════════════╝
++----------------------------------------------------------+
+|                                                          |
+|        🚀 BOOTSTRAP SCRIPT FOR MACOS DOTFILES 🚀         |
+|                                                          |
+|              Setting up your development                 |
+|                   environment...                         |
+|                                                          |
++----------------------------------------------------------+
 EOF
 	printf "${RESET}\n"
 }
