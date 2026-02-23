@@ -6,6 +6,6 @@ source "$ZSHRC_DIR/env.zsh"           # Environment variables, PATH, brew prefix
 source "$ZSHRC_DIR/options.zsh"       # setopt, zstyle, compinit
 source "$ZSHRC_DIR/completions.zsh"   # Lazy-load completions (kubectl, aws, gcloud, etc.)
 source "$ZSHRC_DIR/plugins.zsh"       # Plugin sourcing (autosuggestions, starship, fzf, etc.)
+source "$ZSHRC_DIR/aliases.zsh"       # Aliases (before functions — aliases expand at definition time)
 source "$ZSHRC_DIR/functions.zsh"     # Shell functions
-source "$ZSHRC_DIR/aliases.zsh"       # Aliases
 source "$ZSHRC_DIR/keybindings.zsh"   # Key bindings (after functions — registers zle widgets)
