@@ -36,7 +36,7 @@ error() {
 # Step counter
 step() {
 	CURRENT_STEP=$((CURRENT_STEP + 1))
-	printf "\n${CYAN}${BOLD}[Step %d/%d]${RESET} ${BOLD}%s${RESET}\n" "$CURRENT_STEP" "$TOTAL_STEPS" "$*"
+	printf "\n${BOLD}[Step %d/%d]${RESET} ${BOLD}%s${RESET}\n" "$CURRENT_STEP" "$TOTAL_STEPS" "$*"
 	sleep 0.6
 }
 
@@ -44,7 +44,7 @@ step() {
 section() {
 	local text="$1"
 	local width=60
-	printf "\n${MAGENTA}"
+	printf "\n${BOLD}"
 	printf '═%.0s' $(seq 1 $width)
 	printf "\n  %s\n" "$text"
 	printf '═%.0s' $(seq 1 $width)
@@ -60,7 +60,7 @@ progress_bar() {
 	local filled=$((width * current / total))
 	local empty=$((width - filled))
 
-	printf "\r${CYAN}["
+	printf "\r${BOLD}["
 	printf '█%.0s' $(seq 1 $filled)
 	printf '░%.0s' $(seq 1 $empty)
 	printf "]${RESET} ${percentage}%%"
@@ -72,7 +72,7 @@ progress_bar() {
 
 # Banner
 print_banner() {
-	printf "\n${CYAN}${BOLD}"
+	printf "\n${BOLD}"
 	cat <<"EOF"
 ╔══════════════════════════════════════════════════════════╗
 ║                                                          ║

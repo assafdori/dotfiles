@@ -36,7 +36,7 @@ error() {
 # Step counter
 step() {
 	CURRENT_STEP=$((CURRENT_STEP + 1))
-	printf "\n${CYAN}${BOLD}[Step %d/%d]${RESET} ${BOLD}%s${RESET}\n" "$CURRENT_STEP" "$TOTAL_STEPS" "$*"
+	printf "\n${BOLD}[Step %d/%d]${RESET} ${BOLD}%s${RESET}\n" "$CURRENT_STEP" "$TOTAL_STEPS" "$*"
 	sleep 0.4
 }
 
@@ -44,7 +44,7 @@ step() {
 section() {
 	local text="$1"
 	local width=60
-	printf "\n${MAGENTA}"
+	printf "\n${BOLD}"
 	printf '═%.0s' $(seq 1 $width)
 	printf "\n  %s\n" "$text"
 	printf '═%.0s' $(seq 1 $width)
@@ -60,7 +60,7 @@ progress_bar() {
 	local filled=$((width * current / total))
 	local empty=$((width - filled))
 
-	printf "\r${CYAN}["
+	printf "\r${BOLD}["
 	printf '█%.0s' $(seq 1 $filled)
 	printf '░%.0s' $(seq 1 $empty)
 	printf "]${RESET} ${percentage}%%"
@@ -101,7 +101,7 @@ fi
 
 # Enhanced logo function with color
 print_logo() {
-	printf "\n${CYAN}${BOLD}"
+	printf "\n${BOLD}"
 	cat <<"EOF"
 ╔══════════════════════════════════════════════════════════╗
 ║                                                          ║
@@ -109,7 +109,7 @@ print_logo() {
 ║                                                          ║
 ║            Welcome to the Mac setup script!              ║
 EOF
-	printf "${RESET}${CYAN}"
+	printf "${RESET}${BOLD}"
 	cat <<"EOF"
 ║           __________                                     ║
 ║         .'----------`.                                   ║
@@ -125,7 +125,7 @@ EOF
 ║+-----------------------------------------------------+   ║
 ║                                                          ║
 EOF
-	printf "${RESET}${GREEN}"
+	printf "${RESET}${BOLD}"
 	cat <<"EOF"
 ║          Bootstrap MacOS Development Environment         ║
 ║                    by: Assaf Dori                        ║
@@ -142,7 +142,7 @@ spinner() {
 	local spinstr='⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏'
 	while kill -0 "$pid" 2>/dev/null; do
 		local temp=${spinstr#?}
-		printf " ${CYAN}%s${RESET}  " "${spinstr:0:1}"
+		printf " ${BOLD}%s${RESET}  " "${spinstr:0:1}"
 		spinstr=$temp${spinstr%"$temp"}
 		sleep $delay
 		printf "\b\b\b\b\b\b"
