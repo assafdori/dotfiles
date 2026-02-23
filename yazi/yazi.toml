@@ -1,2 +1,5 @@
 [mgr]
 show_hidden = true
+
+[input]
+cursor_blink = true

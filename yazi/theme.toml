@@ -1,118 +1,164 @@
-## Color palette - Koda Dark
-## Based on koda-dark theme from ghostty
-# background    "#101010" dark bg
-# foreground    "#ffffff" fg
-# cursor        "#b0b0b0"
-# selection_bg  "#272727"
-# selection_fg  "#b0b0b0"
-# black         "#101010" palette 0
-# red           "#ff7676" palette 1
-# green         "#a3d6a3" palette 2
-# yellow        "#ffffff" palette 3
-# blue          "#b3b3b3" palette 4
-# magenta       "#f4b8e4" palette 5
-# cyan          "#fafafa" palette 6
-# white         "#a5adce" palette 7
-# br_black      "#666666" palette 8
-# br_red        "#ff5733" palette 9
-# br_green      "#86cd82" palette 10
-# br_yellow     "#d9ba73" palette 11
-# br_blue       "#ffffff" palette 12
-# br_magenta    "#f2a4db" palette 13
-# br_cyan       "#5abfb5" palette 14
-# br_white      "#b5bfe2" palette 15
+## Koda Dark — Yazi theme
+## Based on koda-dark palette from ghostty
+##
+## Palette reference (ghostty koda-dark):
+##   bg: #101010  fg: #ffffff  cursor: #b0b0b0
+##   sel-bg: #272727  sel-fg: #b0b0b0
+##   0: #101010  1: #ff7676  2: #a3d6a3  3: #ffffff
+##   4: #b3b3b3  5: #f4b8e4  6: #fafafa  7: #a5adce
+##   8: #50585d  9: #ff5733  10: #86cd82  11: #d9ba73
+##   12: #ffffff  13: #f2a4db  14: #5abfb5  15: #b5bfe2
+
+# --- Flavor -----------------------------------------------------------------
+
+[flavor]
+
+# --- App ---------------------------------------------------------------------
+
+[app]
+overall = { bg = "#101010" }
+
+# --- Manager -----------------------------------------------------------------
 
 [mgr]
+cwd = { fg = "#d9ba73" }
+
+find_keyword = { fg = "#ff7676", bold = true }
+find_position = { fg = "#f4b8e4", italic = true }
+
+symlink_target = { fg = "#5abfb5", italic = true }
+
 marker_copied = { fg = "#86cd82", bg = "#86cd82" }
 marker_cut = { fg = "#ff5733", bg = "#ff5733" }
 marker_marked = { fg = "#f4b8e4", bg = "#f4b8e4" }
 marker_selected = { fg = "#ff7676", bg = "#ff7676" }
-
-cwd = { fg = "#d9ba73" }
-hovered = { reversed = true }
-preview_hovered = { reversed = true }
-
-find_keyword = { fg = "#ff7676", bg = "#101010" }
-find_position = {}
-
-tab_active = { reversed = true }
-tab_inactive = {}
-tab_width = 1
 
 count_copied = { fg = "#101010", bg = "#86cd82" }
 count_cut = { fg = "#101010", bg = "#ff7676" }
 count_selected = { fg = "#101010", bg = "#d9ba73" }
 
 border_symbol = "│"
-border_style = { fg = "#b0b0b0" }
+border_style = { fg = "#50585d" }
 
+# --- Indicator ---------------------------------------------------------------
+
+[indicator]
+parent = { fg = "#50585d", bg = "#101010" }
+current = { fg = "#ff7676", bg = "#101010" }
+preview = { fg = "#50585d", bg = "#101010" }
+
+# --- Tabs --------------------------------------------------------------------
+
+[tabs]
+active = { fg = "#101010", bg = "#b3b3b3", bold = true }
+inactive = { fg = "#b0b0b0", bg = "#272727" }
+
+# --- Mode --------------------------------------------------------------------
 
 [mode]
-normal_main = { fg = "#101010", bg = "#b3b3b3" }
+normal_main = { fg = "#101010", bg = "#b3b3b3", bold = true }
 normal_alt = { fg = "#b3b3b3", bg = "#272727" }
-select_main = { fg = "#101010", bg = "#f4b8e4" }
+
+select_main = { fg = "#101010", bg = "#f4b8e4", bold = true }
 select_alt = { fg = "#f4b8e4", bg = "#272727" }
-unset_main = { fg = "#101010", bg = "#d9ba73" }
+
+unset_main = { fg = "#101010", bg = "#d9ba73", bold = true }
 unset_alt = { fg = "#d9ba73", bg = "#272727" }
 
+# --- Status bar --------------------------------------------------------------
 
 [status]
+overall = { fg = "#b0b0b0", bg = "#101010" }
+
 sep_left = { open = "", close = "" }
 sep_right = { open = "", close = "" }
-overall = { fg = "#b0b0b0", bg = "#101010" }
 
 progress_label = { fg = "#b3b3b3", bg = "#272727", bold = true }
 progress_normal = { fg = "#272727", bg = "#101010" }
-progress_error = { fg = "#272727", bg = "#101010" }
+progress_error = { fg = "#ff7676", bg = "#101010" }
 
 perm_type = { fg = "#a3d6a3" }
 perm_read = { fg = "#d9ba73" }
 perm_write = { fg = "#ff7676" }
 perm_exec = { fg = "#5abfb5" }
-perm_sep = { fg = "#f4b8e4" }
+perm_sep = { fg = "#50585d" }
 
-
-[pick]
-border = { fg = "#b0b0b0" }
-active = { fg = "#f4b8e4", bold = true }
-inactive = {}
-
-[input]
-border = { fg = "#b0b0b0" }
-title = {}
-value = {}
-selected = { reversed = true }
-
-[completion]
-border = { fg = "#b0b0b0" }
-active = { reversed = true }
-inactive = {}
-
-[tasks]
-border = { fg = "#b0b0b0" }
-title = {}
-hovered = { fg = "#f4b8e4" }
+# --- Which -------------------------------------------------------------------
 
 [which]
 cols = 2
-separator = " - "
-separator_style = { fg = "#b0b0b0" }
 mask = { bg = "#101010" }
+cand = { fg = "#f4b8e4" }
 rest = { fg = "#b0b0b0" }
-cand = { fg = "#b3b3b3" }
-desc = { fg = "#666666" }
+desc = { fg = "#50585d" }
+separator = " → "
+separator_style = { fg = "#50585d" }
 
-[help]
-on = { fg = "#5abfb5" }
-run = { fg = "#f4b8e4" }
-desc = {}
-hovered = { reversed = true, bold = true }
-footer = { fg = "#101010", bg = "#ffffff" }
+# --- Confirm -----------------------------------------------------------------
+
+[confirm]
+border = { fg = "#b0b0b0" }
+title = { fg = "#ffffff", bold = true }
+body = { fg = "#b0b0b0" }
+list = { fg = "#b5bfe2" }
+btn_yes = { fg = "#101010", bg = "#86cd82", bold = true }
+btn_no = { fg = "#101010", bg = "#ff7676", bold = true }
+btn_labels = ["Yes", "No"]
+
+# --- Spot --------------------------------------------------------------------
+
+[spot]
+border = { fg = "#b0b0b0" }
+title = { fg = "#ffffff", bold = true }
+tbl_col = { fg = "#f4b8e4", reversed = true }
+tbl_cell = { fg = "#b5bfe2", reversed = true }
+
+# --- Notify ------------------------------------------------------------------
 
 [notify]
 title_info = { fg = "#86cd82" }
 title_warn = { fg = "#d9ba73" }
 title_error = { fg = "#ff7676" }
+
+# --- Pick --------------------------------------------------------------------
+
+[pick]
+border = { fg = "#b0b0b0" }
+active = { fg = "#f4b8e4", bold = true }
+inactive = { fg = "#b0b0b0" }
+
+# --- Input -------------------------------------------------------------------
+
+[input]
+border = { fg = "#b0b0b0" }
+title = { fg = "#ffffff", bold = true }
+value = { fg = "#ffffff" }
+selected = { reversed = true }
+
+# --- Completion --------------------------------------------------------------
+
+[cmp]
+border = { fg = "#b0b0b0" }
+active = { fg = "#f4b8e4", reversed = true }
+inactive = { fg = "#b0b0b0" }
+
+# --- Tasks -------------------------------------------------------------------
+
+[tasks]
+border = { fg = "#b0b0b0" }
+title = { fg = "#ffffff", bold = true }
+hovered = { fg = "#f4b8e4", bold = true }
+
+# --- Help --------------------------------------------------------------------
+
+[help]
+on = { fg = "#5abfb5" }
+run = { fg = "#f4b8e4" }
+desc = { fg = "#b0b0b0" }
+hovered = { reversed = true, bold = true }
+footer = { fg = "#101010", bg = "#ffffff" }
+
+# --- File types --------------------------------------------------------------
 
 [filetype]
 rules = [
@@ -128,13 +174,16 @@ rules = [
   # documents
   { mime = "application/{pdf,doc,rtf,vnd.*}", fg = "#5abfb5" },
 
+  # empty files
+  { mime = "inode/empty", fg = "#50585d" },
+
   # broken links
-  { name = "*", is = "orphan", fg = "#ff5733" },
+  { url = "*", is = "orphan", fg = "#ff5733" },
 
   # executables
-  { name = "*", is = "exec", fg = "#a3d6a3" },
+  { url = "*", is = "exec", fg = "#a3d6a3" },
 
   # fallback
-  { name = "*", fg = "#ffffff" },
-  { name = "*/", fg = "#b3b3b3" },
+  { url = "*", fg = "#ffffff" },
+  { url = "*/", fg = "#b3b3b3" },
 ]
