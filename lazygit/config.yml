@@ -7,8 +7,8 @@ gui:
     selectedLineBgColor:
       - "#2a2a2a"
 git:
-  pagers:
-    - pager: delta --dark --paging=never
+  # pagers:
+  #   - pager: delta --dark --paging=never
   merging:
     args: --no-ff
   overrideGpg: true
