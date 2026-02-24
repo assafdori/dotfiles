@@ -88,9 +88,5 @@ return {
       },
       extensions = { "toggleterm", "trouble" },
     })
-    vim.api.nvim_set_hl(0, "lualine_a_visual", { fg = "#000000", bg = "#dc4c44", bold = true })
-    vim.api.nvim_set_hl(0, "lualine_a_replace", { fg = "#000000", bg = "#dc4c44", bold = true })
-    vim.api.nvim_set_hl(0, "lualine_a_command", { fg = "#000000", bg = "#f9e2af", bold = true })
-    vim.api.nvim_set_hl(0, "lualine_a_insert", { fg = "#000000", bg = "#a6e3a1", bold = true })
   end,
 }

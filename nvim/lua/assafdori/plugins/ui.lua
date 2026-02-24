@@ -90,8 +90,26 @@ return {
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      -- require("koda").setup({ transparent = true })
+      require("koda").setup({
+        on_highlights = function(hl, c)
+          -- Fix: these groups link to Normal which has an explicit bg,
+          -- causing them to override the CursorLine bg on the current line.
+          -- Remove the bg so CursorLine shows through uniformly.
+          for _, group in ipairs({ "Identifier", "PreProc", "Special", "Tag" }) do
+            hl[group] = { fg = c.fg }
+          end
+        end,
+      })
       vim.cmd("colorscheme koda")
+      -- Fix: koda links many groups (including lang-specific @punctuation.bracket.lua etc.)
+      -- directly to Normal, which carries an explicit bg that overrides CursorLine.
+      -- Strip bg from all such groups so CursorLine shows through uniformly.
+      local normal_fg = vim.api.nvim_get_hl(0, { name = "Normal", link = false }).fg
+      for name, def in pairs(vim.api.nvim_get_hl(0, {})) do
+        if def.link == "Normal" then
+          vim.api.nvim_set_hl(0, name, { fg = normal_fg })
+        end
+      end
     end,
   },
   {
