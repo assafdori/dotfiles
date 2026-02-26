@@ -139,6 +139,8 @@ local tools = {
   "tflint",
   "typstfmt",
   "yamllint",
+  "terraform-ls",
+  "bash-language-server",
 }
 
 -- TODO: Maybe replace Mason with "pure" nvim-lspconfig
