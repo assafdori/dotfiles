@@ -311,6 +311,7 @@ cx() { cd "$@" && l; }
 fcd() { cd "$(find . -type d -not -path '*/.*' | fzf)" && l; }
 f() { echo "$(find . -type f -not -path '*/.*' | fzf)" | pbcopy }
 fv() { nvim "$(find . -type f -not -path '*/.*' | fzf)" }
+mkcd() { mkdir -p "$1" && cd "$1" }
 
 # Yank to the system clipboard
 function vi-yank-xclip {
