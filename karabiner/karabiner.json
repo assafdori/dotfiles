@@ -9,6 +9,7 @@
 // Hyper + f -> Launch Finder
 // Hyper + e -> Launch Mail
 // Hyper + w -> Launch WhatsApp
+// Hyper + i -> Launch iCloud in Finder
 
 {
   "global": {
@@ -87,6 +88,27 @@
                 "to": [
                   {
                     "shell_command": "open -a 'Finder'"
+                  }
+                ]
+              },
+              {
+                "description": "Hyper + i -> Launch iCloud Drive (Finder)",
+                "type": "basic",
+                "from": {
+                  "key_code": "i",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_command",
+                      "left_control",
+                      "left_option",
+                      "left_shift"
+                    ],
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "open -a 'iCloud Drive'"
                   }
                 ]
               },
