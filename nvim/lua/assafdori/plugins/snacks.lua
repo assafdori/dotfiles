@@ -28,22 +28,24 @@ return {
           { icon = "󰈆", key = "q", desc = "quit", action = ":qa" },
         },
         header = [[
-    ____           __                   ____           __  
-   / __/___ ______/ /_   ____ ______   / __/_  _______/ /__
-  / /_/ __ `/ ___/ __/  / __ `/ ___/  / /_/ / / / ___/ //_/
- / __/ /_/ (__  ) /_   / /_/ (__  )  / __/ /_/ / /__/ ,<   
-/_/  \__,_/____/\__/   \__,_/____/  /_/  \__,_/\___/_/|_|  
-       __                                                  
-      / /_  ____  ____  ____  ____  __  ____  ____  __     
-     / __ \/ __ \/ __ \/ __ \/ __ \/ / / / / / / / / /     
-    / /_/ / /_/ / /_/ / /_/ / /_/ / /_/ / /_/ / /_/ /      
-   /_.___/\____/\____/\____/\____/\__, /\__, /\__, /       
-                                 /____//____//____/        
+
+> my name is lt. aldo raine
+> and i'm puttin' together a special team
+> we're gonna be dropped into france
+> dressed as civilians
+> and we're gonna do one thing and one thing only
+> killin' nazis
+> nazi ain't got no humanity
+> they're gonna die
+> each and every man under my command
+> owes me one hundred nazi scalps
+> and i want my scalps
+> or you will die tryin'
 ]],
       },
       formats = {
         header = {
-          align = "center",
+          align = "left",
         },
       },
       sections = {
