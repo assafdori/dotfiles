@@ -11,20 +11,20 @@ fi
 # Create the prompt for OpenCode
 PROMPT="Please suggest 10 commit messages for the following diff.
 
-Format each message using conventional commits with an appropriate emoji:
+Format each message using conventional commits:
 <type>(<scope>): <description>
 
 Available types:
-- feat ✨ (new feature)
-- fix 🐛 (bug fix)
-- docs 📜 (documentation)
-- style 🎨 (formatting, no code change)
-- refactor 🔨 (refactoring)
-- perf 🚀 (performance improvement)
-- test 🚦 (tests)
-- build 📦 (build system)
-- ci 🦊 (CI/CD)
-- chore 🔧 (maintenance)
+- feat(new feature):
+- fix(bug fix):
+- docs(documentation):
+- style(formatting, no code change):
+- refactor(refactoring):
+- perf(performance improvement):
+- test(tests):
+- build(build system):
+- ci(CI/CD):
+- chore(maintenance):
 
 Output only the numbered list (1-10), nothing else.
 
