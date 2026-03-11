@@ -82,7 +82,7 @@ return {
   },
 
   {
-    "echasnovski/mini.surround",
+    "nvim-mini/mini.surround",
     event = { "BufReadPre", "BufNewFile" },
     opts = {
       -- Number of lines within which surrounding is searched
