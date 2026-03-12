@@ -153,7 +153,7 @@ awsprofile() {
     --header "● = current profile | ↑↓ navigate | enter select" \
     --preview "$preview_script" \
     --preview-window "right:45%:wrap" \
-    --color "border:#589df6,label:#89b4fa,header:#cba6f7,preview-border:#589df6" \
+    --color "border:#ffffff,label:#89b4fa,header:#cba6f7,preview-border:#ffffff" \
     --pointer "▶" \
     --marker "✓") || {
     echo "No profile selected"
