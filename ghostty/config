@@ -34,8 +34,10 @@ clipboard-write = allow
 # Padding
 # -----------
 window-padding-balance = true
-window-padding-y = 1,1
-window-padding-x = 4,4
+window-padding-y = 0,0
+# previously 1,1
+window-padding-x = 0,0
+# previously 4,4
 
 # -----------
 # Cursor
