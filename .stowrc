@@ -4,6 +4,5 @@
 --ignore=CNAME
 --ignore=README.md
 --ignore=LICENSE
---ignore=setup.sh
 --ignore=assets/
---ignore=bootstrap.sh
+--ignore=scripts/
