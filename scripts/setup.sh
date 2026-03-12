@@ -13,7 +13,7 @@ UNDERLINE='\033[4m'
 RESET='\033[0m'
 
 # Progress tracking
-TOTAL_STEPS=12
+TOTAL_STEPS=13
 CURRENT_STEP=0
 
 # Colored output helpers with emojis
@@ -197,6 +197,16 @@ if [ -f "$BREWFILE_PATH" ]; then
   fi
 else
   warn "No Brewfile found at ${BOLD}$BREWFILE_PATH${RESET} — skipping"
+fi
+
+step "Upgrading all brew packages"
+info "Upgrading all installed brew packages to latest versions..."
+info "This may take several minutes..."
+if run_with_spinner "Brew package upgrade" brew upgrade; then
+  success "All brew packages upgraded"
+  add_summary "Upgraded all brew packages to latest versions"
+else
+  warn "Some brew packages may have failed to upgrade"
 fi
 
 step "Installing GNU Stow"
