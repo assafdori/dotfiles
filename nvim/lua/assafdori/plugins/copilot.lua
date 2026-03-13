@@ -46,7 +46,7 @@ return {
         if require("copilot.suggestion").is_visible() then
           require("copilot.suggestion").accept()
         else
-          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", false)
+          vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, true, true), "i")
         end
       end, { desc = "Accept Copilot suggestion or fallback to Tab" })
     end,
