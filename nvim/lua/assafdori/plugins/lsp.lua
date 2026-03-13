@@ -77,6 +77,7 @@ local servers = {
   marksman = {},
   pyright = {},
   helm_ls = {},
+  jsonls = {},
   terraformls = {},
   tinymist = {},
   yamlls = function()
