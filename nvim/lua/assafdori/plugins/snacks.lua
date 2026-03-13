@@ -170,6 +170,7 @@ return {
     -- ╰───────────────────────╯
     { "<leader>tt", function() Snacks.terminal() end, desc = "Toggle Terminal" },
     { "<leader>te", function() Snacks.picker.explorer() end, desc = "Toggle Explorer" },
+    { "<leader>tE", function() Snacks.picker.explorer({ cwd = vim.fn.expand("%:p:h") }) end, desc = "Toggle Explorer (buf dir)" },
 
     -- ╭───────────────────────╮
     -- │ 🧘 UI / Zen / UX     │
