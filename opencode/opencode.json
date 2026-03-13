@@ -1,5 +1,17 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "github-copilot/claude-sonnet-4.5",
-  "autoupdate": true
+  "model": "github-copilot/claude-sonnet-4.6",
+  "autoupdate": true,
+  "agent": {
+    "code-reviewer": {
+      "description": "Reviews code for best practices and potential issues",
+      "mode": "subagent",
+      "model": "github-copilot/claude-sonnet-4.6",
+      "prompt": "You are a code reviewer. Focus on security, performance, and maintainability.",
+      "tools": {
+        "write": false,
+        "edit": false
+      }
+    }
+  }
 }

@@ -76,45 +76,41 @@ local servers = {
   },
   marksman = {},
   pyright = {},
+  helm_ls = {},
   terraformls = {},
   tinymist = {},
-  yamlls = {
-    capabilities = {
-      textDocument = {
-        foldingRange = {
-          dynamicRegistration = false,
-          lineFoldingOnly = true,
+  yamlls = function()
+    -- Use SchemaStore.nvim for automatic schema management
+    local schemastore_ok, schemastore = pcall(require, "schemastore")
+
+    return {
+      capabilities = {
+        textDocument = {
+          foldingRange = {
+            dynamicRegistration = false,
+            lineFoldingOnly = true,
+          },
         },
       },
-    },
-    settings = {
-      redhat = { telemetry = { enabled = false } },
-      yaml = {
-        schemaStore = {
-          enable = true,
-          url = "https://www.schemastore.org/api/json/catalog.json",
-        },
-        format = { enabled = false },
-        -- enabling this conflicts between Kubernetes resources, kustomization.yaml, and Helmreleases
-        validate = true,
-        schemas = {
-          ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
-          ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
-          ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = "azure-pipelines*.{yml,yaml}",
-          ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks"] = "roles/tasks/*.{yml,yaml}",
-          ["https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/playbook"] = "*play*.{yml,yaml}",
-          ["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
-          ["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
-          ["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
-          ["https://json.schemastore.org/dependabot-v2"] = ".github/dependabot.{yml,yaml}",
-          ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "*gitlab-ci*.{yml,yaml}",
-          ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] = "*api*.{yml,yaml}",
-          ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
-          ["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "*flow*.{yml,yaml}",
+      settings = {
+        redhat = { telemetry = { enabled = false } },
+        yaml = {
+          schemaStore = {
+            -- Disable built-in schemaStore to use SchemaStore.nvim
+            -- Also required by yaml-schema-detect.nvim
+            enable = false,
+            url = "",
+          },
+          format = { enabled = false }, -- Let conform.nvim handle formatting
+          validate = true,
+          -- Use SchemaStore.nvim for comprehensive schema catalog
+          -- yaml-schema-detect.nvim will dynamically override these per-buffer
+          -- for Kubernetes resources based on apiVersion/kind detection
+          schemas = schemastore_ok and schemastore.yaml.schemas() or {},
         },
       },
-    },
-  },
+    }
+  end,
 }
 local tools = {
   "debugpy",
@@ -211,14 +207,19 @@ return {
 
       require("mason").setup()
 
-      local ensure_installed = vim.tbl_keys(servers)
-      vim.list_extend(ensure_installed, tools)
-      require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+      -- mason-tool-installer handles non-LSP tools (formatters, linters, etc.)
+      -- mason-lspconfig handles LSP servers and translates lspconfig names to Mason package names
+      require("mason-tool-installer").setup({ ensure_installed = tools })
 
       require("mason-lspconfig").setup({
+        ensure_installed = vim.tbl_keys(servers),
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
+            -- Support function-based server configs (e.g., for dynamic SchemaStore.nvim integration)
+            if type(server) == "function" then
+              server = server()
+            end
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for ts_ls)

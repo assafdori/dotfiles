@@ -38,6 +38,17 @@ return {
           yaml = true,
         },
       })
+
+      -- Custom Tab keybinding for Copilot
+      -- Accept Copilot suggestion with Tab, but only when Copilot has a suggestion
+      -- Otherwise, let Tab behave normally (e.g., for completion navigation)
+      vim.keymap.set("i", "<Tab>", function()
+        if require("copilot.suggestion").is_visible() then
+          require("copilot.suggestion").accept()
+        else
+          vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, true, true), "i")
+        end
+      end, { desc = "Accept Copilot suggestion or fallback to Tab" })
     end,
   },
 }
