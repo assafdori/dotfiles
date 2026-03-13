@@ -76,12 +76,13 @@ local servers = {
   },
   marksman = {},
   pyright = {},
+  helm_ls = {},
   terraformls = {},
   tinymist = {},
   yamlls = function()
     -- Use SchemaStore.nvim for automatic schema management
     local schemastore_ok, schemastore = pcall(require, "schemastore")
-    
+
     return {
       capabilities = {
         textDocument = {
@@ -206,11 +207,12 @@ return {
 
       require("mason").setup()
 
-      local ensure_installed = vim.tbl_keys(servers)
-      vim.list_extend(ensure_installed, tools)
-      require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+      -- mason-tool-installer handles non-LSP tools (formatters, linters, etc.)
+      -- mason-lspconfig handles LSP servers and translates lspconfig names to Mason package names
+      require("mason-tool-installer").setup({ ensure_installed = tools })
 
       require("mason-lspconfig").setup({
+        ensure_installed = vim.tbl_keys(servers),
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
