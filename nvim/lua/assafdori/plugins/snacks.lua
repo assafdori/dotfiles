@@ -18,6 +18,7 @@ return {
       enabled = true,
       preset = {
         keys = {
+          -- stylua: ignore start
           { icon = "", key = "f", desc = "find file", action = ":lua Snacks.dashboard.pick('files')" },
           { icon = "", key = "n", desc = "new file", action = ":ene | startinsert" },
           { icon = "", key = "g", desc = "grep text", action = ":lua Snacks.dashboard.pick('live_grep')" },
@@ -26,6 +27,7 @@ return {
           { icon = "󰴽", key = "s", desc = "session", section = "session" },
           { icon = "󰒲", key = "L", desc = "lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
           { icon = "󰈆", key = "q", desc = "quit", action = ":qa" },
+          -- stylua: ignore end
         },
         header = [[
     ____           __                   ____           __  
@@ -178,8 +180,8 @@ return {
     { "<leader>uZ", function() Snacks.zen() end, desc = "Toggle Zen Mode" },
     { "<leader>uz", function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
     { "<leader>nn", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
+    -- stylua: ignore end
   },
-  -- stylua: ignore end
   init = function()
     -- Set up terminal-mode navigation for Snacks terminal buffers
     vim.api.nvim_create_autocmd("TermOpen", {
@@ -189,25 +191,12 @@ return {
         local buf_name = vim.api.nvim_buf_get_name(0)
         if buf_name:match("snacks_terminal") or vim.bo.filetype == "snacks_terminal" then
           -- Set up terminal-mode navigation mappings for all directions
-          vim.keymap.set(
-            "t",
-            "<C-h>",
-            "<cmd>TmuxNavigateLeft<cr>",
-            { buffer = true, desc = "Navigate left (terminal)" }
-          )
-          vim.keymap.set(
-            "t",
-            "<C-j>",
-            "<cmd>TmuxNavigateDown<cr>",
-            { buffer = true, desc = "Navigate down (terminal)" }
-          )
-          vim.keymap.set("t", "<C-k>", "<cmd>TmuxNavigateUp<cr>", { buffer = true, desc = "Navigate up (terminal)" })
-          vim.keymap.set(
-            "t",
-            "<C-l>",
-            "<cmd>TmuxNavigateRight<cr>",
-            { buffer = true, desc = "Navigate right (terminal)" }
-          )
+          -- stylua: ignore start
+          vim.keymap.set("t", "<C-h>", "<cmd>TmuxNavigateLeft<cr>",  { buffer = true, desc = "Navigate left (terminal)" })
+          vim.keymap.set("t", "<C-j>", "<cmd>TmuxNavigateDown<cr>",  { buffer = true, desc = "Navigate down (terminal)" })
+          vim.keymap.set("t", "<C-k>", "<cmd>TmuxNavigateUp<cr>",    { buffer = true, desc = "Navigate up (terminal)" })
+          vim.keymap.set("t", "<C-l>", "<cmd>TmuxNavigateRight<cr>", { buffer = true, desc = "Navigate right (terminal)" })
+          -- stylua: ignore end
         end
       end,
     })
