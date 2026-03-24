@@ -2,25 +2,26 @@
 
 ![asset](assets/assets.jpg)
 
-#### these dotfiles are super opinionated and will most likely require modifications to work for you
+> setup is opinionated as hell. modify before use or suffer the consequences.
 
-## What's inside?
+## what's inside
 
-- Custom terminal stuff (aliases, prompts, etc.)
-- Neovim config for when I need to get things done fast
-- Settings to keep things smooth
+- Terminal setup that doesn't embarrass me
+- Neovim config because I like HJKL
+- General sanity settings
 
 ## Quick Start
 
-On a fresh Mac, run this one-liner to set everything up automatically:
+Fresh Mac? One liner and you're home:
 
 ```bash
+
 curl -fsSL https://raw.githubusercontent.com/assafdori/dotfiles/main/scripts/bootstrap.sh | bash
+
 ```
 
-This will:
+Does the boring stuff so you don't have to:
 
-1. Install Xcode CLI tools, Homebrew, and Git
-2. Copy SSH keys from iCloud
-3. Clone this dotfiles repository
-4. Automatically run the full setup script (`scripts/setup.sh`)
+1. Xcode CLI tools, Homebrew, Git
+2. SSH keys from iCloud
+3. Clones this repo and runs the full setup
