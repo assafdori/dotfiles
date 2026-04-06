@@ -12,6 +12,7 @@ o.clipboard      = "unnamedplus"                                   -- keep in sy
 o.cursorline     = true                                            -- highlight the current line
 o.cursorcolumn   = false                                           -- highlight the current column
 o.guicursor:append("a:blinkwait700-blinkon250-blinkoff400")
+o.termguicolors  = true                                            -- set term gui colors (most terminals support this)
 o.wrap           = false                                           -- display lines as one long line
 o.dir            = vim.fn.stdpath("data") .. "/swp"                -- swap file directory
 o.swapfile       = false                                           -- disable swap files
