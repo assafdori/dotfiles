@@ -6,17 +6,20 @@ export VISUAL="$EDITOR"
 export GOPATH="$HOME/go"
 export KUBECONFIG="$HOME/.kube/config"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
-export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export STARSHIP_CONFIG="${STARSHIP_CONFIG:-$XDG_CONFIG_HOME/starship/starship.toml}"
 export ARCH="$(uname -m)"
 
 # Directory paths
-export GARDEN=("$HOME/Library/Mobile Documents/com~apple~CloudDocs/Documents/The Garden")
-export ICLOUD=("$HOME/Library/Mobile Documents/com~apple~CloudDocs")
-export REPOS="$HOME/code"
-export GITUSER="$USER"
-export GHREPOS="$REPOS/$GITUSER"
-export XDG_CONFIG_HOME="$HOME"/.config
-export DOTFILES="$HOME/code/$GITUSER/dotfiles"
+export REPOS="${REPOS:-$HOME/code}"
+export GITUSER="${GITUSER:-$USER}"
+export GHREPOS="${GHREPOS:-$REPOS/$GITUSER}"
+export DOTFILES="${DOTFILES:-$GHREPOS/dotfiles}"
+export WORK_REPOS="${WORK_REPOS:-$REPOS/work}"
+export ICLOUD="${ICLOUD:-$HOME/Library/Mobile Documents/com~apple~CloudDocs}"
+export GARDEN="${GARDEN:-$ICLOUD/Documents/The Garden}"
+export SSH_REMOTE_DIR="${SSH_REMOTE_DIR:-$ICLOUD/Documents/ssh}"
+export SSH_REMOTE_DIR_ALT="${SSH_REMOTE_DIR_ALT:-$ICLOUD/Documents/SSH}"
 
 # Update PATH
 typeset -U path

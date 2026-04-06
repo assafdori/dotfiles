@@ -103,17 +103,25 @@ print_banner
 
 sleep 0.8
 
+: "${REPOS:="$HOME/code"}"
+: "${GITUSER:="$USER"}"
+: "${GHREPOS:="$REPOS/$GITUSER"}"
+: "${DOTFILES_DIR:="$GHREPOS/dotfiles"}"
+: "${ICLOUD:="$HOME/Library/Mobile Documents/com~apple~CloudDocs"}"
+: "${SSH_REMOTE_DIR:="$ICLOUD/Documents/ssh"}"
+: "${SSH_REMOTE_DIR_ALT:="$ICLOUD/Documents/SSH"}"
+
 step "Creating base directories"
-if [ -d "$HOME/code" ] && [ -d "$HOME/.ssh" ]; then
+if [ -d "$REPOS" ] && [ -d "$HOME/.ssh" ]; then
 	info "Base directories already exist"
 	chmod 700 "$HOME/.ssh" 2>/dev/null || true
 	add_summary "Base directories (already present)"
 else
-	info "Creating ${BOLD}~/code${RESET} and ${BOLD}~/.ssh${RESET}..."
-	mkdir -p "$HOME/code" "$HOME/.ssh"
+	info "Creating ${BOLD}$REPOS${RESET} and ${BOLD}~/.ssh${RESET}..."
+	mkdir -p "$REPOS" "$HOME/.ssh"
 	chmod 700 "$HOME/.ssh"
 	success "Base directories created"
-	add_summary "Created base directories (~/code, ~/.ssh)"
+	add_summary "Created base directories ($REPOS, ~/.ssh)"
 fi
 
 step "Installing Xcode command line tools"
@@ -165,13 +173,11 @@ else
 fi
 
 step "Setting up SSH keys from iCloud"
-# Try lowercase first (matches setup.sh), fallback to uppercase
-SSH_REMOTE_LOWER="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Documents/ssh"
-SSH_REMOTE_UPPER="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Documents/SSH"
-if [ -d "$SSH_REMOTE_LOWER" ]; then
-	SSH_REMOTE="$SSH_REMOTE_LOWER"
-elif [ -d "$SSH_REMOTE_UPPER" ]; then
-	SSH_REMOTE="$SSH_REMOTE_UPPER"
+# Try primary path first, fallback to alternate
+if [ -d "$SSH_REMOTE_DIR" ]; then
+	SSH_REMOTE="$SSH_REMOTE_DIR"
+elif [ -d "$SSH_REMOTE_DIR_ALT" ]; then
+	SSH_REMOTE="$SSH_REMOTE_DIR_ALT"
 else
 	SSH_REMOTE=""
 fi
@@ -232,7 +238,6 @@ done
 success "SSH keys loaded into ssh-agent and keychain ($keys_added keys)"
 
 step "Cloning dotfiles repository"
-DOTFILES_DIR="$HOME/code/$USER/dotfiles"
 if [ ! -d "$DOTFILES_DIR" ]; then
 	info "Cloning dotfiles from ${BOLD}github.com/assafdori/dotfiles${RESET}..."
 	if git clone git@github.com:assafdori/dotfiles.git "$DOTFILES_DIR"; then
