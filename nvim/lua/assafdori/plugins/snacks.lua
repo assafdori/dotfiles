@@ -8,11 +8,6 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
-    explorer = {
-      layout = {
-        cycle = false,
-      },
-    },
     bigfile = { enabled = true },
     dashboard = {
       enabled = true,
@@ -91,7 +86,6 @@ return {
         cycle = false,
       },
       sources = {
-        explorer = { hidden = true, win },
         files = { hidden = true },
         grep = { hidden = true },
       },
@@ -171,8 +165,6 @@ return {
     -- │ 🖥️ Terminal / Tools  │
     -- ╰───────────────────────╯
     { "<leader>tt", function() Snacks.terminal() end, desc = "Toggle Terminal" },
-    { "<leader>te", function() Snacks.picker.explorer() end, desc = "Toggle Explorer" },
-    { "<leader>tE", function() Snacks.picker.explorer({ cwd = vim.fn.expand("%:p:h") }) end, desc = "Toggle Explorer (buf dir)" },
 
     -- ╭───────────────────────╮
     -- │ 🧘 UI / Zen / UX     │
