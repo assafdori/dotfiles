@@ -1,7 +1,43 @@
 # This is Git's per-user configuration file. Place this file in your home directory (~) and name it .gitconfig
 
+[include]
+    path = "~/.config/git/common.config"
+
 [includeIf "gitdir:~/code/assafdori/"]
     path = "~/.config/git/personal.config"
 
+[includeIf "gitdir:~/code/assafdori/"]
+    path = "~/.config/git/personal-signing-fallback.config"
+
 [includeIf "gitdir:~/code/work/"]
     path = "~/.config/git/work.config"
+
+[includeIf "gitdir:~/code/work/"]
+    path = "~/.config/git/work-signing-fallback.config"
+
+[includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
+    path = "~/.config/git/github-signing.config"
+
+[includeIf "hasconfig:remote.*.url:ssh://git@github.com/**"]
+    path = "~/.config/git/github-signing.config"
+
+[includeIf "hasconfig:remote.*.url:https://github.com/**"]
+    path = "~/.config/git/github-signing.config"
+
+[includeIf "hasconfig:remote.*.url:git@gitlab.com:*/**"]
+    path = "~/.config/git/gitlab-signing.config"
+
+[includeIf "hasconfig:remote.*.url:ssh://git@gitlab.com/**"]
+    path = "~/.config/git/gitlab-signing.config"
+
+[includeIf "hasconfig:remote.*.url:https://gitlab.com/**"]
+    path = "~/.config/git/gitlab-signing.config"
+
+[includeIf "hasconfig:remote.*.url:git@bitbucket.org:*/**"]
+    path = "~/.config/git/bitbucket-signing.config"
+
+[includeIf "hasconfig:remote.*.url:ssh://git@bitbucket.org/**"]
+    path = "~/.config/git/bitbucket-signing.config"
+
+[includeIf "hasconfig:remote.*.url:https://bitbucket.org/**"]
+    path = "~/.config/git/bitbucket-signing.config"
