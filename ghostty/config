@@ -3,6 +3,7 @@ working-directory = /Users/assafdori/code/assafdori/dotfiles
 # Style
 # -----------
 # font-family = "Berkeley Mono"
+# font-family = "IoskeleyMono Nerd Font"
 theme = koda-dark
 font-size = 13
 
