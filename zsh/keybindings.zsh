@@ -6,6 +6,7 @@ bindkey '^L' vi-forward-word
 bindkey '^k' up-line-or-search
 bindkey '^j' down-line-or-search
 bindkey 'jj' vi-cmd-mode
+bindkey 'jk' vi-cmd-mode
 
 # ZLE widgets
 zle -N finder
