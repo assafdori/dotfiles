@@ -1,4 +1,25 @@
 # =============================================================================
+# Terminal
+# =============================================================================
+
+# Restore Ghostty's default cursor after TUIs such as Neovim override it and
+# fail to reset blinking on exit. This keeps `shell-integration-features =
+# no-cursor` while still recovering the prompt cursor state.
+ghostty_reset_cursor() {
+  if [[ "$TERM_PROGRAM" == "ghostty" || "$TERM" == xterm-ghostty* ]]; then
+    printf '\e[0 q'
+  fi
+}
+
+typeset -ga precmd_functions
+if (( ! ${precmd_functions[(I)ghostty_reset_cursor]} )); then
+  precmd_functions+=(ghostty_reset_cursor)
+fi
+
+# Apply the reset immediately for newly started interactive shells too.
+ghostty_reset_cursor
+
+# =============================================================================
 # Tmux
 # =============================================================================
 
