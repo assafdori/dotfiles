@@ -3,13 +3,13 @@ add_newline = true
 format = """$username$directory$linebreak$character"""
 right_format = """$all"""
 command_timeout = 1000
-palette = 'koda-dark'
+palette = 'adaptive-minimal'
 
 [username]
 disabled = true
 show_always = true
 format = '[$user@]($style)'
-style_user = 'white'
+style_user = 'fg'
 aliases = { "assafdori" = "assaf" }
 
 [character]
@@ -23,7 +23,7 @@ disabled = false
 format = "[$hostname](muted) "
 
 [directory]
-style = "white"
+style = "fg"
 
 [battery]
 disabled = true
@@ -138,6 +138,19 @@ disabled = true
 "~" = "@home"
 "Library/Mobile Documents/com@homeapple@homeCloudDocs" = "@icloud"
 "@icloud/Documents/The Garden" = "@garden"
+
+[palettes.adaptive-minimal]
+white = "15"    # bright white / terminal ANSI 15
+bg = "0"        # terminal ANSI 0 (kept for compatibility)
+fg = "7"        # terminal ANSI 7 (default readable foreground)
+muted = "8"     # terminal ANSI 8
+accent1 = "6"   # cyan
+accent2 = "2"   # green
+accent3 = "3"   # yellow
+accent4 = "5"   # magenta
+accent5 = "1"   # red
+accent6 = "4"   # blue
+accent7 = "7"   # light gray / default-ish
 
 [palettes.no-clown-fiesta]
 white = "#ffffff"   # white

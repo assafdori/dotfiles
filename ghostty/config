@@ -4,7 +4,7 @@ working-directory = /Users/assafdori/code/assafdori/dotfiles
 # -----------
 # font-family = "Berkeley Mono"
 # font-family = "IoskeleyMono Nerd Font"
-theme = koda-dark
+theme = Catppuccin Mocha
 font-size = 13
 
 # Custom background & opacity
