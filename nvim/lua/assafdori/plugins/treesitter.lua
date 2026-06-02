@@ -1,41 +1,39 @@
+local langs = {
+  "bash",
+  "cmake",
+  "css",
+  "dockerfile",
+  "go",
+  "hcl",
+  "html",
+  "java",
+  "javascript",
+  "json",
+  "kotlin",
+  "ledger",
+  "lua",
+  "markdown",
+  "markdown_inline",
+  "query",
+  "python",
+  "regex",
+  "terraform",
+  "toml",
+  "vim",
+  "yaml",
+}
+
 return {
-  "nvim-treesitter/nvim-treesitter",
+  "neovim-treesitter/nvim-treesitter",
+  dependencies = { "neovim-treesitter/treesitter-parser-registry" },
+  lazy = false,
   build = ":TSUpdate",
-  event = { "BufReadPost", "BufNewFile" },
   opts = {
-    ensure_installed = {
-      "bash",
-      "cmake",
-      "css",
-      "dockerfile",
-      "go",
-      "hcl",
-      "html",
-      "java",
-      "javascript",
-      "json",
-      "jsonc",
-      "kotlin",
-      "ledger",
-      "lua",
-      "markdown",
-      "markdown_inline",
-      "query",
-      "python",
-      "regex",
-      "terraform",
-      "toml",
-      "vim",
-      "yaml",
-    },
-    highlight = {
-      enable = true,
-    },
-    indent = {
-      enable = true,
-    },
-    autopairs = {
-      enable = true,
-    },
+    install_dir = vim.fn.stdpath("data") .. "/site",
   },
+  config = function(_, opts)
+    local ts = require("nvim-treesitter")
+    ts.setup(opts)
+    ts.install(langs)
+  end,
 }
