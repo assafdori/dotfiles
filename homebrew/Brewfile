@@ -1,10 +1,15 @@
-tap "assafdori/tap"
-tap "koekeishiya/formulae"
-tap "noahgorstein/tap"
-tap "telepresenceio/telepresence"
-tap "aws/tap"
-tap "hashicorp/tap"
-tap "anomalyco/tap"
+tap "assafdori/tap", trusted: true
+tap "koekeishiya/formulae", trusted: true
+tap "noahgorstein/tap", trusted: true
+tap "telepresenceio/telepresence", trusted: true
+tap "aws/tap", trusted: true
+tap "hashicorp/tap", trusted: true
+tap "anomalyco/tap", trusted: true
+brew "charmbracelet/tap/crush", trusted: true
+brew "hashicorp/tap/terraform", trusted: true
+brew "noahgorstein/tap/jqp", trusted: true
+brew "telepresenceio/telepresence/telepresence-oss", trusted: true
+brew "anomalyco/tap/opencode", trusted: true
 brew "torah"
 brew "coreutils"
 brew "argocd"
@@ -89,20 +94,15 @@ brew "yq"
 brew "zoxide"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
-brew "noahgorstein/tap/jqp"
-brew "telepresenceio/telepresence/telepresence-oss"
 brew "gh"
 brew "cloudflared"
 brew "sesh"
 brew "shfmt"
 brew "yamlfmt"
 brew "posting"
-brew "anomalyco/tap/opencode"
 brew "golangci-lint"
 brew "aichat"
 brew "atuin"
-brew "charmbracelet/tap/crush"
-brew "hashicorp/tap/terraform"
 brew "mysql"
 brew "hurl"
 brew "block-goose-cli"
