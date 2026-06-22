@@ -274,10 +274,10 @@ gcpdrop() {
 
 # Password generation
 pg() {
-  local password
-  password=$(pwgen -sy -1 15)
-  printf "%s" "$password" | pbcopy
-  echo "Password: $password (copied to clipboard)"
+    local password
+    password=$(gshuf -n 4 /usr/share/dict/words | tr 'A-Z' 'a-z' | awk '{print toupper(substr($0,1,1)) substr($0,2)}' | tr '\n' '-' | sed "s/-$/$(gshuf -i 10-99 -n 1)/")
+    printf "%s" "$password" | pbcopy
+    echo "Password: $password (copied to clipboard)"
 }
 
 # Find and copy IP address to clipboard
