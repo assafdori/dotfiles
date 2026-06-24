@@ -288,6 +288,20 @@ ip() {
   echo "IP address: $ip_address (copied to clipboard)"
 }
 
+# Find and copy the active local IPv4 address to clipboard
+localip() {
+  local ip_address
+  ip_address=$(ipconfig getifaddr en0 2>/dev/null || ipconfig getifaddr en1 2>/dev/null)
+
+  if [[ -z "$ip_address" ]]; then
+    echo "Error: Could not determine local IP address"
+    return 1
+  fi
+
+  printf "%s" "$ip_address" | pbcopy   # no newline
+  echo "Local IP address: $ip_address (copied to clipboard)"
+}
+
 # Sesh session management
 function ss() {
   {
