@@ -45,6 +45,7 @@ brew "tmux"
 brew "zoxide"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
+brew "herdr"
 cask "ghostty"
 
 # Modern CLI Alternatives & System Monitors
@@ -145,6 +146,7 @@ brew "tree"
 
 # Desktop Applications & Media
 cask "arc"
+cask "helium-browser"
 cask "balenaetcher"
 cask "font-ioskeley-mono"
 cask "font-jetbrains-mono-nerd-font"
