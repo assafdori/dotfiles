@@ -20,14 +20,12 @@ brew "tflint"
 cask "gcloud-cli"
 
 # Containerization & Kubernetes Orchestration
-brew "argocd"
 brew "k9s"
 brew "kubebuilder"
 brew "kubectx"
 brew "kustomize"
 brew "lazydocker"
 brew "minikube"
-brew "podman"
 brew "stern"
 cask "docker-desktop"
 
@@ -45,7 +43,6 @@ brew "tmux"
 brew "zoxide"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
-brew "herdr"
 cask "ghostty"
 
 # Modern CLI Alternatives & System Monitors
