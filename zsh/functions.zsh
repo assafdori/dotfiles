@@ -53,6 +53,11 @@ tml() {
   tmux select-pane -t "$editor_pane"
 }
 
+tn() {
+  local session="${1:-${PWD:t}}"
+  tmux new-session -s "$session"
+}
+
 # =============================================================================
 # Cloud
 # =============================================================================
@@ -274,10 +279,10 @@ gcpdrop() {
 
 # Password generation
 pg() {
-  local password
-  password=$(pwgen -sy -1 15)
-  printf "%s" "$password" | pbcopy
-  echo "Password: $password (copied to clipboard)"
+    local password
+    password=$(gshuf -n 4 /usr/share/dict/words | tr 'A-Z' 'a-z' | awk '{print toupper(substr($0,1,1)) substr($0,2)}' | tr '\n' '-' | sed "s/-$/$(gshuf -i 10-99 -n 1)/")
+    printf "%s" "$password" | pbcopy
+    echo "Password: $password (copied to clipboard)"
 }
 
 # Find and copy IP address to clipboard
@@ -286,6 +291,20 @@ ip() {
   ip_address=$(curl -s4 https://ip.me)
   printf "%s" "$ip_address" | pbcopy   # no newline
   echo "IP address: $ip_address (copied to clipboard)"
+}
+
+# Find and copy the active local IPv4 address to clipboard
+localip() {
+  local ip_address
+  ip_address=$(ipconfig getifaddr en0 2>/dev/null || ipconfig getifaddr en1 2>/dev/null)
+
+  if [[ -z "$ip_address" ]]; then
+    echo "Error: Could not determine local IP address"
+    return 1
+  fi
+
+  printf "%s" "$ip_address" | pbcopy   # no newline
+  echo "Local IP address: $ip_address (copied to clipboard)"
 }
 
 # Sesh session management
