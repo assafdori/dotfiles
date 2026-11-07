@@ -4,6 +4,7 @@ tap "aws/tap", trusted: true
 tap "hashicorp/tap", trusted: true
 tap "noahgorstein/tap", trusted: true
 tap "telepresenceio/telepresence", trusted: true
+tap "yetanotherbrowser/tap", trusted: true
 
 # Cloud & Infrastructure Architecture
 brew "awscli"
@@ -142,7 +143,7 @@ brew "gnu-sed"
 brew "tree"
 
 # Desktop Applications & Media
-cask "arc"
+cask "yetanotherbrowser/tap/yab"
 cask "helium-browser"
 cask "balenaetcher"
 cask "font-ioskeley-mono"
